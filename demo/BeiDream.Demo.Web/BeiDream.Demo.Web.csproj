@@ -259,7 +259,7 @@
       <Name>BeiDream.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\BeiDream.Web.Mvc\BeiDream.Web.Mvc.csproj">
-      <Project>{ed87049d-4057-4aac-8130-0c0045195063}</Project>
+      <Project>{4d4f4eb5-aa9c-42f8-a6c5-cf58f69c6d28}</Project>
       <Name>BeiDream.Web.Mvc</Name>
     </ProjectReference>
     <ProjectReference Include="..\BeiDream.Demo.Service\BeiDream.Demo.Service.csproj">
