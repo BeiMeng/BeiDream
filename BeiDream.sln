@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D09F9437-E50D-4F16-A9B5-CD9FD1CBED33}"
 EndProject
@@ -26,6 +26,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Utils.Tests", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Demo.Web", "demo\BeiDream.Demo.Web\BeiDream.Demo.Web.csproj", "{2B49034F-C17C-4B8D-84E4-4D9EF7DBCD04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Demo.Consoles", "demo\BeiDream.Demo.Consoles\BeiDream.Demo.Consoles.csproj", "{ECE0FD8F-18E9-4276-B67C-B901C726562C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Core.Tests", "tests\BeiDream.Core.Tests\BeiDream.Core.Tests.csproj", "{B26D98FB-6216-4943-A2D1-4F4F64A3C23D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Web.Mvc", "src\BeiDream.Web.Mvc\BeiDream.Web.Mvc.csproj", "{ED87049D-4057-4AAC-8130-0C0045195063}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Demo.Service", "demo\BeiDream.Demo.Service\BeiDream.Demo.Service.csproj", "{FA22489D-836F-48DB-A4B0-79A7CB878999}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +56,22 @@ Global
 		{2B49034F-C17C-4B8D-84E4-4D9EF7DBCD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B49034F-C17C-4B8D-84E4-4D9EF7DBCD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B49034F-C17C-4B8D-84E4-4D9EF7DBCD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE0FD8F-18E9-4276-B67C-B901C726562C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE0FD8F-18E9-4276-B67C-B901C726562C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE0FD8F-18E9-4276-B67C-B901C726562C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE0FD8F-18E9-4276-B67C-B901C726562C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B26D98FB-6216-4943-A2D1-4F4F64A3C23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B26D98FB-6216-4943-A2D1-4F4F64A3C23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B26D98FB-6216-4943-A2D1-4F4F64A3C23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B26D98FB-6216-4943-A2D1-4F4F64A3C23D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED87049D-4057-4AAC-8130-0C0045195063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED87049D-4057-4AAC-8130-0C0045195063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED87049D-4057-4AAC-8130-0C0045195063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED87049D-4057-4AAC-8130-0C0045195063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA22489D-836F-48DB-A4B0-79A7CB878999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA22489D-836F-48DB-A4B0-79A7CB878999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA22489D-836F-48DB-A4B0-79A7CB878999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA22489D-836F-48DB-A4B0-79A7CB878999}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +81,9 @@ Global
 		{3720F3DE-FBBD-454C-ADC0-CE6E256B6D9B} = {D09F9437-E50D-4F16-A9B5-CD9FD1CBED33}
 		{298E4DC2-DADC-44E6-8009-1B93E1AB714D} = {AD8567B0-BBBD-4416-99C7-5B779E7B9102}
 		{2B49034F-C17C-4B8D-84E4-4D9EF7DBCD04} = {735F22EE-ABF0-4A3E-832D-00C32C9E8A40}
+		{ECE0FD8F-18E9-4276-B67C-B901C726562C} = {735F22EE-ABF0-4A3E-832D-00C32C9E8A40}
+		{B26D98FB-6216-4943-A2D1-4F4F64A3C23D} = {AD8567B0-BBBD-4416-99C7-5B779E7B9102}
+		{ED87049D-4057-4AAC-8130-0C0045195063} = {D09F9437-E50D-4F16-A9B5-CD9FD1CBED33}
+		{FA22489D-836F-48DB-A4B0-79A7CB878999} = {735F22EE-ABF0-4A3E-832D-00C32C9E8A40}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Castle.Windsor;
 using Castle.MicroKernel.Registration;
@@ -15,6 +16,7 @@ namespace BeiDream.Core.Dependency
         /// </summary>
         public static IocManager Instance { get; private set; }
         public IWindsorContainer IocContainer { get; private set; }
+        public Guid TracId { get; private set; }
         /// <summary>
         /// 所有的注册依赖注入实现类集合
         /// </summary>
@@ -25,6 +27,7 @@ namespace BeiDream.Core.Dependency
         }
         public IocManager()
         {
+            TracId = Guid.NewGuid();
             IocContainer = new WindsorContainer();
             _conventionalRegistrars = new List<IConventionalDependencyRegistrar>();
 
@@ -32,6 +35,23 @@ namespace BeiDream.Core.Dependency
             IocContainer.Register(
                 Component.For<IocManager, IIocManager, IIocRegistrar, IIocResolver>().UsingFactoryMethod(() => this)
                 );
+        }
+        /// <summary>
+        /// 检查当前接口是否已注册实例
+        /// </summary>
+        /// <param name="type">接口类型</param>
+        public bool IsRegistered(Type type)
+        {
+            return IocContainer.Kernel.HasComponent(type);
+        }
+
+        /// <summary>
+        ///  检查当前接口是否已注册实例
+        /// </summary>
+        /// <typeparam name="TType">接口</typeparam>
+        public bool IsRegistered<TType>()
+        {
+            return IocContainer.Kernel.HasComponent(typeof(TType));
         }
         /// <summary>
         /// 将依赖注入注册实现类添加到依赖注入实现类集合
@@ -56,6 +76,40 @@ namespace BeiDream.Core.Dependency
         public void Dispose()
         {
             IocContainer.Dispose();
+        }
+
+        /// <summary>
+        /// Registers a type as self registration.
+        /// </summary>
+        /// <typeparam name="TType">Type of the class</typeparam>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        public void Register<TType>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton) where TType : class
+        {
+            IocContainer.Register(ApplyLifestyle(Component.For<TType>(), lifeStyle));
+        }
+        public void Register<TType, TImpl>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+            where TType : class
+            where TImpl : class, TType
+        {
+            IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>(), lifeStyle));
+        }
+        private static ComponentRegistration<T> ApplyLifestyle<T>(ComponentRegistration<T> registration, DependencyLifeStyle lifeStyle)
+    where T : class
+        {
+            switch (lifeStyle)
+            {
+                case DependencyLifeStyle.Transient:
+                    return registration.LifestyleTransient();
+                case DependencyLifeStyle.Singleton:
+                    return registration.LifestyleSingleton();
+                default:
+                    return registration;
+            }
+        }
+
+        public T Resolve<T>()
+        {
+            return IocContainer.Resolve<T>();
         }
     }
 }

@@ -8,8 +8,15 @@ namespace BeiDream.Demo.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public ITaskService TaskService;
+        public HomeController(ITaskService taskService)
+        {
+            TaskService = taskService;
+        }
+
         public ActionResult Index()
         {
+            string cc = TaskService.SaveTask("aa");
             return View();
         }
 
