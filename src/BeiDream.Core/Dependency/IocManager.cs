@@ -61,6 +61,7 @@ namespace BeiDream.Core.Dependency
         {
             _conventionalRegistrars.Add(registrar);
         }
+
         /// <summary>
         /// 对依赖注入实现类集合里的实现类全部进行注册
         /// </summary>

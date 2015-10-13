@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BeiDream.Demo.Service;
 
 namespace BeiDream.Demo.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ITaskService TaskService;
-        public HomeController(ITaskService taskService)
+        public ITaskMange TaskMange;
+        public HomeController(ITaskMange taskMang)
         {
-            TaskService = taskService;
+            TaskMange = taskMang;
         }
 
         public ActionResult Index()
         {
-            string cc = TaskService.SaveTask("aa");
+            string cc = TaskMange.TaskSave("aa");
             return View();
         }
 

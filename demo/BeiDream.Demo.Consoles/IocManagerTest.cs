@@ -1,6 +1,6 @@
 ﻿using BeiDream.Core.Dependency;
 
-namespace BeiDream.Demo.Service
+namespace BeiDream.Demo.Consoles
 {
     public interface ITaskMange : ITransientDependency
     {

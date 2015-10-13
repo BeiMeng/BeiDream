@@ -10,6 +10,7 @@ using BeiDream.Web.Mvc;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using System.Reflection;
+using BeiDream.Demo.Service;
 
 namespace BeiDream.Demo.Web
 {
@@ -18,15 +19,12 @@ namespace BeiDream.Demo.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            //IWindsorContainer windsor = new WindsorContainer();
-            //windsor.Register(
-            //    Classes.FromThisAssembly().BasedOn<IController>().LifestyleTransient()
-            //    //Component.For<ITaskService>().ImplementedBy<TaskService>().LifestyleSingleton()
-            //    );
-            //ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(windsor.Kernel));
-            MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(new MvcConventionalRegistrarConfig(true), Assembly.GetExecutingAssembly());
+            //mvc网站模块依赖注册
+            MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(Assembly.GetExecutingAssembly(),new MvcConventionalRegistrarConfig(true));
             mvcBootstrapper.Initialize();
-            //mvcBootstrapper.IocManager.Register<ITaskService, TaskService>(DependencyLifeStyle.Transient);
+            //应用服务模块依赖注册
+            ServiceBootstrapper serviceBootstrapper = new ServiceBootstrapper();
+            serviceBootstrapper.Initialize();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

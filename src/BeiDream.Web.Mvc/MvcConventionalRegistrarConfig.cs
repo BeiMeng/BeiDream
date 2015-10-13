@@ -12,11 +12,11 @@ namespace BeiDream.Web.Mvc
         /// </summary>
         public bool RegistrarForInterface { get; set; }
 
-        public MvcConventionalRegistrarConfig()
-        {
-            RegistrarForInterface = true;
-        }
-        public MvcConventionalRegistrarConfig(bool registrarForInterface)
+        //public MvcConventionalRegistrarConfig()
+        //{
+        //    RegistrarForInterface = true;
+        //}
+        public MvcConventionalRegistrarConfig(bool registrarForInterface=true)
         {
             RegistrarForInterface = registrarForInterface;
         }

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependency\BasicConventionalRegistrar.cs" />
+    <Compile Include="Dependency\Bootstrapper.cs" />
     <Compile Include="Dependency\ConventionalRegistrationContext.cs" />
     <Compile Include="Dependency\DependencyLifeStyle.cs" />
     <Compile Include="Dependency\IConventionalDependencyRegistrar.cs" />
