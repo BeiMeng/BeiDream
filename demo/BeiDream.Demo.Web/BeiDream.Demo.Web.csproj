@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -191,6 +195,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="log4net.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -253,6 +258,10 @@
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">
       <Project>{3720f3de-fbbd-454c-adc0-ce6e256b6d9b}</Project>
       <Name>BeiDream.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BeiDream.Logging.Log4Net\BeiDream.Logging.Log4Net.csproj">
+      <Project>{cfff8938-fee7-497f-af5d-95da5df4978d}</Project>
+      <Name>BeiDream.Logging.Log4Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\BeiDream.Utils\BeiDream.Utils.csproj">
       <Project>{e2af3398-5cd1-4b41-995f-be11c7622e6e}</Project>

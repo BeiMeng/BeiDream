@@ -11,5 +11,11 @@
         /// 获取或设置 入口允许记录的日志等级
         /// </summary>
         public LogLevel EntryLogLevel { get; set; }
+
+        public LoggingConfig(bool enabled, LogLevel entryLogLevel)
+        {
+            Enabled = enabled;
+            EntryLogLevel = entryLogLevel;
+        }
     }
 }

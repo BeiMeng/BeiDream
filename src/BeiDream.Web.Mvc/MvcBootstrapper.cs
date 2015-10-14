@@ -11,7 +11,7 @@ namespace BeiDream.Web.Mvc
 
         public  MvcConventionalRegistrarConfig Config { get; private set; }
 
-        public MvcBootstrapper(Assembly assembly, MvcConventionalRegistrarConfig config)
+        public MvcBootstrapper( MvcConventionalRegistrarConfig config,Assembly assembly=null)
             : base(assembly)
         {
             Config = config;
