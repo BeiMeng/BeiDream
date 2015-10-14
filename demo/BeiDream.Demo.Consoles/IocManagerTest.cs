@@ -12,7 +12,7 @@ namespace BeiDream.Demo.Consoles
     public class TaskMange : ITaskMange
     {
         public ITaskService TaskService { get; set; }
-
+        [Aop(true)]
         public string TaskSave(string msg)
         {
             return TaskService.SaveTask(msg);
@@ -29,7 +29,6 @@ namespace BeiDream.Demo.Consoles
         {
             TaskService = taskService;
         }
-
         public string TaskSave(string msg)
         {
             return TaskService.SaveTask(msg);

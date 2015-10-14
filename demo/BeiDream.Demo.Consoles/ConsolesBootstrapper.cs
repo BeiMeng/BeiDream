@@ -12,9 +12,9 @@ namespace BeiDream.Demo.Consoles
 
         public override void Initialize()
         {
-            //IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());
-            IocManager.Register<ITaskService, TaskService>(DependencyLifeStyle.Transient);
-            IocManager.Register<ITaskMange, TaskMange2>(DependencyLifeStyle.Transient);
+            IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());
+            //IocManager.Register<ITaskService, TaskService>(DependencyLifeStyle.Transient);
+            //IocManager.Register<ITaskMange, TaskMange2>(DependencyLifeStyle.Transient);
             base.Initialize();
         }
     }

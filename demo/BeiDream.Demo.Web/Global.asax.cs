@@ -11,6 +11,7 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using System.Reflection;
 using BeiDream.Demo.Service;
+using Castle.Windsor.Installer;
 
 namespace BeiDream.Demo.Web
 {
@@ -20,11 +21,12 @@ namespace BeiDream.Demo.Web
         {
             AreaRegistration.RegisterAllAreas();
             //mvc网站模块依赖注册
-            MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(Assembly.GetExecutingAssembly(),new MvcConventionalRegistrarConfig(true));
+            MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(Assembly.GetExecutingAssembly(),new MvcConventionalRegistrarConfig());
             mvcBootstrapper.Initialize();
+            mvcBootstrapper.IocManager.IocContainer.Install(FromAssembly.Instance(Assembly.GetExecutingAssembly()));
             //应用服务模块依赖注册
-            ServiceBootstrapper serviceBootstrapper = new ServiceBootstrapper();
-            serviceBootstrapper.Initialize();
+            //ServiceBootstrapper serviceBootstrapper = new ServiceBootstrapper();
+            //serviceBootstrapper.Initialize();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

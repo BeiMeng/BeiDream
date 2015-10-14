@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BeiDream.Demo.Service;
+using BeiDream.Utils.Logging;
 
 namespace BeiDream.Demo.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private static readonly ILogger Logger = LogManager.GetLogger(typeof(HomeController));
         public ITaskMange TaskMange;
         public HomeController(ITaskMange taskMang)
         {
@@ -18,6 +20,7 @@ namespace BeiDream.Demo.Web.Controllers
         public ActionResult Index()
         {
             string cc = TaskMange.TaskSave("aa");
+            Logger.Debug(cc);
             return View();
         }
 

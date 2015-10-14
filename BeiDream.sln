@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Web.Mvc", "src\Bei
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Demo.Consoles", "demo\BeiDream.Demo.Consoles\BeiDream.Demo.Consoles.csproj", "{FAB4A2BC-7336-4137-A7DF-BCD3D9C6583F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Logging.Log4Net", "src\BeiDream.Logging.Log4Net\BeiDream.Logging.Log4Net.csproj", "{CFFF8938-FEE7-497F-AF5D-95DA5DF4978D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{FAB4A2BC-7336-4137-A7DF-BCD3D9C6583F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAB4A2BC-7336-4137-A7DF-BCD3D9C6583F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAB4A2BC-7336-4137-A7DF-BCD3D9C6583F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFF8938-FEE7-497F-AF5D-95DA5DF4978D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFF8938-FEE7-497F-AF5D-95DA5DF4978D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFF8938-FEE7-497F-AF5D-95DA5DF4978D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFF8938-FEE7-497F-AF5D-95DA5DF4978D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,5 +91,6 @@ Global
 		{FA22489D-836F-48DB-A4B0-79A7CB878999} = {735F22EE-ABF0-4A3E-832D-00C32C9E8A40}
 		{4D4F4EB5-AA9C-42F8-A6C5-CF58F69C6D28} = {D09F9437-E50D-4F16-A9B5-CD9FD1CBED33}
 		{FAB4A2BC-7336-4137-A7DF-BCD3D9C6583F} = {735F22EE-ABF0-4A3E-832D-00C32C9E8A40}
+		{CFFF8938-FEE7-497F-AF5D-95DA5DF4978D} = {D09F9437-E50D-4F16-A9B5-CD9FD1CBED33}
 	EndGlobalSection
 EndGlobal
