@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -13,11 +14,11 @@ namespace BeiDream.Core.Dependency
         /// </summary>
         private const string AssemblySkipLoadingPattern = "^System|^mscorlib|^Microsoft|^AjaxControlToolkit|^Antlr3|^Autofac|^NSubstitute|^AutoMapper|^Castle|^ComponentArt|^CppCodeProvider|^DotNetOpenAuth|^EntityFramework|^EPPlus|^FluentValidation|^ImageResizer|^itextsharp|^log4net|^MaxMind|^MbUnit|^MiniProfiler|^Mono.Math|^MvcContrib|^Newtonsoft|^NHibernate|^nunit|^Org.Mentalis|^PerlRegex|^QuickGraph|^Recaptcha|^Remotion|^RestSharp|^Telerik|^Iesi|^TestFu|^UserAgentStringLibrary|^VJSharpCodeProvider|^WebActivator|^WebDev|^WebGrease";
         public IIocManager IocManager { get; private set; }
-        public Assembly Assembly { get; private set; }
-        public Bootstrapper(Assembly assembly=null)
+        public ConventionalRegistrarConfig ConventionalRegistrarConfig { get; private set; }
+        public Bootstrapper(ConventionalRegistrarConfig conventionalRegistrarConfig)
         {
             IocManager = Dependency.IocManager.Instance;
-            Assembly = assembly;
+            ConventionalRegistrarConfig = conventionalRegistrarConfig;
 
         }
         /// <summary>
@@ -31,9 +32,11 @@ namespace BeiDream.Core.Dependency
         }
         public virtual void Initialize()
         {
-            if (Assembly == null)
+            if (ConventionalRegistrarConfig.RegistrarForInterface)
+                IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());
+            if (ConventionalRegistrarConfig.Assembly == null)
             {
-                var assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>();
+                var assemblies = ConventionalRegistrarConfig.IsWebApp ? BuildManager.GetReferencedAssemblies().Cast<Assembly>() : AppDomain.CurrentDomain.GetAssemblies();
                 assemblies = FilterSystemAssembly(assemblies);
                 foreach (var assemblie in assemblies)
                 {
@@ -41,7 +44,7 @@ namespace BeiDream.Core.Dependency
                 }
                 return;
             }
-            IocManager.RegisterAssemblyByConvention(Assembly);
+            IocManager.RegisterAssemblyByConvention(ConventionalRegistrarConfig.Assembly);
 
         }
     }

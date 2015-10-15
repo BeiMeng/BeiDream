@@ -6,7 +6,7 @@ namespace BeiDream.Demo.Service
     public class ServiceBootstrapper:Bootstrapper
     {
 
-        public ServiceBootstrapper() : base(Assembly.GetExecutingAssembly())
+        public ServiceBootstrapper() : base(new ConventionalRegistrarConfig())
         {   
             
         }

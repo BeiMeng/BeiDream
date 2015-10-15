@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using BeiDream.Core.Dependency;
+using BeiDream.Demo.Service;
 using Castle.Core;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;

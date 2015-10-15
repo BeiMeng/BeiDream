@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using BeiDream.Core.Dependency;
+using BeiDream.Utils.Logging;
 using BeiDream.Utils.Reflection;
 using Castle.Core;
 using Castle.DynamicProxy;
 using Castle.MicroKernel;
 
-namespace BeiDream.Demo.Consoles
+namespace BeiDream.Demo.Service
 {
     public class AopTest
     {
@@ -33,6 +34,7 @@ namespace BeiDream.Demo.Consoles
     /// </summary>
     public class AopInterceptor : IInterceptor
     {
+        private static readonly ILogger Logger = LogManager.GetLogger(typeof(AopInterceptor));
         public void Intercept(IInvocation invocation)
         {
             var aopAttributes =
@@ -55,8 +57,11 @@ namespace BeiDream.Demo.Consoles
         {
             foreach (var aopAttribute in aopAttributes)
             {
-                if(aopAttribute.IsAop)
+                if (aopAttribute.IsAop)
+                {
+                    Logger.Debug("拦截启动");
                     Console.WriteLine("Success");
+                }
             }
         }
     }

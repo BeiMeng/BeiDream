@@ -82,7 +82,6 @@
   <ItemGroup>
     <Compile Include="ControllerConventionalRegistrar.cs" />
     <Compile Include="MvcBootstrapper.cs" />
-    <Compile Include="MvcConventionalRegistrarConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindsorControllerFactory.cs" />
   </ItemGroup>
