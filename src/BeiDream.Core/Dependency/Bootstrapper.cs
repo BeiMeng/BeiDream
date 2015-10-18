@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Web.Compilation;
+using BeiDream.Core.Validations.Interception;
 
 namespace BeiDream.Core.Dependency
 {
@@ -32,6 +33,7 @@ namespace BeiDream.Core.Dependency
         }
         public virtual void Initialize()
         {
+            //ValidationInterceptorRegistrar.Initialize(IocManager);
             if (ConventionalRegistrarConfig.RegistrarForInterface)
                 IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());
             if (ConventionalRegistrarConfig.Assembly == null)

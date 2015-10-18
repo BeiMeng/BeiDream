@@ -13,6 +13,7 @@ using System.Reflection;
 using BeiDream.Demo.Service;
 using BeiDream.Logging.Log4Net;
 using BeiDream.Utils.Logging;
+using BeiDream.Web.Mvc.Dependency;
 using Castle.Windsor.Installer;
 
 namespace BeiDream.Demo.Web
@@ -28,6 +29,7 @@ namespace BeiDream.Demo.Web
             //mvc网站模块依赖注册
             MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(new ConventionalRegistrarConfig());
             AopRegistrar.Initialize(mvcBootstrapper.IocManager);
+            ValidationInterceptorRegistrar.Initialize(mvcBootstrapper.IocManager);
             mvcBootstrapper.Initialize();
             logger.Debug("依赖注入完成");
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

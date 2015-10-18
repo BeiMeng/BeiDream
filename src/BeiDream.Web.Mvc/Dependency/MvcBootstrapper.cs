@@ -1,16 +1,13 @@
-﻿using System;
-using System.Reflection;
-using System.Web.Mvc;
-using BeiDream.Core.Dependency;
-using Castle.MicroKernel.Registration;
+﻿using BeiDream.Core.Dependency;
 
-namespace BeiDream.Web.Mvc
+namespace BeiDream.Web.Mvc.Dependency
 {
     public class MvcBootstrapper: Bootstrapper
     {
         public MvcBootstrapper(ConventionalRegistrarConfig config)
             : base(config)
         {
+            //默认设置为web项目
             config.IsWebApp = true;
         }
         /// <summary>

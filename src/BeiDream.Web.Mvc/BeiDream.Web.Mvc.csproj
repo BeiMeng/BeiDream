@@ -80,10 +80,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerConventionalRegistrar.cs" />
-    <Compile Include="MvcBootstrapper.cs" />
+    <Compile Include="Dependency\ControllerConventionalRegistrar.cs" />
+    <Compile Include="Dependency\MvcBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindsorControllerFactory.cs" />
+    <Compile Include="Dependency\WindsorControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

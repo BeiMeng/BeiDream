@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BeiDream.Core.Dependency;
 using Castle.MicroKernel.Registration;
 
-namespace BeiDream.Web.Mvc
+namespace BeiDream.Web.Mvc.Dependency
 {
     /// <summary>
     /// MVC的控制器全部注入到依赖注入容器
