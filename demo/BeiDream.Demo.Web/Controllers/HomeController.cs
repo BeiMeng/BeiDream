@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BeiDream.Demo.Domain.Repositories;
 using BeiDream.Demo.Service;
 using BeiDream.Utils.Logging;
 
@@ -12,15 +13,18 @@ namespace BeiDream.Demo.Web.Controllers
     {
         private static readonly ILogger Logger = LogManager.GetLogger(typeof(HomeController));
         public ITaskMange TaskMange;
-        public HomeController(ITaskMange taskMang)
+        public IAccountRepository AccountRepository;
+        public HomeController(ITaskMange taskMang, IAccountRepository accountRepository)
         {
             TaskMange = taskMang;
+            AccountRepository = accountRepository;
         }
 
         public ActionResult Index()
         {
+            var aa = AccountRepository.GetAll().ToList().Count;
             string cc = TaskMange.TaskSave("aa");
-            Logger.Debug(cc);
+            Logger.Debug(aa);
             return View();
         }
 

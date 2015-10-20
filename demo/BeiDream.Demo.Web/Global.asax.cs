@@ -23,15 +23,17 @@ namespace BeiDream.Demo.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            Log4NetLoggingInitializer.Initialize(new LoggingConfig(true, LogLevel.All));
+            LogConfig.Initialize();
             ILogger logger = LogManager.GetLogger(typeof(MvcApplication));
             logger.Debug("网站启动");
+            CastleConfig.Initialize();
+            logger.Debug("依赖注入初始化完成");
+            DatabaseConfig.Initialize();
+            logger.Debug("数据库初始化完成");
             //mvc网站模块依赖注册
-            MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(new ConventionalRegistrarConfig());
-            AopRegistrar.Initialize(mvcBootstrapper.IocManager);
-            ValidationInterceptorRegistrar.Initialize(mvcBootstrapper.IocManager);
-            mvcBootstrapper.Initialize();
-            logger.Debug("依赖注入完成");
+            //MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(new ConventionalRegistrarConfig());
+            //AopRegistrar.Initialize(mvcBootstrapper.IocManager);
+            //mvcBootstrapper.Initialize();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

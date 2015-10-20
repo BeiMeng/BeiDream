@@ -52,12 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AopTest.cs" />
-    <Compile Include="IApplicationService.cs" />
     <Compile Include="IocManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBootstrapper.cs" />
-    <Compile Include="ValidationInterceptor.cs" />
-    <Compile Include="ValidationInterceptorRegistrar.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">

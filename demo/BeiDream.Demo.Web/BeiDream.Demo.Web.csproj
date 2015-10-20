@@ -169,8 +169,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CastleConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App_Start\DatabaseConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\LogConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -179,7 +186,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IocManagerTest.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -259,6 +265,10 @@
       <Project>{3720f3de-fbbd-454c-adc0-ce6e256b6d9b}</Project>
       <Name>BeiDream.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\BeiDream.Data.Ef\BeiDream.Data.Ef.csproj">
+      <Project>{9fb150c6-e1de-4422-8727-775c29df590b}</Project>
+      <Name>BeiDream.Data.Ef</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BeiDream.Logging.Log4Net\BeiDream.Logging.Log4Net.csproj">
       <Project>{cfff8938-fee7-497f-af5d-95da5df4978d}</Project>
       <Name>BeiDream.Logging.Log4Net</Name>
@@ -270,6 +280,14 @@
     <ProjectReference Include="..\..\src\BeiDream.Web.Mvc\BeiDream.Web.Mvc.csproj">
       <Project>{4d4f4eb5-aa9c-42f8-a6c5-cf58f69c6d28}</Project>
       <Name>BeiDream.Web.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeiDream.Demo.Domain\BeiDream.Demo.Domain.csproj">
+      <Project>{1ffd3d96-d69c-4473-9fc0-de76d56cdde1}</Project>
+      <Name>BeiDream.Demo.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeiDream.Demo.Infrastructure\BeiDream.Demo.Infrastructure.csproj">
+      <Project>{ae6badb0-5277-42a1-9711-da00b15f4c35}</Project>
+      <Name>BeiDream.Demo.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\BeiDream.Demo.Service\BeiDream.Demo.Service.csproj">
       <Project>{fa22489d-836f-48db-a4b0-79a7cb878999}</Project>
