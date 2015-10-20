@@ -30,10 +30,6 @@ namespace BeiDream.Demo.Web
             logger.Debug("依赖注入初始化完成");
             DatabaseConfig.Initialize();
             logger.Debug("数据库初始化完成");
-            //mvc网站模块依赖注册
-            //MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(new ConventionalRegistrarConfig());
-            //AopRegistrar.Initialize(mvcBootstrapper.IocManager);
-            //mvcBootstrapper.Initialize();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
