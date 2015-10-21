@@ -18,15 +18,15 @@ namespace BeiDream.Data.Ef.Repositories
 
     public abstract class Repository<TAggregateRoot,  TKey> : IRepository<TAggregateRoot,TKey> where TAggregateRoot : class, IAggregateRoot<TKey>
     {
-        private readonly IDbContext _dbContext;
+        protected IDbContext DbContext { get; private set; }
         protected Repository(IDbContext dbContext)
         {
-            _dbContext = dbContext;
+            DbContext = dbContext;
         }
 
         private DbSet<TAggregateRoot> Set
         {
-            get { return _dbContext.Set<TAggregateRoot>(); }
+            get { return DbContext.Set<TAggregateRoot>(); }
         }
         public void Add(TAggregateRoot entity)
         {
@@ -36,7 +36,7 @@ namespace BeiDream.Data.Ef.Repositories
         public void Update(TAggregateRoot entity)
         {
             AttachIfNot(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            DbContext.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(TAggregateRoot entity)

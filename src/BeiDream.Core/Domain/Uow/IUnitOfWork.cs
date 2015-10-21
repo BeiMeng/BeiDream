@@ -1,4 +1,4 @@
-﻿using BeiDream.Core.Domain.Entities;
+﻿using BeiDream.Core.Dependency;
 
 namespace BeiDream.Core.Domain.Uow
 {

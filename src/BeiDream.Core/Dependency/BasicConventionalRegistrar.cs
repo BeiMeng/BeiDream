@@ -1,4 +1,5 @@
 ﻿using Castle.DynamicProxy;
+using Castle.MicroKernel.Lifestyle;
 using Castle.MicroKernel.Registration;
 
 namespace BeiDream.Core.Dependency
@@ -20,7 +21,6 @@ namespace BeiDream.Core.Dependency
                     .WithService.DefaultInterfaces()
                     .LifestyleTransient()
                 );
-
             //Singleton
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)

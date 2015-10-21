@@ -28,8 +28,8 @@ namespace BeiDream.Demo.Web.Controllers
             var aa = AccountRepository.GetAll().ToList().Count;
             string cc = TaskMange.TaskSave("aa");
             Logger.Debug(aa);
-            Guid userId = new Guid("");
-            List<Guid> roleIds = new List<Guid> {new Guid("")};
+            Guid userId = new Guid("33e2349c-2b77-e511-827e-fcaa1453079c");
+            List<Guid> roleIds = new List<Guid> { new Guid("34e2349c-2b77-e511-827e-fcaa1453079c") };
             AccountService.SetRoles(userId,roleIds);
             return View();
         }

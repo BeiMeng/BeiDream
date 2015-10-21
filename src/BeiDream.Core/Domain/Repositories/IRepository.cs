@@ -5,7 +5,7 @@ using BeiDream.Core.Dependency;
 using BeiDream.Core.Domain.Entities;
 namespace BeiDream.Core.Domain.Repositories
 {
-    public interface IRepository<TAggregateRoot,TKey>: ITransientDependency where TAggregateRoot : class,IAggregateRoot<TKey> 
+    public interface IRepository<TAggregateRoot, in TKey>: ITransientDependency where TAggregateRoot : class,IAggregateRoot<TKey> 
     {
         void Add(TAggregateRoot entity);
 

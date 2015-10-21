@@ -28,8 +28,8 @@ namespace BeiDream.Demo.Web
             logger.Debug("网站启动");
             CastleConfig.Initialize();
             logger.Debug("依赖注入初始化完成");
-            DatabaseConfig.Initialize();
-            logger.Debug("数据库初始化完成");
+            //DatabaseConfig.Initialize();
+            //logger.Debug("数据库初始化完成");
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
