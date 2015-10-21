@@ -68,6 +68,7 @@
     <Compile Include="Domain\Entities\AggregateRoot.cs" />
     <Compile Include="Domain\Entities\Entity.cs" />
     <Compile Include="Domain\Entities\IAggregateRoot.cs" />
+    <Compile Include="Domain\Services\IDomainService.cs" />
     <Compile Include="Domain\Entities\IEntity.cs" />
     <Compile Include="Domain\Entities\ISoftDelete.cs" />
     <Compile Include="Domain\Repositories\IRepository.cs" />

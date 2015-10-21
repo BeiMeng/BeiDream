@@ -12,7 +12,11 @@ namespace BeiDream.Core.Domain.Repositories
         void Update(TAggregateRoot entity);
 
         void Delete(TAggregateRoot entity);
-
+        /// <summary>
+        /// 查找实体
+        /// </summary>
+        /// <param name="id">实体标识</param>
+        TAggregateRoot Find(TKey id);
         IQueryable<TAggregateRoot> GetAll();
     }
     public interface IRepository<TAggregateRoot>: IRepository<TAggregateRoot,Guid> where TAggregateRoot : class,IAggregateRoot<Guid>

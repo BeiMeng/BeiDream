@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BeiDream.Demo.Domain.Repositories;
 using BeiDream.Demo.Service;
+using BeiDream.Demo.Service.Contracts;
 using BeiDream.Utils.Logging;
 
 namespace BeiDream.Demo.Web.Controllers
@@ -14,8 +15,10 @@ namespace BeiDream.Demo.Web.Controllers
         private static readonly ILogger Logger = LogManager.GetLogger(typeof(HomeController));
         public ITaskMange TaskMange;
         public IAccountRepository AccountRepository;
-        public HomeController(ITaskMange taskMang, IAccountRepository accountRepository)
+        public IAccountService AccountService;
+        public HomeController(ITaskMange taskMang, IAccountRepository accountRepository, IAccountService accountService)
         {
+            AccountService = accountService;
             TaskMange = taskMang;
             AccountRepository = accountRepository;
         }
@@ -25,6 +28,9 @@ namespace BeiDream.Demo.Web.Controllers
             var aa = AccountRepository.GetAll().ToList().Count;
             string cc = TaskMange.TaskSave("aa");
             Logger.Debug(aa);
+            Guid userId = new Guid("");
+            List<Guid> roleIds = new List<Guid> {new Guid("")};
+            AccountService.SetRoles(userId,roleIds);
             return View();
         }
 

@@ -59,6 +59,7 @@
     <Compile Include="Mappings\RoleEntityConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">

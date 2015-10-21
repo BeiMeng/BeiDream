@@ -44,6 +44,11 @@ namespace BeiDream.Data.Ef.Repositories
             Set.Remove(entity);
         }
 
+        public TAggregateRoot Find(TKey id)
+        {
+           return Set.Find(id);
+        }
+
         public IQueryable<TAggregateRoot> GetAll()
         {
             return Set;
