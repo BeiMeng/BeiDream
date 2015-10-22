@@ -21,6 +21,15 @@ namespace BeiDream.Core.Dependency
                     .WithService.DefaultInterfaces()
                     .LifestyleTransient()
                 );
+            //PerWebRequest
+            context.IocManager.IocContainer.Register(
+                Classes.FromAssembly(context.Assembly)
+                    .IncludeNonPublicTypes()
+                    .BasedOn<IPerWebRequestDependency>()
+                    .WithService.Self()
+                    .WithService.DefaultInterfaces()
+                    .LifestylePerWebRequest()
+                );
             //Singleton
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)

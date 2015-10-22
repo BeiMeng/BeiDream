@@ -5,7 +5,7 @@ using BeiDream.Core.Dependency;
 
 namespace BeiDream.Data.Ef
 {
-    public interface IDbContext : ITransientDependency
+    public interface IDbContext : IPerWebRequestDependency
     {
         Guid TraceId { get; set; }
         DbSet<TEntity> Set<TEntity>()

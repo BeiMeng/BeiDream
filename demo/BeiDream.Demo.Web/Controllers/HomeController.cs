@@ -16,11 +16,13 @@ namespace BeiDream.Demo.Web.Controllers
         public ITaskMange TaskMange;
         public IAccountRepository AccountRepository;
         public IAccountService AccountService;
-        public HomeController(ITaskMange taskMang, IAccountRepository accountRepository, IAccountService accountService)
+        public IRoleService RoleService;
+        public HomeController(ITaskMange taskMang, IAccountRepository accountRepository, IAccountService accountService, IRoleService roleService)
         {
             AccountService = accountService;
             TaskMange = taskMang;
             AccountRepository = accountRepository;
+            RoleService = roleService;
         }
 
         public ActionResult Index()
@@ -28,8 +30,8 @@ namespace BeiDream.Demo.Web.Controllers
             var aa = AccountRepository.GetAll().ToList().Count;
             string cc = TaskMange.TaskSave("aa");
             Logger.Debug(aa);
-            Guid userId = new Guid("33e2349c-2b77-e511-827e-fcaa1453079c");
-            List<Guid> roleIds = new List<Guid> { new Guid("34e2349c-2b77-e511-827e-fcaa1453079c") };
+            Guid userId = new Guid("284e65c7-5f78-e511-835c-e8b1fcd69f79");
+            List<Guid> roleIds = new List<Guid> { new Guid("294e65c7-5f78-e511-835c-e8b1fcd69f79") };
             AccountService.SetRoles(userId,roleIds);
             return View();
         }

@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.MicroKernel;
+using Castle.MicroKernel.Lifestyle;
 
 namespace BeiDream.Web.Mvc.Dependency
 {
@@ -43,8 +44,10 @@ namespace BeiDream.Web.Mvc.Dependency
             {
                 throw new HttpException(404, string.Format("The controller for path '{0}' could not be found.", requestContext.HttpContext.Request.Path));
             }
-
-            return (IController)_kernel.Resolve(controllerType);
+            //using (var scope = _kernel.BeginScope())
+            //{
+                return (IController) _kernel.Resolve(controllerType);
+            //}
         }
     }
 }
