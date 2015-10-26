@@ -11,24 +11,19 @@ namespace BeiDream.Demo.Service.Impl
     /// </summary>
     public class AccountService : IAccountService
     {
-        /// <summary>
-        /// 工作单元
-        /// </summary>
-        public IUnitOfWork UnitOfWork { get; set; }
+
         /// <summary>
         ///用户领域服务
         /// </summary>
-        public IAccountManager AccountManager { get; set; }
-        public AccountService(IUnitOfWork unitOfWork,IAccountManager accountManager)
+        public IAccountDomainService AccountDomainService { get; set; }
+        public AccountService(IAccountDomainService accountDomainService)
         {
-            UnitOfWork = unitOfWork;
-            AccountManager = accountManager;
+            AccountDomainService = accountDomainService;
         }
 
         public void SetRoles(Guid userId, List<Guid> roleIds)
         {
-            AccountManager.SetRoles(userId,roleIds);
-            UnitOfWork.Commit();
+            AccountDomainService.SetRoles(userId, roleIds);
         }
     }
 }

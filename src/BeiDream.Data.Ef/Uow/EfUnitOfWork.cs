@@ -9,16 +9,9 @@ namespace BeiDream.Data.Ef.Uow
     public class EfUnitOfWork : IUnitOfWork
     {
         private readonly IDbContext _dbContext;
-        //public EfUnitOfWork(IDbContext dbContext)
-        //{
-        //    _dbContext = dbContext;
-        //}
-        public EfUnitOfWork()
+        public EfUnitOfWork(IDbContext dbContext)
         {
-            using (var scope = IocManager.Instance.IocContainer.BeginScope())
-            {
-                _dbContext = IocManager.Instance.Resolve<IDbContext>();
-            }
+            _dbContext = dbContext;
         }
         public void Commit()
         {

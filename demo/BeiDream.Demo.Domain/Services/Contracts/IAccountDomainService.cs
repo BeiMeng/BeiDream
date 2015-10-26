@@ -8,7 +8,7 @@ namespace BeiDream.Demo.Domain.Services.Contracts
     /// <summary>
     /// 用户领域服务接口
     /// </summary>
-    public interface IAccountManager : IDomainService
+    public interface IAccountDomainService : IDomainService
     {
         /// <summary>
         /// 设置角色

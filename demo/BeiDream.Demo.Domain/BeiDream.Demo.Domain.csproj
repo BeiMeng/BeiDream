@@ -50,8 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAccountRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Services\Contracts\IAccountManager.cs" />
-    <Compile Include="Services\Impl\AccountManager.cs" />
+    <Compile Include="Services\Contracts\IAccountDomainService.cs" />
+    <Compile Include="Services\Impl\AccountDomainService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">

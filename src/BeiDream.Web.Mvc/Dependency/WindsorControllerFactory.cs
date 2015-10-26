@@ -44,10 +44,11 @@ namespace BeiDream.Web.Mvc.Dependency
             {
                 throw new HttpException(404, string.Format("The controller for path '{0}' could not be found.", requestContext.HttpContext.Request.Path));
             }
-            //using (var scope = _kernel.BeginScope())
-            //{
+            //开启单次请求周期作用域范围
+            using (var scope = _kernel.BeginScope())
+            {
                 return (IController) _kernel.Resolve(controllerType);
-            //}
+            }
         }
     }
 }

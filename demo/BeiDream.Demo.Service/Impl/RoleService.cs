@@ -8,19 +8,13 @@ namespace BeiDream.Demo.Service.Impl
     public class RoleService : IRoleService
     {
         /// <summary>
-        /// 工作单元
-        /// </summary>
-        public IUnitOfWork UnitOfWork { get; set; }
-
-        /// <summary>
         ///用户领域服务
         /// </summary>
-        public IAccountManager AccountManager { get; set; }
+        public IAccountDomainService AccountDomainService { get; set; }
 
-        public RoleService(IUnitOfWork unitOfWork, IAccountManager accountManager)
+        public RoleService( IAccountDomainService accountDomainService)
         {
-            UnitOfWork = unitOfWork;
-            AccountManager = accountManager;
+            AccountDomainService = accountDomainService;
         }
     }
 }
