@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BeiDream.Demo.Domain.Repositories;
 using BeiDream.Demo.Service;
 using BeiDream.Demo.Service.Contracts;
+using BeiDream.Demo.Service.Dtos;
 using BeiDream.Utils.Logging;
 
 namespace BeiDream.Demo.Web.Controllers
@@ -30,9 +31,10 @@ namespace BeiDream.Demo.Web.Controllers
             var aa = AccountRepository.GetAll().ToList().Count;
             string cc = TaskMange.TaskSave("aa");
             Logger.Debug(aa);
-            Guid userId = new Guid("");
-            List<Guid> roleIds = new List<Guid> { new Guid("") };
-            AccountService.SetRoles(userId,roleIds);
+            //Guid userId = new Guid("b7d9423a-d07b-e511-827e-fcaa1453079c");
+            //List<Guid> roleIds = new List<Guid> { new Guid("b8d9423a-d07b-e511-827e-fcaa1453079c") };
+            //AccountService.SetRoles(userId,roleIds);
+            RoleService.AddRole(new RoleDto());
             return View();
         }
 

@@ -1,6 +1,7 @@
 ﻿using BeiDream.Core.Domain.Uow;
 using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Demo.Service.Contracts;
+using BeiDream.Demo.Service.Dtos;
 
 namespace BeiDream.Demo.Service.Impl
 {
@@ -15,6 +16,11 @@ namespace BeiDream.Demo.Service.Impl
         public RoleService( IAccountDomainService accountDomainService)
         {
             AccountDomainService = accountDomainService;
+        }
+
+        public void AddRole(RoleDto input)
+        {
+            
         }
     }
 }

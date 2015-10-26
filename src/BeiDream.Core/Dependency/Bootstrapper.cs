@@ -35,6 +35,7 @@ namespace BeiDream.Core.Dependency
         public virtual void Initialize()
         {
             UnitOfWorkRegistrar.Initialize(IocManager);
+            ValidationInterceptorRegistrar.Initialize(IocManager);
             if (ConventionalRegistrarConfig.RegistrarForInterface)
                 IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());
             if (ConventionalRegistrarConfig.Assembly == null)

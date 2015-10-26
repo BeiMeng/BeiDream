@@ -7,7 +7,11 @@ namespace BeiDream.Core.Validations.Interception
 
         public void Intercept(IInvocation invocation)
         {
-            int t = 5;
+            new MethodInvocationValidator(
+                invocation.Method,
+                invocation.Arguments
+                ).Validate();
+
             invocation.Proceed();
         }
     }

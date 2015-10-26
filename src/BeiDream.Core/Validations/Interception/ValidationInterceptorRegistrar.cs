@@ -1,4 +1,5 @@
-﻿using BeiDream.Core.Dependency;
+﻿using BeiDream.Core.Application.Services;
+using BeiDream.Core.Dependency;
 using Castle.Core;
 using Castle.MicroKernel;
 
@@ -13,7 +14,10 @@ namespace BeiDream.Core.Validations.Interception
 
         private static void Kernel_ComponentRegistered(string key, IHandler handler)
         {
-             handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof(ValidationInterceptor)));
+            if (typeof (IApplicationService).IsAssignableFrom(handler.ComponentModel.Implementation))
+            {
+                handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof (ValidationInterceptor)));
+            }
         } 
     }
 }
