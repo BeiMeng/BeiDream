@@ -13,8 +13,6 @@ namespace BeiDream.Demo.Web
         {
 
             MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(new ConventionalRegistrarConfig());
-            //AOP必须先初始化
-            AopRegistrar.Initialize(mvcBootstrapper.IocManager);
             //依赖注入初始化
             mvcBootstrapper.Initialize();
         }

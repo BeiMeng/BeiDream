@@ -4,7 +4,7 @@ using BeiDream.Core.Validations;
 
 namespace BeiDream.Demo.Service.Dtos
 {
-    public class RoleDto:IValidate
+    public class RoleDto//:IValidate
     {
         [Required]
         public Guid Id { get; set; }

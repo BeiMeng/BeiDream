@@ -52,15 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AopTest.cs" />
     <Compile Include="Contracts\IAccountService.cs" />
     <Compile Include="Contracts\IRoleService.cs" />
     <Compile Include="Dtos\RoleDto.cs" />
     <Compile Include="Impl\AccountService.cs" />
     <Compile Include="Impl\RoleService.cs" />
-    <Compile Include="IocManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceBootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">

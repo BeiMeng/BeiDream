@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head {
+    @RenderSection("head", false)
+}
+
+<div class="easyui-layout" data-options="fit:true">
+    <div data-options="region:'north',border:false" class="top">
+        @*站点路径，必须要有*@
+        @RenderSection("SitePath",true)
+        @RenderSection("top", false)
+    </div>
+    <div data-options="region:'center',border:false" class="center">
+        @RenderSection("content")
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @RenderSection("Scripts", false)
+}
