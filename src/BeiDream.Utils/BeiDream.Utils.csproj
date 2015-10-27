@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="Collections\CollectionExtensions.cs" />
     <Compile Include="Extensions\ParamterCheckExtensions.cs" />
-    <Compile Include="INullObject.cs" />
     <Compile Include="Logging\ILog.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\ILoggerAdapter.cs" />
