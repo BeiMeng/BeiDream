@@ -167,8 +167,10 @@
     <Compile Include="App_Start\LogConfig.cs" />
     <Compile Include="App_Start\OwinConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Systems\Controllers\RoleController.cs" />
     <Compile Include="Areas\Systems\Controllers\UserController.cs" />
     <Compile Include="Areas\Systems\SystemsAreaRegistration.cs" />
+    <Compile Include="Controllers\DesktopController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,11 +178,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\common.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="log4net.config" />
     <Content Include="Areas\Systems\Views\web.config" />
+    <Content Include="Scripts\Easyui.Util\jquery.util.easyui.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\jquery.easyui.min.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\jquery.min.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\locale\easyui-lang-en.js" />
@@ -911,6 +914,9 @@
     <Content Include="Scripts\jquery-easyui-1.4.3\themes\ui-sunny\validatebox.css" />
     <Content Include="Scripts\jquery-easyui-1.4.3\themes\ui-sunny\window.css" />
     <Content Include="Scripts\jquery.json-2.4.min.js" />
+    <Content Include="Scripts\Projects\project.js" />
+    <Content Include="Scripts\Util\jquery.util.js" />
+    <Content Include="Scripts\Util\util.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -928,12 +934,8 @@
   <ItemGroup>
     <Folder Include="Areas\Systems\Models\" />
     <Folder Include="Areas\Systems\Views\Shared\" />
-    <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -987,6 +989,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Systems\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Systems\Views\Role\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Desktop\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,8 +2,14 @@
     ViewBag.Title = "BeiDream后台管理系统";
 }
 @section head{
-    <script type="text/javascript">
-        
+<script src="~/Scripts/Projects/project.js"></script>
+    <script type="text/javascript">       
+        $(function() {
+            $('#tt').tree({
+                url: 'Home/GetTree',
+                onClick: $.project.clickMainMenuNode
+            });
+        });
     </script>
 }
 <div id="divMain" class="easyui-layout" data-options="fit:true">
@@ -11,11 +17,11 @@
         @Html.Partial("Part/Top")               
     </div>
     <div data-options="region:'west',title:'功能菜单',split:true,maxWidth:500" style="width: 180px;">
-        @Html.Partial("Part/Left")       
+        @Html.Partial("Part/Left")
     </div>
     <div data-options="region:'center'">
         @Html.Partial("Part/Center")        
     </div>
-    <div data-options="region:'south',border:false" style="height:50px;padding:10px; text-align: center;">Copyright ©BeiDream 版权所有</div>
+    <div data-options="region:'south',border:false" style="height:35px;padding:10px; text-align: center;">Copyright ©BeiDream 版权所有</div>
 </div>
 

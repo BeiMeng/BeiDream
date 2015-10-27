@@ -1,0 +1,15 @@
+﻿/*布局*/
+.easyui-layout .top { padding: 0 2px; }
+.easyui-layout .center { padding: 2px; }
+.easyui-layout .content { padding: 0 2px 2px 2px; }
+/*分隔线*/
+.line { clear: both; display: block; overflow: hidden; width: auto; padding-top: 15px; margin-bottom: 15px; border-bottom: 1px dashed #ccc; }
+/*清除浮动*/
+.clear { clear: both; }
+/*工具栏*/
+.toolbar { border: solid 1px #95b8e7; background: #e0edff;margin-top: 2px }
+/*标题栏*/
+.titlebar { height: 30px; color: #444; border: solid 1px #95b8e7;border-top: none;  background: #f9f9f9; padding-top: 3px; }
+.titlebar span.title { font-weight: bold; padding-left: 6px; }
+.titlebar span { color: #444; text-decoration: none; padding: 0 5px 0 6px; line-height: 30px; }
+.titlebar span.bold{ font-weight: bold;}
