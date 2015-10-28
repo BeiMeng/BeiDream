@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using BeiDream.Core.Domain.Entities;
 using BeiDream.Core.Domain.Services;
+using BeiDream.Demo.Domain.Model;
+using BeiDream.Demo.Domain.Queries;
+using BeiDream.Utils.PagerHelper;
 
 namespace BeiDream.Demo.Domain.Services.Contracts
 {
@@ -16,5 +19,7 @@ namespace BeiDream.Demo.Domain.Services.Contracts
         /// <param name="userId">被设置角色的用户Id</param>
         /// <param name="roleIds">选择的角色集合</param>
         void SetRoles(Guid userId, List<Guid> roleIds);
+
+        PagerList<User> Query(UserQuery query);
     }
 }

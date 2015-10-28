@@ -21,12 +21,28 @@
 </div>
 }
 @section content {
-    用户管理
+    <table id="dg"></table>
 }
 @section Scripts {
     <script type="text/javascript">
         $(function () {
-            
+            $('#dg').datagrid({
+                idField: "Id",
+                fit:true,
+                rownumbers: true,
+                singleSelect: true,
+                pagination: true,
+                pageSize: 20,
+                sortName: "Name",
+                sortOrder:"desc",
+                url: '@Url.Action("Query","User")',
+                columns: [[
+                    { field: 'Id', width: 100,hidden:true },
+                    { field: 'Name', title: '用户名', width: 100,sortable:true },
+                    { field: 'Email', title: '邮箱', width: 100, align: 'right', sortable: true },
+                    { field: 'DisplayName', title: '昵称', width: 100, align: 'right', sortable: true }
+                ]]
+            });
         });
     </script>
 }

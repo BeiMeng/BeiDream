@@ -11,11 +11,11 @@ namespace BeiDream.Demo.Service.Impl
         /// <summary>
         ///用户领域服务
         /// </summary>
-        public IUserDomainService AccountDomainService { get; set; }
+        public IUserDomainService UserDomainService { get; set; }
 
-        public RoleService( IUserDomainService accountDomainService)
+        public RoleService(IUserDomainService userDomainService)
         {
-            AccountDomainService = accountDomainService;
+            UserDomainService = userDomainService;
         }
 
         public void AddRole(RoleDto input)

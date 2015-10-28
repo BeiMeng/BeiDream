@@ -6,7 +6,7 @@ using BeiDream.Data.Ef.EntityFramework.DynamicFilters;
 
 namespace BeiDream.Data.Ef
 {
-    public class BeiDreamDbContext : DbContext, IDbContext
+    public class BeiDreamDbContext : DbContext
     {
         public BeiDreamDbContext(string dbName)
             : base(dbName)

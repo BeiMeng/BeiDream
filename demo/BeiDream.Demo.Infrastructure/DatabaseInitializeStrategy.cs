@@ -40,9 +40,17 @@ namespace BeiDream.Demo.Infrastructure
                 Name = "admin",
                 Password = "admin"
             };
-
+            var administrator1 = new User
+            {
+                Id = Guid.NewGuid(),
+                DateCreated = DateTime.UtcNow,
+                DisplayName = "管理员1",
+                Email = "admin1@easymemo.com",
+                Name = "admin1",
+                Password = "admin1"
+            };
             context.Users.Add(administrator);
-
+            context.Users.Add(administrator1);
             base.Seed(context);
         }
     }

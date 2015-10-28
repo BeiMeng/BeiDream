@@ -55,6 +55,7 @@
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IRoleService.cs" />
     <Compile Include="Dtos\RoleDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Impl\UserService.cs" />
     <Compile Include="Impl\RoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

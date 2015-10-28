@@ -6,7 +6,7 @@ using BeiDream.Demo.Infrastructure.Mappings;
 
 namespace BeiDream.Demo.Infrastructure
 {
-    public class DemoDbContext : BeiDreamDbContext
+    public class DemoDbContext : BeiDreamDbContext, IDbContext
     {
         public DemoDbContext()
             : base("BeiDreamDemo")

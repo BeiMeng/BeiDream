@@ -6,7 +6,7 @@
     <script type="text/javascript">       
         $(function() {
             $('#tt').tree({
-                url: 'Home/GetTree',
+                url: '@Url.Action("GetTree","Home")',
                 onClick: $.project.clickMainMenuNode
             });
         });
