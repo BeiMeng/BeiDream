@@ -13,6 +13,7 @@ namespace BeiDream.Data.Ef.Uow
         {
             _dbContext = dbContext;
         }
+
         public void Commit()
         {
             _dbContext.SaveChanges();

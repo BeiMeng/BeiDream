@@ -7,7 +7,7 @@ namespace BeiDream.Demo.Infrastructure.Repositories
     /// <summary>
     /// 用户仓储
     /// </summary>
-    public class AccountRepository : Repository<Account>,IAccountRepository
+    public class AccountRepository : Repository<Account>,IUserRepository
     {
         public AccountRepository(IDbContext dbContext) : base(dbContext)
         {

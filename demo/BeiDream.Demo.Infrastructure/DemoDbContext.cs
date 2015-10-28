@@ -6,7 +6,7 @@ using BeiDream.Demo.Infrastructure.Mappings;
 
 namespace BeiDream.Demo.Infrastructure
 {
-    public class DemoDbContext : DbContext, IDbContext
+    public class DemoDbContext : BeiDreamDbContext
     {
         public DemoDbContext()
             : base("BeiDreamDemo")
@@ -14,19 +14,19 @@ namespace BeiDream.Demo.Infrastructure
             TraceId = Guid.NewGuid();
         }
 
-        public DbSet<Account> Accounts { get; set; }
+        //public DbSet<Account> Accounts { get; set; }
 
-        public DbSet<Role> Roles { get; set; }
+        //public DbSet<Role> Roles { get; set; }
 
-        public DbSet<Memo> Memos { get; set; }
+        //public DbSet<Memo> Memos { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new AccountEntityConfiguration());
-            modelBuilder.Configurations.Add(new RoleEntityConfiguration());
-            modelBuilder.Configurations.Add(new MemoEntityConfiguration());
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Configurations.Add(new AccountEntityConfiguration());
+            //modelBuilder.Configurations.Add(new RoleEntityConfiguration());
+            //modelBuilder.Configurations.Add(new MemoEntityConfiguration());
         }
-
-        public Guid TraceId { get; set; }
     }
 }

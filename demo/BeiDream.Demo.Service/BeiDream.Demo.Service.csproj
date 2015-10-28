@@ -52,10 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IAccountService.cs" />
+    <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IRoleService.cs" />
     <Compile Include="Dtos\RoleDto.cs" />
-    <Compile Include="Impl\AccountService.cs" />
+    <Compile Include="Impl\UserService.cs" />
     <Compile Include="Impl\RoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

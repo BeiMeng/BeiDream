@@ -18,30 +18,30 @@ namespace BeiDream.Demo.Infrastructure
     {
         protected override void Seed(DemoDbContext context)
         {
-            var adminPermission = new Permission
-            {
-                Privilege = Privilege.SystemAdministration,
-                Value = PermissionValue.Allow
-            };
+            //var adminPermission = new Permission
+            //{
+            //    Privilege = Privilege.SystemAdministration,
+            //    Value = PermissionValue.Allow
+            //};
 
-            var administrators = new Role
-            {
-                Name = "系统管理员",
-                Description = "执行系统管理任务的一组账户",
-                Permissions = new List<Permission> {adminPermission}
-            };
+            //var administrators = new Role
+            //{
+            //    Name = "系统管理员",
+            //    Description = "执行系统管理任务的一组账户",
+            //    Permissions = new List<Permission> {adminPermission}
+            //};
 
-            var administrator = new Account
+            var administrator = new User
             {
+                Id=Guid.NewGuid(),
                 DateCreated = DateTime.UtcNow,
                 DisplayName = "管理员",
                 Email = "admin@easymemo.com",
                 Name = "admin",
-                Password = "admin",
-                Roles = new List<Role> {administrators}
+                Password = "admin"
             };
 
-            context.Accounts.Add(administrator);
+            context.Users.Add(administrator);
 
             base.Seed(context);
         }

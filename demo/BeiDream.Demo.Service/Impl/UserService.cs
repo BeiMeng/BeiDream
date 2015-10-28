@@ -9,14 +9,14 @@ namespace BeiDream.Demo.Service.Impl
     /// <summary>
     /// 用户应用服务
     /// </summary>
-    public class AccountService : IAccountService
+    public class UserService : IUserService
     {
 
         /// <summary>
         ///用户领域服务
         /// </summary>
-        public IAccountDomainService AccountDomainService { get; set; }
-        public AccountService(IAccountDomainService accountDomainService)
+        public IUserDomainService AccountDomainService { get; set; }
+        public UserService(IUserDomainService accountDomainService)
         {
             AccountDomainService = accountDomainService;
         }

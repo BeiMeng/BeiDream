@@ -6,7 +6,7 @@ namespace BeiDream.Demo.Domain.Repositories
     /// <summary>
     /// 用户仓储接口
     /// </summary>
-    public interface IAccountRepository : IRepository<Account>
+    public interface IUserRepository : IRepository<Account>
     {
          
     }

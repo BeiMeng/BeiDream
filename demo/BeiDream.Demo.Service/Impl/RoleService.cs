@@ -11,9 +11,9 @@ namespace BeiDream.Demo.Service.Impl
         /// <summary>
         ///用户领域服务
         /// </summary>
-        public IAccountDomainService AccountDomainService { get; set; }
+        public IUserDomainService AccountDomainService { get; set; }
 
-        public RoleService( IAccountDomainService accountDomainService)
+        public RoleService( IUserDomainService accountDomainService)
         {
             AccountDomainService = accountDomainService;
         }

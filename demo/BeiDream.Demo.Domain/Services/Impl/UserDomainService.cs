@@ -8,7 +8,7 @@ namespace BeiDream.Demo.Domain.Services.Impl
     /// <summary>
     /// 用户领域服务
     /// </summary>
-    public class AccountDomainService : IAccountDomainService
+    public class UserDomainService : IUserDomainService
     {
         /// <summary>
         ///角色仓储
@@ -17,9 +17,9 @@ namespace BeiDream.Demo.Domain.Services.Impl
         /// <summary>
         ///用户仓储
         /// </summary>
-        public IAccountRepository AccountRepository { get; set; }
+        public IUserRepository AccountRepository { get; set; }
 
-        public AccountDomainService(IAccountRepository accountRepository, IRoleRepository roleRepository)
+        public UserDomainService(IUserRepository accountRepository, IRoleRepository roleRepository)
         {
             AccountRepository = accountRepository;
             RoleRepository = roleRepository;
