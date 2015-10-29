@@ -13,6 +13,8 @@
     </div>
     <div data-options="region:'center',border:false" class="center">
         @RenderSection("content")
+
+        @Html.AntiForgeryToken()
     </div>
 </div>
 

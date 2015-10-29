@@ -1001,6 +1001,9 @@
   <ItemGroup>
     <Content Include="Areas\Systems\Views\User\Parts\QueryForm.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Systems\Views\User\Parts\Form.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

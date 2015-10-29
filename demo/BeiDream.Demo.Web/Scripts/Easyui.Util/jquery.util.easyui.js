@@ -1,7 +1,163 @@
 ﻿(function ($) {
-    //tab的操作扩展
+    //index页面对应的jQuery对象
+    var $parent = parent.$;
+    //弹出窗口标识
+    var dialogsKey = "dialogs";
+    //全局数据编号(在Home的Index页面有个全局模态窗口数据保存标签)
+    var dataKey = "#div_index_data";
+
+    //获取弹出窗口数据集合
+    function getDialogs() {
+        return $.easyui.getArray(dialogsKey);
+    }
+
+    //获取当前弹出窗口数据
+    function getCurrentDialog() {
+        return $.easyui.getItem(dialogsKey);
+    }
+
+    //获取当前弹出窗口Id
+    function getCurrentDialogId() {
+        return getCurrentDialog().id;
+    }
+
+    //添加弹出窗口数据,包括弹出窗口Id和jQuery对象
+    function addDialog(id) {
+        $.easyui.addItem(dialogsKey, { id: id, $this: $ });
+    }
+
+    //移除当前弹出窗口数据
+    function removeCurrentDialog() {
+        var dialogs = getDialogs();
+        dialogs.pop();
+    }
+    //easyui的操作扩展
     $.easyui = (function () {
         return {
+            //添加全局数据，存储到index页面
+            addData: function (key, data) {
+                $parent(dataKey).data(key, data);
+            },
+            //添加全局数据，将项添加到数组中
+            addItem: function (key, item) {
+                var list = $.easyui.getArray(key);
+                list.push(item);
+                $.easyui.addData(key, list);
+            },
+            //获取数据
+            getData: function (key) {
+                return $parent(dataKey).data(key);
+            },
+            //获取数组
+            getArray: function (key) {
+                var data = $.easyui.getData(key);
+                data = data || [];
+                if ($.isEmptyArray(data))
+                    return [];
+                return data;
+            },
+            //获取项
+            getItem: function (key) {
+                var list = $.easyui.getArray(key);
+                if (list.length === 0)
+                    return {};
+                return list[list.length - 1];
+            },
+            //获取当前$
+            getCurrent$: function () {
+                var dialog = getCurrentDialog();
+                if (!dialog)
+                    return $;
+                if (!dialog.$this)
+                    return $;
+                return dialog.$this;
+            },
+            //通过Id获取jQuery对象
+            getById: function (id) {
+                var current$ = $.easyui.getCurrent$();
+                return current$("#" + id);
+            },
+            Showdialog: function (options) {
+                ///	<summary>
+                ///	弹出模态窗，解决在Iframe中无法全屏遮罩,
+                /// 注意:仅支持url弹窗
+                ///	</summary>
+                ///	<param name="options" type="Object">
+                ///  1. title:标题
+                ///  2. url:网址
+                ///  3. buttons:显示在窗口底部的按钮区域div的id
+                ///  4. icon:图标class
+                ///  5. width:宽度
+                ///  6. height:高度
+                ///  7. onInit:初始化事件，返回false跳出执行
+                ///	</param>
+                initOptions();
+                if (!options.onInit(options))
+                    return;
+                var dialog = createDialow();
+                show();
+                addDialog(options.id);
+
+                //初始化参数
+                function initOptions() {
+                    options = $.extend({
+                        id: $.newGuid(""),
+                        title: '',
+                        url: '',
+                        icon: '',
+                        width: 800,
+                        height: 360,
+                        closed: false,
+                        maximizable: true,
+                        resizable: true,
+                        cache: false,
+                        modal: true,
+                        buttons: $.easyui.buttonsDivId,
+                        onInit: function () {
+                            return true;
+                        },
+                        closeCallback: function () { }
+                    }, options || {});
+                }
+
+                //创建窗口div
+                function createDialow() {
+                    return $parent("<div id='" + options.id + "'></div>").appendTo('body');
+                }
+
+                //弹出窗口
+                function show() {
+                    dialog.dialog({
+                        title: options.title,
+                        href: options.url,
+                        width: options.dialogWidth || options.width,
+                        height: options.dialogHeight || options.height,
+                        closed: options.closed,
+                        maximizable: options.maximizable,
+                        resizable: options.resizable,
+                        cache: options.cache,
+                        modal: options.modal,
+                        iconCls: options.icon,
+                        onLoad: function () {
+                            var win = $parent("#" + options.id).window("window");
+                            $parent("#" + options.buttons).addClass("dialog-button").appendTo(win);
+                        },
+                        onClose: function () {
+                            if (options.closeCallback)
+                                options.closeCallback();
+                            $parent("#" + getCurrentDialogId()).dialog('destroy');
+                            removeCurrentDialog();
+                        }
+                    });
+                }
+            },
+            //关闭弹出窗口
+            closeDialog: function () {
+                var dialogId = getCurrentDialogId();
+                if (!dialogId)
+                    return;
+                $parent('#' + dialogId).dialog('close');
+            },
             addIframeToTabs: function (tabsId, title, url, icon, closable) {
                 ///	<summary>
                 ///	为tabs添加iframe选项卡
@@ -82,6 +238,64 @@
             }
         };
     })();
+    //消息窗口
+    $.easyui.message = (function () {
+        return {
+            getMessager: function () {
+                return $parent.messager;
+            },
+            info: function (msg, title) {
+                ///	<summary>
+                ///	弹出信息框
+                ///	</summary>
+                ///	<param name="msg" type="String">
+                ///	内容
+                ///	</param>
+                ///	<param name="title" type="String">
+                ///	标题
+                ///	</param>
+                if (!msg)
+                    return;
+                $.easyui.message.getMessager().alert(title || "信息", msg, 'info');
+            },
+            warn: function (msg, title) {
+                ///	<summary>
+                ///	弹出警告框
+                ///	</summary>
+                ///	<param name="msg" type="String">
+                ///	内容
+                ///	</param>
+                ///	<param name="title" type="String">
+                ///	标题
+                ///	</param>
+                if (!msg)
+                    return;
+                $.easyui.message.getMessager().alert(title || "错误", msg, 'error');
+            },
+            confirm: function (msg, callback, title) {
+                ///	<summary>
+                ///	弹出确认框
+                ///	</summary>
+                ///	<param name="msg" type="String">
+                ///	内容
+                ///	</param>
+                ///	<param name="callback" type="Function">
+                ///	点击ok按钮后的回调函数
+                ///	</param>
+                ///	<param name="title" type="String">
+                ///	标题
+                ///	</param>
+                if (!msg) {
+                    callback();
+                    return;
+                }
+                $.easyui.message.getMessager().confirm(title || "确认", msg, function (result) {
+                    if (result)
+                        callback();
+                });
+            }
+        };
+    })();
     //grid的列的数据格式化
     $.easyui.format = (function () {
         return {
@@ -93,5 +307,125 @@
             }
         };
     })();
+    //grid的操作
+    $.easyui.grid = (function () {
+        return {
+            //获取选择行的id集合
+            getIds: function (rows) {
+                if (!rows)
+                    return "";
+                var ids = "";
+                $(rows).each(function (i, row) {
+                    ids += i === 0 ? row.Id : "," + row.Id;
+                });
+                return ids;
+            },
+            //获取选择行
+            getRows: function(gridId) {
+                var grid = $.easyui.getGrid(gridId);
+                var result = grid.datagrid("getChecked");
+                if (!$.isEmptyArray(result))
+                    return result;
+                var row = grid.datagrid('getSelected');
+                if (!row)
+                    return result;
+                result.push(row);
+                return result;
+            },
+            //grid查询
+            Query: function (formId, gridId) {
+                ///	<summary>
+                ///	查询
+                ///	</summary>
+                ///	<param name="formId" type="String">
+                ///	查询表单Id
+                ///	</param>
+                ///	<param name="gridId" type="String">
+                ///	表格Id
+                ///	</param>
+                $.easyui.getGrid(gridId).datagrid({
+                    pageNumber: 1,
+                    queryParams: $.easyui.getQueryForm(formId).serializeJson()
+                });
+            },
+            //grid选中的行删除
+            DeleteByUrl: function (url, callback, gridId) {
+                ///	<summary>
+                ///	删除记录
+                ///	</summary>
+                ///	<param name="url" type="String">
+                ///	删除对应的后台url
+                ///	</param>
+                ///	<param name="callback" type="Function">
+                ///	成功回调函数
+                ///	</param>
+                ///	<param name="gridId" type="String">
+                ///	表格Id
+                ///	</param>
+                url = url || $.easyui.deleteUrl;
+                if (!url) {
+                    $.easyui.message.warn("删除Url未设置，请联系管理员");
+                    return;
+                }
+                var grid = $.easyui.getGrid(gridId);
+                var rows = $.easyui.grid.getRows(gridId);
+                if ($.isEmptyArray(rows)) {
+                    $.easyui.message.warn($.easyui.deleteNotSelectedMessage);
+                    return;
+                }
+                $.easyui.message.confirm($.easyui.deleteConfirmMessage, ajaxDelete);
+                //发送删除请求
+                function ajaxDelete() {
+                    var ids = $.easyui.grid.getIds(rows);
+                    deleteajax(ids);
+                }
+                //发送删除请求
+                function deleteajax(ids) {
+                    url = url || $.easyui.deleteUrl;
+                    var param = { ids: ids, __RequestVerificationToken: $.getAntiForgeryToken() };
+                    $.easyui.ajax(url, param, function (result) {
+                        if (callback)
+                            callback(result);
+                        else
+                            deleteSuccess(result);
+                    });
+                };
+
+                //删除成功回调函数
+                function deleteSuccess(result) {
+                    grid.datagrid('reload');
+                    $.easyui.showMessage(result);
+                }
+            }
+        };
+    })();
+
+    //发送请求
+    $.easyui.ajax = function (url, data, callback, dataType, type, async) {
+        dataType = dataType || "json";
+        type = type || 'POST';
+        $.ajax({
+            type: type,
+            url: url,
+            data: data,
+            dataType: dataType,
+            cache: false,
+            async: async,
+            success: function (result) {
+                if (callback)
+                    callback(result);
+            },
+            error: function (result) {
+                $.easyui.showMessage(result);
+            }
+        });
+    }
+    //显示消息
+    $.easyui.showMessage = function (result) {
+        if (result.Code === $.easyui.state.ok)
+            $.easyui.topShow(result.Message);
+        else if (result.Code === $.easyui.state.fail)
+            $.easyui.warn(result.Message);
+    };
 })(jQuery);
 

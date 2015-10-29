@@ -24,7 +24,15 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         {
             return View();
         }
-
+        public PartialViewResult Add()
+        {
+            return PartialView("Parts/Form");
+        }
+        [HttpPost]
+        public ActionResult Delete(string ids)
+        {
+            return Json(new {});
+        }
         [HttpPost]
         public ActionResult Query(UserQuery query)
         {

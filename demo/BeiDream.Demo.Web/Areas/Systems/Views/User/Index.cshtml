@@ -17,7 +17,8 @@
 @section top {
     @*工具栏*@
 <div class="toolbar">
-    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-add'" onclick="$.easyui.form.Query('formQuery', 'dg')">新 增</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-add'" onclick="$.easyui.Showdialog({ title: '添加用户', buttons: 'dialogButtons', url: '@Url.Action("Add", "User")' })">新 增</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-remove'" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "User")','', 'dg')">删 除</a>
 </div>
 }
 @section content {
