@@ -33,7 +33,10 @@ namespace BeiDream.Demo.Domain.Model
             get;
             set;
         }
-
+       /// <summary>
+       /// 启用
+       /// </summary>
+       public bool Enabled { get; set; }
         public virtual DateTime DateCreated
         {
             get;

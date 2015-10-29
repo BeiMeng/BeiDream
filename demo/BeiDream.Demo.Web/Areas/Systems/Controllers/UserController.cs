@@ -29,13 +29,8 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         public ActionResult Query(UserQuery query)
         {
             SetPage(query);
-            //List<UserDto> list=new List<UserDto>();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    list.Add(new UserDto() { Id = Guid.NewGuid(), Name = "AA"+i,Email="3313@qq.com",DisplayName="BB"+i });
-            //}
             var result = _userService.Query(query);
-            return Json(new { total = result.PageCount, rows = result });
+            return Json(new { total = result.TotalCount, rows = result });
         }
         /// <summary>
         /// 设置分页

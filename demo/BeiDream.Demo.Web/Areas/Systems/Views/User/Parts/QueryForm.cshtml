@@ -1,0 +1,20 @@
+﻿@model BeiDream.Demo.Domain.Queries.UserQuery
+<div id="divQuery" class="divQueryForm">
+    <form id="formQuery" class="form">
+        <dl>
+            <dt><label for="Name">用户名</label></dt>
+            <dd>
+                <input class="easyui-textbox" name="Name"/>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="Enable">是否启用</label></dt>
+            <dd>
+                <input class="easyui-textbox" name="Enable" />
+            </dd>
+        </dl>
+        <span class="button">
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-search'" onclick="$.easyui.form.Query('formQuery', 'dg')">查 询</a>
+        </span>
+    </form>
+</div>

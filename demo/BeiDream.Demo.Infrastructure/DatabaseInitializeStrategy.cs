@@ -30,27 +30,20 @@ namespace BeiDream.Demo.Infrastructure
             //    Description = "执行系统管理任务的一组账户",
             //    Permissions = new List<Permission> {adminPermission}
             //};
-
-            var administrator = new User
+            for (int i = 0; i < 100; i++)
             {
-                Id=Guid.NewGuid(),
-                DateCreated = DateTime.UtcNow,
-                DisplayName = "管理员",
-                Email = "admin@easymemo.com",
-                Name = "admin",
-                Password = "admin"
-            };
-            var administrator1 = new User
-            {
-                Id = Guid.NewGuid(),
-                DateCreated = DateTime.UtcNow,
-                DisplayName = "管理员1",
-                Email = "admin1@easymemo.com",
-                Name = "admin1",
-                Password = "admin1"
-            };
-            context.Users.Add(administrator);
-            context.Users.Add(administrator1);
+                var administrator = new User
+                {
+                    Id = Guid.NewGuid(),
+                    DateCreated = DateTime.Now.AddDays(i),
+                    DisplayName = "管理员"+i,
+                    Email = "admin@easymemo.com",
+                    Name = "admin"+i,
+                    Enabled = true,
+                    Password = "admin"+i
+                };
+                context.Users.Add(administrator);
+            }
             base.Seed(context);
         }
     }

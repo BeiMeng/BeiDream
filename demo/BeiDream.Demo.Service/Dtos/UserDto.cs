@@ -26,5 +26,12 @@ namespace BeiDream.Demo.Service.Dtos
             get;
             set;
         }
+        public string DateCreated
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = "启用不能为空")]
+        public bool? Enabled { get; set; }
     }
 }

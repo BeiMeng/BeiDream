@@ -1,8 +1,7 @@
 ﻿(function ($) {
+    //tab的操作扩展
     $.easyui = (function () {
-
         return {
-
             addIframeToTabs: function (tabsId, title, url, icon, closable) {
                 ///	<summary>
                 ///	为tabs添加iframe选项卡
@@ -80,6 +79,17 @@
                 if (iframe.length == 0)
                     return;
                 iframe[0].contentWindow.location.href = iframe[0].contentWindow.location.href;
+            }
+        };
+    })();
+    //grid的列的数据格式化
+    $.easyui.format = (function () {
+        return {
+            //格式化布尔值
+            Bool: function (value) {
+                if (value === true || value === 'true' || value === 1 || value === '1')
+                    return "是";
+                return "否";
             }
         };
     })();

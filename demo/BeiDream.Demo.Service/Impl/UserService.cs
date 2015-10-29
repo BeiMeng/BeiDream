@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using BeiDream.Core.Domain.Uow;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
+using BeiDream.Utils.Extensions;
 using BeiDream.Utils.PagerHelper;
 
 namespace BeiDream.Demo.Service.Impl
@@ -42,7 +44,9 @@ namespace BeiDream.Demo.Service.Impl
                 Id=entity.Id,
                 Name=entity.Name,
                 Email=entity.Email,
-                DisplayName=entity.DisplayName
+                DisplayName=entity.DisplayName,
+                Enabled=entity.Enabled,
+                DateCreated = entity.DateCreated.ToChineseDateTimeString(true)
             };
         }
     }

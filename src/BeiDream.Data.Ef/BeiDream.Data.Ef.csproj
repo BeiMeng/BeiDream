@@ -79,6 +79,10 @@
       <Project>{3720f3de-fbbd-454c-adc0-ce6e256b6d9b}</Project>
       <Name>BeiDream.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BeiDream.Utils\BeiDream.Utils.csproj">
+      <Project>{e2af3398-5cd1-4b41-995f-be11c7622e6e}</Project>
+      <Name>BeiDream.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

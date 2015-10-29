@@ -45,13 +45,28 @@ namespace BeiDream.Demo.Domain.Services.Impl
         {
             if (string.IsNullOrWhiteSpace(query.Order))   //分页必须先进行排序
                 query.Order = "Id desc";
-            var result = new PagerList<User>(query);
-            IQueryable<User> users =
-                UserRepository.GetAll().OrderByIfOrderNullOrEmpty(query.Order)
+            query.TotalCount = UserRepository.GetAll().Count();
+            IQueryable<User> users = GetQueryConditions(UserRepository.GetAll(), query)   //where查询条件必须放在排序和分页前，不然生成SQL有BUG
+                .OrderByIfOrderNullOrEmpty(query.Order)
                     .Skip(query.GetSkipCount())
                     .Take(query.PageSize);
+            var result = new PagerList<User>(query);
             result.AddRange(users.ToList());
             return result;
+        }
+        /// <summary>
+        /// 构造前台传递的查询条件
+        /// </summary>
+        /// <param name="queryable"></param>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        private IQueryable<User> GetQueryConditions(IQueryable<User> queryable,UserQuery query)
+        {
+            if(!string.IsNullOrWhiteSpace(query.Name))
+                queryable=queryable.Where(p => p.Name.Contains(query.Name));
+            if(query.Enable!=null)
+                queryable = queryable.Where(p => p.Enabled==query.Enable);
+            return queryable;
         }
     }
 }
