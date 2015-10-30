@@ -235,6 +235,48 @@
                 if (iframe.length == 0)
                     return;
                 iframe[0].contentWindow.location.href = iframe[0].contentWindow.location.href;
+            },
+            //初始化编辑窗口
+            initEditDialog: function (options) {
+                return $.easyui.initDialogByGrid(options, $.easyui.editNotSelectedMessage);
+            },
+            initDialog:function (options, msg, id) {
+            ///	<summary>
+            ///	初始化弹出窗口
+            ///	</summary>
+            ///	<param name="options" type="Object">
+            ///	选项
+            ///	</param>
+            ///	<param name="msg" type="String">
+            ///	消息
+            ///	</param>
+            ///	<param name="id" type="String">
+            ///	业务编号
+            ///	</param>
+                if (!id) {
+                    $.easyui.message.warn(msg);
+                    return false;
+                }
+                options.url = $.joinUrl(options.url, "id=" + id);
+                return true;
+            },
+            initDialogByGrid:function (options, msg, gridId) {
+                ///	<summary>
+                ///	初始化弹出窗口-表格
+                ///	</summary>
+                ///	<param name="options" type="Object">
+                ///	选项
+                ///	</param>
+                ///	<param name="msg" type="String">
+                ///	消息
+                ///	</param>
+                ///	<param name="gridId" type="String">
+                ///	表格Id
+                ///	</param>
+                var form = $.easyui.getQueryForm();
+                gridId = gridId || form.attr("gridId") || $.easyui.gridId;
+                var row = $.easyui.getGrid(gridId).datagrid('getSelected');
+                return $.easyui.initDialog(options, msg, row && row.Id);
             }
         };
     })();
@@ -423,7 +465,7 @@
     //显示消息
     $.easyui.showMessage = function (result) {
         if (result.Code === $.easyui.state.ok)
-            $.easyui.topShow(result.Message);
+            $.easyui.message.info(result.Message);
         else if (result.Code === $.easyui.state.fail)
             $.easyui.warn(result.Message);
     };

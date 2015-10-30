@@ -33,5 +33,6 @@ namespace BeiDream.Demo.Service.Dtos
         }
         [Required(ErrorMessage = "启用不能为空")]
         public bool? Enabled { get; set; }
+        public byte[] Version { get; set; }
     }
 }

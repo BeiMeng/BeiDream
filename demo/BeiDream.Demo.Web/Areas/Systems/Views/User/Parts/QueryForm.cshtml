@@ -1,16 +1,16 @@
 ﻿@model BeiDream.Demo.Domain.Queries.UserQuery
 <div id="divQuery" class="divQueryForm">
-    <form id="formQuery" class="form">
+    <form id="formQuery" class="form" gridid="dg">
         <dl>
             <dt><label for="Name">用户名</label></dt>
             <dd>
-                <input class="easyui-textbox" name="Name"/>
+                <input class="easyui-textbox" name="Name" />
             </dd>
         </dl>
         <dl>
             <dt><label for="Enable">是否启用</label></dt>
             <dd>
-                <input class="easyui-textbox" name="Enable" />
+                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50" name="Enabled"><option value="false">否</option><option value="true">是</option></select>
             </dd>
         </dl>
         <span class="button">

@@ -46,7 +46,8 @@ namespace BeiDream.Demo.Service.Impl
                 Email=entity.Email,
                 DisplayName=entity.DisplayName,
                 Enabled=entity.Enabled,
-                DateCreated = entity.DateCreated.ToChineseDateTimeString(true)
+                DateCreated = entity.DateCreated.ToChineseDateTimeString(true),
+                Version=entity.Version
             };
         }
     }

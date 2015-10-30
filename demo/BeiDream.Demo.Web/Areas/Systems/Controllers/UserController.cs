@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Service.Dtos;
 using BeiDream.Demo.Service.Impl;
+using BeiDream.Demo.Web.Areas.Systems.Models.User;
 using BeiDream.Utils.PagerHelper;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
@@ -24,22 +25,45 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         {
             return View();
         }
+        public ActionResult Save(VmUserAddorEdit vm)
+        {
+            return Json(new { Code = 1, Message = "保存成功！" });
+        }
+        public PartialViewResult Edit(Guid id)
+        {
+            return PartialView("Parts/Form", new VmUserAddorEdit(id){Name="AAAAA"});
+        }
         public PartialViewResult Add()
         {
-            return PartialView("Parts/Form");
+            Guid addId = Guid.NewGuid();
+            return PartialView("Parts/Form", new VmUserAddorEdit(addId));
         }
         [HttpPost]
         public ActionResult Delete(string ids)
         {
-            return Json(new {});
+            return Json(new { Code = 1, Message = "删除成功！" });
         }
         [HttpPost]
         public ActionResult Query(UserQuery query)
         {
             SetPage(query);
-            var result = _userService.Query(query);
+            var result = _userService.Query(query).Convert(ToVm);
             return Json(new { total = result.TotalCount, rows = result });
         }
+
+        private VmUserGrid ToVm(UserDto dto)
+        {
+            return new VmUserGrid
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Email = dto.Email,
+                DisplayName = dto.DisplayName,
+                Enabled = dto.Enabled,
+                DateCreated = dto.DateCreated
+            };
+        }
+
         /// <summary>
         /// 设置分页
         /// </summary>

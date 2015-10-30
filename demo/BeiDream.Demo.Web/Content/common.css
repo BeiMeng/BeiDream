@@ -13,3 +13,31 @@
 .titlebar span.title { font-weight: bold; padding-left: 6px; }
 .titlebar span { color: #444; text-decoration: none; padding: 0 5px 0 6px; line-height: 30px; }
 .titlebar span.bold{ font-weight: bold;}
+/*表单*/
+.divForm { margin: 0; padding: 10px 20px; }
+.divForm .formtitle { font-size: 14px; font-weight: bold; padding: 5px 0; margin-bottom: 10px; border-bottom: 1px solid #ccc; }
+.form { display: block; overflow: auto; margin: 0; padding: 10px 30px; }
+.form.wrap{margin: 0; padding: 0 !important;}
+.form dl { float: left; display: block; width: 280px; height: auto; margin: 0; padding: 0 10px 5px 0; }
+.form dt { float: left; width: 80px; padding: 0; margin: 0; padding-right: 5px; }
+.form dd { float: left; display: block; width: 160px; margin: 0; padding: 0; }
+.form label { float: left; width: 80px; padding: 0; line-height: 21px; }
+.form input { float: left; }
+.form select { float: left; }
+.form dl.full { width: 98%; height: auto; clear: both; }
+.form dl.full dd { width: 560px; }
+.form dl.w2 { width: 570px; height: auto; }
+.form dl.w2 dd { width: 480px; }
+.form.w2 dl { width: 360px; }
+.form.w2 dt { width: 120px; }
+.form.w2 dd { width: 220px; }
+.form.w2 label { width: 120px; }
+/*查询表单*/
+.divQueryForm { margin: 0; padding: 2px 5px; }
+.divQueryForm .button { float: left; }
+.divQueryForm .form { padding: 8px 8px 3px 8px; }
+.divQueryForm .form dl { width: 246px; }
+.divQueryForm .form dt { width: 80px; }
+.divQueryForm .form dd { width: 156px; }
+.divQueryForm .form input { width: 150px; }
+.divQueryForm .form .button {margin: 0 5px;} 
