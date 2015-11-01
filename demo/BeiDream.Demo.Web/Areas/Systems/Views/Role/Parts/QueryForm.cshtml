@@ -1,10 +1,16 @@
-﻿@model BeiDream.Demo.Domain.Queries.UserQuery
+﻿@model BeiDream.Demo.Domain.Queries.RoleQuery
 <div id="divQuery" class="divQueryForm">
     <form id="formQuery" class="form" gridid="dg">
         <dl>
-            <dt><label for="Name">用户名</label></dt>
+            <dt><label for="Name">角色名</label></dt>
             <dd>
-                <input class="easyui-textbox" name="Name" />
+                <input class="easyui-textbox" name="Name"/>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="Enable">是否管理员</label></dt>
+            <dd>
+                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50" name="IsAdmin"><option value="false">否</option><option value="true">是</option></select>
             </dd>
         </dl>
         <dl>
@@ -15,7 +21,8 @@
         </dl>
         <span class="button">
             @*<a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-search'" onclick="$.easyui.grid.Query('formQuery', 'dg')">查 询</a>*@
-            <input type="button" value="删   除" onclick="$.easyui.grid.Query('formQuery', 'dg')" />
+            <input type="button" value="查询" onclick="$.easyui.grid.Query('formQuery', 'dg')" />
         </span>
     </form>
 </div>
+

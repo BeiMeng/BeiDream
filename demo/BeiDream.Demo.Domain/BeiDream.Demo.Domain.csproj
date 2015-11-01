@@ -52,10 +52,13 @@
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\RoleQuery.cs" />
     <Compile Include="Queries\UserQuery.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Services\Contracts\IRoleDomainService.cs" />
     <Compile Include="Services\Contracts\IUserDomainService.cs" />
+    <Compile Include="Services\Impl\RoleDomainService.cs" />
     <Compile Include="Services\Impl\UserDomainService.cs" />
   </ItemGroup>
   <ItemGroup>

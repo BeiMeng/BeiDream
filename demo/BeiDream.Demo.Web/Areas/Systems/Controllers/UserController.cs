@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BeiDream.Demo.Domain.Queries;
+using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
 using BeiDream.Demo.Service.Impl;
 using BeiDream.Demo.Web.Areas.Systems.Models.User;
@@ -13,9 +14,9 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
 
-        public UserController(UserService userService)
+        public UserController(IUserService userService)
         {
             _userService = userService;
         }
@@ -27,11 +28,41 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         }
         public ActionResult Save(VmUserAddorEdit vm)
         {
+            _userService.AddorUpdate(VmToDto(vm));
             return Json(new { Code = 1, Message = "保存成功！" });
         }
+
+        private UserDto VmToDto(VmUserAddorEdit vm)
+        {
+            return new UserDto()
+            {
+                Id=vm.Id,
+                Name=vm.Name,
+                Password=vm.Password,
+                DisplayName=vm.DisplayName,
+                Email=vm.Email,
+                Enabled=vm.Enabled,
+                Version=vm.Version
+            };
+        }
+
         public PartialViewResult Edit(Guid id)
         {
-            return PartialView("Parts/Form", new VmUserAddorEdit(id){Name="AAAAA"});
+            var dto = _userService.Find(id);
+            return PartialView("Parts/Form", ToFormVm(dto));
+        }
+        private VmUserAddorEdit ToFormVm(UserDto dto)
+        {
+            return new VmUserAddorEdit(dto.Id)
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Password=dto.Password,
+                Email = dto.Email,
+                DisplayName = dto.DisplayName,
+                Enabled = dto.Enabled,
+                Version=dto.Version
+            };
         }
         public PartialViewResult Add()
         {
@@ -41,6 +72,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         [HttpPost]
         public ActionResult Delete(string ids)
         {
+            _userService.Delete(new Guid(ids));
             return Json(new { Code = 1, Message = "删除成功！" });
         }
         [HttpPost]

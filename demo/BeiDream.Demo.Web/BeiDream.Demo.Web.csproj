@@ -169,6 +169,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Systems\Controllers\RoleController.cs" />
     <Compile Include="Areas\Systems\Controllers\UserController.cs" />
+    <Compile Include="Areas\Systems\Models\Role\VmRoleAddorEdit.cs" />
+    <Compile Include="Areas\Systems\Models\Role\VmRoleGrid.cs" />
     <Compile Include="Areas\Systems\Models\User\VmUserAddorEdit.cs" />
     <Compile Include="Areas\Systems\Models\User\VmUserGrid.cs" />
     <Compile Include="Areas\Systems\SystemsAreaRegistration.cs" />
@@ -1004,6 +1006,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Systems\Views\User\Parts\Form.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Systems\Views\Role\Parts\QueryForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Systems\Views\Role\Parts\Form.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

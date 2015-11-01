@@ -1,29 +1,23 @@
-﻿@model BeiDream.Demo.Web.Areas.Systems.Models.User.VmUserAddorEdit
+﻿@model BeiDream.Demo.Web.Areas.Systems.Models.Role.VmRoleAddorEdit
 <div class="divForm">
-    <div class="formtitle">用户管理</div>
-    <form id="form" class="form" action="@Url.Action("Save","User")" gridid="dg" confirm="确认是否保存吗？">
+    <div class="formtitle">角色管理</div>
+    <form id="form" class="form" action="@Url.Action("Save","Role")" gridid="dg" confirm="确认是否保存吗？">
         <dl>
-            <dt><label for="Name">用户名</label></dt>
+            <dt><label for="Name">角色名</label></dt>
             <dd>
-                <input class="easyui-textbox" name="Name" data-options="required:true,missingMessage:'用户名不能为空',validType:'maxLength[100]'" value="@Model.Name" />
+                <input class="easyui-textbox" name="Name" data-options="required:true,missingMessage:'角色名不能为空',validType:'maxLength[100]'" value="@Model.Name" />
             </dd>
         </dl>
         <dl>
-            <dt><label for="Password">密码</label></dt>
+            <dt><label for="Password">描述</label></dt>
             <dd>
-                <input class="easyui-textbox" name="Password" data-options="required:true,missingMessage:'密码不能为空',validType:'maxLength[40]'" value="@Model.Password"/>
+                <input class="easyui-textbox" name="Description" data-options="required:true,missingMessage:'密码不能为空',validType:'maxLength[40]'" value="@Model.Description" />
             </dd>
         </dl>
         <dl>
-            <dt><label for="Email">邮箱</label></dt>
+            <dt><label for="Enabled">是否管理员</label></dt>
             <dd>
-                <input class="easyui-textbox" name="Email" data-options="validType:'maxLength[200]'" value="@Model.Email"/>
-            </dd>
-        </dl>
-        <dl>
-            <dt><label for="DisplayName">昵称</label></dt>
-            <dd>
-                <input class="easyui-textbox" name="DisplayName" data-options="validType:'maxLength[20]'" value="@Model.DisplayName" />
+                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50,required:true,missingMessage:'是否管理员不能为空'" name="Enabled"><option value="false" selected="selected">否</option><option value="true">是</option></select>
             </dd>
         </dl>
         <dl>
@@ -44,3 +38,4 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.form.submit(null, null, '', '')">保 存</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',width:90" onclick="$.easyui.closeDialog()">关 闭</a>
 </div>
+

@@ -23,13 +23,20 @@ namespace BeiDream.Demo.Infrastructure
             //    Privilege = Privilege.SystemAdministration,
             //    Value = PermissionValue.Allow
             //};
+            for (int i = 0; i < 100; i++)
+            {
+                var role = new Role
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "系统管理员"+i,
+                    Description = "执行系统管理任务的一组账户"+i,
+                    IsAdmin = true,
+                    DateCreated = DateTime.Now.AddDays(i),
+                    Enabled = true
+                };
+                context.Roles.Add(role);
+            }
 
-            //var administrators = new Role
-            //{
-            //    Name = "系统管理员",
-            //    Description = "执行系统管理任务的一组账户",
-            //    Permissions = new List<Permission> {adminPermission}
-            //};
             for (int i = 0; i < 100; i++)
             {
                 var administrator = new User

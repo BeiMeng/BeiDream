@@ -1,11 +1,18 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using BeiDream.Core.Validations;
 
-namespace BeiDream.Demo.Service.Dtos
+namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
 {
-    public class RoleDto//:IValidate
+    public class VmRoleAddorEdit
     {
+        public VmRoleAddorEdit()
+        {
+        }
+        public VmRoleAddorEdit(Guid id)
+        {
+            Id = id;
+        }
+
         public Guid Id { get; set; }
         [Required(ErrorMessage = "角色名不能为空")]
         [StringLength(16, ErrorMessage = "角色名输入过长，不能超过16位")]
@@ -25,15 +32,9 @@ namespace BeiDream.Demo.Service.Dtos
         /// 是否超级管理员
         /// </summary>
         public bool IsAdmin { get; set; }
-        /// <summary>
-        /// 启用
-        /// </summary>
+
+        [Required(ErrorMessage = "启用不能为空")]
         public bool Enabled { get; set; }
-        public virtual string DateCreated
-        {
-            get;
-            set;
-        }
         public byte[] Version { get; set; }
     }
 }

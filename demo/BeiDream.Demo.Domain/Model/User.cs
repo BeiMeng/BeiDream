@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using BeiDream.Core.Domain.Entities;
 
@@ -42,7 +43,11 @@ namespace BeiDream.Demo.Domain.Model
             get;
             set;
         }
-
+        public virtual DateTime? DateUpdated
+        {
+            get;
+            set;
+        }
         public virtual DateTime? DateLastLogon
         {
             get;
@@ -50,6 +55,11 @@ namespace BeiDream.Demo.Domain.Model
         }
 
         public bool IsDeleted
+        {
+            get;
+            set;
+        }
+        public virtual List<Role> Roles
         {
             get;
             set;

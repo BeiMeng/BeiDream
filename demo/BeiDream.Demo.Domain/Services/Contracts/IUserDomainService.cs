@@ -21,5 +21,8 @@ namespace BeiDream.Demo.Domain.Services.Contracts
         void SetRoles(Guid userId, List<Guid> roleIds);
 
         PagerList<User> Query(UserQuery query);
+        void AddorUpdate(User entity);
+        User Find(Guid id);
+        void Delete(Guid id);
     }
 }

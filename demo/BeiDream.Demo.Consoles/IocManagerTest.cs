@@ -12,7 +12,7 @@ namespace BeiDream.Demo.Service
     public class TaskMange : ITaskMange
     {
         public ITaskService TaskService { get; set; }
-        //[Aop(true)]
+        [Aop(true)]
         public string TaskSave(string msg)
         {
             return TaskService.SaveTask(msg+"属性注入");

@@ -20,5 +20,8 @@ namespace BeiDream.Demo.Service.Contracts
         void SetRoles(Guid userId,List<Guid> roleIds);
 
         PagerList<UserDto> Query(UserQuery query);
+        void AddorUpdate(UserDto dto);
+        UserDto Find(Guid id);
+        void Delete(Guid id);
     }
 }

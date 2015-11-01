@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using BeiDream.Core.Domain.Uow;
+using BeiDream.Core.Domain.Uow.Interception;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Domain.Services.Contracts;
@@ -32,23 +33,52 @@ namespace BeiDream.Demo.Service.Impl
             UserDomainService.SetRoles(userId, roleIds);
         }
 
+        [NoUnitOfWork]
         public PagerList<UserDto> Query(UserQuery query)
         {
             return UserDomainService.Query(query).Convert(ToDto);
         }
-
         private UserDto ToDto(User entity)
         {
             return new UserDto()
             {
                 Id=entity.Id,
                 Name=entity.Name,
+                Password=entity.Password,
                 Email=entity.Email,
                 DisplayName=entity.DisplayName,
                 Enabled=entity.Enabled,
                 DateCreated = entity.DateCreated.ToChineseDateTimeString(true),
                 Version=entity.Version
             };
+        }
+        public void AddorUpdate(UserDto dto)
+        {
+            UserDomainService.AddorUpdate(ToEntity(dto));
+        }
+        private User ToEntity(UserDto dto)
+        {
+            return new User()
+            {
+                Id = dto.Id,
+                Password=dto.Password,
+                Name = dto.Name,
+                Email = dto.Email,
+                DisplayName = dto.DisplayName,
+                Enabled = dto.Enabled.SafeValue(),
+                Version = dto.Version
+            };
+        }
+        [NoUnitOfWork]
+        public UserDto Find(Guid id)
+        {
+            var user=UserDomainService.Find(id);
+            return ToDto(user);
+        }
+
+        public void Delete(Guid id)
+        {
+            UserDomainService.Delete(id);
         }
     }
 }

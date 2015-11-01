@@ -13,6 +13,13 @@ namespace BeiDream.Demo.Service.Dtos
             get;
             set;
         }
+        [Required(ErrorMessage = "密码不能为空")]
+        [StringLength(8, ErrorMessage = "密码输入过长，不能超过8位")]
+        public virtual string Password
+        {
+            get;
+            set;
+        }
         [StringLength(20, ErrorMessage = "邮箱输入过长，不能超过20位")]
         public virtual string Email
         {

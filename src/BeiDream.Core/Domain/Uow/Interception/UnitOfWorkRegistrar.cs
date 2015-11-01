@@ -18,7 +18,13 @@ namespace BeiDream.Core.Domain.Uow.Interception
         {
             if (typeof(IApplicationService).IsAssignableFrom(handler.ComponentModel.Implementation))
             {
-                handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof(UnitOfWorkInterceptor)));
+                //if (handler.ComponentModel.Implementation.GetMethods(
+                //    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                //    .Any(m =>! m.IsDefined(typeof (NoUnitOfWorkAttribute), true)))
+                //{
+                    handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof(UnitOfWorkInterceptor)));
+                //}
+
             }
         }
     }

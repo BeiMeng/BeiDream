@@ -16,7 +16,7 @@ namespace BeiDream.Demo.Infrastructure
 
         //public DbSet<Account> Accounts { get; set; }
 
-        //public DbSet<Role> Roles { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         //public DbSet<Memo> Memos { get; set; }
         public DbSet<User> Users { get; set; }
