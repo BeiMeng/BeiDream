@@ -19,8 +19,8 @@
         @*<a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-add'" onclick="$.easyui.Showdialog({ title: '添加用户', buttons: 'dialogButtons', url: '@Url.Action("Add", "User")' })">新 增</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" id="btnEdit" data-options="iconCls:'icon-edit'" onclick="$.easyui.Showdialog({ title: '编辑用户', buttons: 'dialogButtons', url: '@Url.Action("Edit", "User")', onInit: $.easyui.initEditDialog })">编辑用户</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-remove'" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "User")','', 'dg')">删 除</a>*@
-        <input type="button" value="新   增" onclick="$.easyui.Showdialog({ title: '添加用户', buttons: 'dialogButtons', url: '@Url.Action("Add", "Role")' })" />
-        <input type="button" value="修   改" onclick="$.easyui.Showdialog({ title: '编辑用户', buttons: 'dialogButtons', url: '@Url.Action("Edit", "Role")', onInit: $.easyui.initEditDialog })" />
+        <input type="button" value="新   增" onclick="$.easyui.Showdialog({ title: '添加角色', buttons: 'dialogButtons', url: '@Url.Action("Add", "Role")' })" />
+        <input type="button" value="修   改" onclick="$.easyui.Showdialog({ title: '编辑角色', buttons: 'dialogButtons', url: '@Url.Action("Edit", "Role")', onInit: $.easyui.initEditDialog })" />
         <input type="button" value="删   除" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Role")','', 'dg')" />
     </div>
 }
@@ -46,7 +46,7 @@
                 url: '@Url.Action("Query","Role")',
                 columns: [[
                     { field: 'Id', checkbox: true },
-                    { field: 'Name', title: '用户名', sortable: true, width: 100, halign: "center" },
+                    { field: 'Name', title: '角色名', sortable: true, width: 100, halign: "center" },
                     { field: 'IsAdmin', title: '是否管理员', align: 'right', width: 100, halign: "center", formatter: $.easyui.format.Bool },
                     { field: 'Enabled', title: '是否启用', align: 'right', sortable: true, width: 100, halign: "center", formatter: $.easyui.format.Bool },
                     { field: 'DateCreated', title: '创建时间', align: 'right', sortable: true, width: 100, halign: "center" }

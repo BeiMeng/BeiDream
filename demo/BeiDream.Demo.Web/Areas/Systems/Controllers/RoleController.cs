@@ -77,6 +77,12 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             var result = _roleService.Query(query).Convert(ToVm);
             return Json(new { total = result.TotalCount, rows = result });
         }
+        public ActionResult QueryByUser(RoleQuery query,Guid userId)
+        {
+            SetPage(query);
+            var result = _roleService.Query(query).Convert(ToVm);
+            return Json(new { total = result.TotalCount, rows = result });
+        }
         private VmRoleGrid ToVm(RoleDto dto)
         {
             return new VmRoleGrid

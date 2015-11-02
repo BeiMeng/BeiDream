@@ -131,5 +131,10 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         {
             return string.Format("{0} {1}", Convert.ToString(Request["sort"]), Convert.ToString(Request["order"]));
         }
+
+        public PartialViewResult EditRoles(Guid id)
+        {
+            return PartialView("Parts/UserRoles", new UserDto(){Id=id});
+        }
     }
 }

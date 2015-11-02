@@ -1,0 +1,69 @@
+﻿@model BeiDream.Demo.Service.Dtos.UserDto
+@*脚本*@
+<script type="text/javascript">
+    function SetCheckedRoles(data) {
+        //角色列表成功加载回调，根据Checked属性选中行的复选框
+        if (data) {
+            $.each(data.rows, function(index, item) {
+                if (item.Checked) {
+                    $("#dg").datagrid('checkRow', index);
+                }
+            });
+        }
+    }
+
+    $(function() {
+        $('#dg').datagrid({
+            idField: "Id",
+            fit: true,
+            fitColumns: true,
+            rownumbers: true,
+            toolbar: "#divQuery",
+            singleSelect: true,
+            pagination: true,
+            pageSize: 10,
+            sortName: "DateCreated",
+            sortOrder: "desc",
+            url: '@Url.Action("QueryByUser", "Role")',
+            queryParams:{userId:"@Model.Id"},
+            onLoadSuccess:SetCheckedRoles,
+            columns: [
+                [
+                    { field: 'Id', checkbox: true },
+                    { field: 'Name', title: '角色名', sortable: true, width: 100, halign: "center" },
+                    { field: 'IsAdmin', title: '是否管理员', align: 'right', width: 100, halign: "center", formatter: $.easyui.format.Bool },
+                    { field: 'Enabled', title: '是否启用', align: 'right', sortable: true, width: 100, halign: "center", formatter: $.easyui.format.Bool },
+                    { field: 'DateCreated', title: '创建时间', align: 'right', sortable: true, width: 100, halign: "center" }
+                ]
+            ]
+        });
+    });
+</script>
+@*查询表单*@
+<div id="divQuery" class="divQueryForm">
+    <form id="formQuery" class="form" gridid="dg">
+        <dl>
+            <dt><label for="Name">角色名</label></dt>
+            <dd>
+                <input class="easyui-textbox" name="Name" />
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="Enable">是否管理员</label></dt>
+            <dd>
+                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50" name="IsAdmin"><option value="false">否</option><option value="true">是</option></select>
+            </dd>
+        </dl>
+        <dl>
+            <dt><label for="Enable">是否启用</label></dt>
+            <dd>
+                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50" name="Enabled"><option value="false">否</option><option value="true">是</option></select>
+            </dd>
+        </dl>
+        <span class="button">
+            @*<a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-search'" onclick="$.easyui.grid.Query('formQuery', 'dg')">查 询</a>*@
+            <input type="button" value="查询" onclick="$.easyui.grid.Query('formQuery', 'dg')" />
+        </span>
+    </form>
+</div>
+<table id="dg"></table>
