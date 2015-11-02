@@ -189,6 +189,7 @@
     <Content Include="Areas\Systems\Views\web.config" />
     <Content Include="Scripts\Easyui.Util\jquery.util.easyui.config.js" />
     <Content Include="Scripts\Easyui.Util\jquery.util.easyui.form.js" />
+    <Content Include="Scripts\Easyui.Util\jquery.util.easyui.grid.js" />
     <Content Include="Scripts\Easyui.Util\jquery.util.easyui.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\jquery.easyui.min.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\jquery.min.js" />

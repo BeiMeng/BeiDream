@@ -19,8 +19,9 @@
             fitColumns: true,
             rownumbers: true,
             toolbar: "#divQuery",
-            singleSelect: true,
             pagination: true,
+            checkOnSelect: false,
+            selectOnCheck:false,
             pageSize: 10,
             sortName: "DateCreated",
             sortOrder: "desc",
@@ -67,3 +68,9 @@
     </form>
 </div>
 <table id="dg"></table>
+@*防止伪造提交操作*@
+@Html.AntiForgeryToken()
+<div id="dialogButtons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.grid.submitCheckedIds('dg', '@Url.Action("","User")', '{userId:@Model}')">保 存</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',width:90" onclick="$.easyui.closeDialog()">关 闭</a>
+</div>
