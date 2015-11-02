@@ -134,7 +134,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 
         public PartialViewResult EditRoles(Guid id)
         {
-            return PartialView("Parts/UserRoles", new UserDto(){Id=id});
+            return PartialView("Parts/UserRoles", id);
         }
     }
 }

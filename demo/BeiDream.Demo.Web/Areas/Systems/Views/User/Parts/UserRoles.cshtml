@@ -1,4 +1,4 @@
-﻿@model BeiDream.Demo.Service.Dtos.UserDto
+﻿@model Guid
 @*脚本*@
 <script type="text/javascript">
     function SetCheckedRoles(data) {
@@ -25,7 +25,7 @@
             sortName: "DateCreated",
             sortOrder: "desc",
             url: '@Url.Action("QueryByUser", "Role")',
-            queryParams:{userId:"@Model.Id"},
+            queryParams:{userId:"@Model"},
             onLoadSuccess:SetCheckedRoles,
             columns: [
                 [

@@ -23,6 +23,10 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
         {
             get;
             set;
-        } 
+        }
+        /// <summary>
+        /// 选中（当前角色是否属于选择的用户）
+        /// </summary>
+        public bool Checked { get; set; }
     }
 }

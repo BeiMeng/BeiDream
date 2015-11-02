@@ -91,7 +91,8 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
                 Name = dto.Name,              
                 IsAdmin=dto.IsAdmin,
                 Enabled = dto.Enabled,
-                DateCreated = dto.DateCreated
+                DateCreated = dto.DateCreated,
+                Checked=true
             };
         }
         /// <summary>

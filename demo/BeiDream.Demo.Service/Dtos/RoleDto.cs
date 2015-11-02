@@ -35,5 +35,10 @@ namespace BeiDream.Demo.Service.Dtos
             set;
         }
         public byte[] Version { get; set; }
+
+        /// <summary>
+        /// 选中（当前角色是否属于选择的用户）
+        /// </summary>
+        public bool Checked { get; set; }
     }
 }
