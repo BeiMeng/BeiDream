@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="~/Scripts/semantic-ui/semantic.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/semantic-ui/semantic.js"></script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>@Html.ActionLink("主页", "Index", "Home")</li>
+            <li>@Html.ActionLink("关于", "About", "Home")</li>
+            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+        </ul>
+    </div>
+    @RenderBody()
+</body>
+</html>
