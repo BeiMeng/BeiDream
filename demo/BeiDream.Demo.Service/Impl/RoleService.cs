@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BeiDream.Core.Domain.Uow;
 using BeiDream.Core.Domain.Uow.Interception;
 using BeiDream.Demo.Domain.Model;
@@ -67,6 +68,22 @@ namespace BeiDream.Demo.Service.Impl
         public void Delete(Guid id)
         {
             RoleDomainService.Delete(id);
+        }
+        [NoUnitOfWork]
+        public PagerList<RoleDto> Query(RoleQuery query, Guid userId)
+        {
+            return RoleDomainService.Query(query).Convert(item=>ToDto(item,userId));
+        }
+        /// <summary>
+        /// 转换为角色数据传输对象
+        /// </summary>
+        /// <param name="entity">角色实体</param>
+        /// <param name="userId">用户编号</param>
+        private RoleDto ToDto(Role entity, Guid userId)
+        {
+            RoleDto dto = ToDto(entity);
+            dto.Checked = entity.Users.Select(u => u.Id).Contains(userId);
+            return dto;
         }
     }
 }

@@ -12,5 +12,13 @@ namespace BeiDream.Demo.Service.Contracts
         void AddorUpdate(RoleDto dto);
         RoleDto Find(Guid id);
         void Delete(Guid id);
+
+        /// <summary>
+        ///查询角色数据
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <param name="userId">用户ID,与此用户ID关联的角色checked属性设置为true</param>
+        /// <returns></returns>
+        PagerList<RoleDto> Query(RoleQuery query, Guid userId);
     }
 }

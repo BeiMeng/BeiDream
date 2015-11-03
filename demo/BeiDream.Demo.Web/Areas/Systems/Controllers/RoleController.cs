@@ -80,7 +80,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         public ActionResult QueryByUser(RoleQuery query,Guid userId)
         {
             SetPage(query);
-            var result = _roleService.Query(query).Convert(ToVm);
+            var result = _roleService.Query(query,userId).Convert(ToVm);
             return Json(new { total = result.TotalCount, rows = result });
         }
         private VmRoleGrid ToVm(RoleDto dto)
@@ -92,7 +92,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
                 IsAdmin=dto.IsAdmin,
                 Enabled = dto.Enabled,
                 DateCreated = dto.DateCreated,
-                Checked=true
+                Checked =dto.Checked
             };
         }
         /// <summary>

@@ -91,11 +91,8 @@
                 }
             },
             //提交选中的Id
-            submitCheckedIds: function (gridId, url, param, callback, fnSubmitBefore, fnRefresh) {
+            submitCheckedIds: function (gridId, url, param,callback,fnRefresh) {
                 var grid = $.easyui.getGrid(gridId);
-                param = param || {};
-                if (!fnSubmitBefore())
-                    return;
                 var rows = grid.datagrid("getChecked");
                 if (rows.length === 0) {
                     $.easyui.message.warn($.easyui.notCheckedMessage);
@@ -106,7 +103,7 @@
                 //发送请求
                 function ajax() {
                     var ids = $.easyui.grid.getIds(rows);
-                    var param = { ids: ids, __RequestVerificationToken: $.getAntiForgeryToken() };                   
+                    param =$.extend({ ids: ids, __RequestVerificationToken: $.getAntiForgeryToken() },param || {});                   
                     $.easyui.ajax(url, param, ajaxCallback);
 
                     //回调
