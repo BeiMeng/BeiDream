@@ -4,6 +4,7 @@ using BeiDream.Core.Domain.Uow;
 using BeiDream.Core.Domain.Uow.Interception;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
+using BeiDream.Demo.Domain.Repositories;
 using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
