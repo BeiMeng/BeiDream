@@ -8,10 +8,11 @@ using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
 using BeiDream.Demo.Web.Areas.Systems.Models.Role;
 using BeiDream.Utils.PagerHelper;
+using BeiDream.Web.Mvc.EasyUi;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : EasyUiControllerBase
     {
         private readonly IRoleService _roleService;
 
@@ -19,115 +20,51 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         {
             _roleService = roleService;
         }
-        // GET: Systems/Role
+        #region 增删改查
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Save(VmRoleAddorEdit vm)
+        public ActionResult Query(RoleQuery query)
         {
-            _roleService.AddorUpdate(VmToDto(vm));
-            return Json(new { Code = 1, Message = "保存成功！" });
-        }
-
-        private RoleDto VmToDto(VmRoleAddorEdit vm)
-        {
-            return new RoleDto()
-            {
-                Id = vm.Id,
-                Name = vm.Name,
-                Description = vm.Description,
-                IsAdmin = vm.IsAdmin,
-                Enabled = vm.Enabled,
-                Version = vm.Version
-            };
-        }
-
-        public PartialViewResult Edit(Guid id)
-        {
-            var dto = _roleService.Find(id);
-            return PartialView("Parts/Form", ToFormVm(dto));
-        }
-        private VmRoleAddorEdit ToFormVm(RoleDto dto)
-        {
-            return new VmRoleAddorEdit(dto.Id)
-            {
-                Id = dto.Id,
-                Name = dto.Name,
-                Description = dto.Description,
-                IsAdmin = dto.IsAdmin,
-                Enabled = dto.Enabled,
-                Version = dto.Version
-            };
+            SetPage(query);
+            var result = _roleService.Query(query).Convert(p => p.ToGridVm());
+            return ToDataGridResult(result, result.TotalCount);
         }
         public PartialViewResult Add()
         {
             Guid addId = Guid.NewGuid();
             return PartialView("Parts/Form", new VmRoleAddorEdit(addId));
         }
+        public PartialViewResult Edit(Guid id)
+        {
+            var dto = _roleService.Find(id);
+            return PartialView("Parts/Form", dto.ToFormVm());
+        }
+        public ActionResult Save(VmRoleAddorEdit vm)
+        {
+            _roleService.AddorUpdate(vm.ToDto());
+            return AjaxOkResponse("保存成功！");
+        }
         [HttpPost]
         public ActionResult Delete(string ids)
         {
             _roleService.Delete(new Guid(ids));
-            return Json(new { Code = 1, Message = "删除成功！" });
-        }
-        public ActionResult Query(RoleQuery query)
+            return AjaxOkResponse("删除成功！");
+        } 
+        #endregion
+        /// <summary>
+        ///获取分页的角色列表，以及查询的用户id的所有角色选中状态
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ActionResult QueryByUser(RoleQuery query, Guid userId)
         {
             SetPage(query);
-            var result = _roleService.Query(query).Convert(ToVm);
-            return Json(new { total = result.TotalCount, rows = result });
-        }
-        public ActionResult QueryByUser(RoleQuery query,Guid userId)
-        {
-            SetPage(query);
-            var result = _roleService.Query(query,userId).Convert(ToVm);
-            return Json(new { total = result.TotalCount, rows = result });
-        }
-        private VmRoleGrid ToVm(RoleDto dto)
-        {
-            return new VmRoleGrid
-            {
-                Id = dto.Id,
-                Name = dto.Name,              
-                IsAdmin=dto.IsAdmin,
-                Enabled = dto.Enabled,
-                DateCreated = dto.DateCreated,
-                Checked =dto.Checked
-            };
-        }
-        /// <summary>
-        /// 设置分页
-        /// </summary>
-        /// <param name="query">查询实体</param>
-        protected void SetPage(IPager query)
-        {
-            query.Page = GetPageIndex();
-            query.PageSize = GetPageSize();
-            query.Order = GetOrder();
-        }
-        /// <summary>
-        /// 获取分页的页索引
-        /// </summary>
-        protected int GetPageIndex()
-        {
-            var page = Convert.ToInt32(Request["page"]);
-            return page > 0 ? page : 1;
+            var result = _roleService.Query(query, userId).Convert(p=>p.ToGridVm());
+            return ToDataGridResult(result, result.TotalCount);
         }
 
-        /// <summary>
-        /// 获取分页大小
-        /// </summary>
-        protected int GetPageSize()
-        {
-            var pageSize = Convert.ToInt32(Request["rows"]);
-            return pageSize > 0 ? pageSize : 20;
-        }
-        /// <summary>
-        /// 获取排序
-        /// </summary>
-        protected string GetOrder()
-        {
-            return string.Format("{0} {1}", Convert.ToString(Request["sort"]), Convert.ToString(Request["order"]));
-        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using BeiDream.Demo.Service.Dtos;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
 {
@@ -33,5 +34,33 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
         public bool Enabled { get; set; }
 
         public byte[] Version { get; set; }
+    }
+
+    public static class VmRoleAddorEditExtension
+    {
+        public static RoleDto ToDto( this VmRoleAddorEdit vm)
+        {
+            return new RoleDto()
+            {
+                Id = vm.Id,
+                Name = vm.Name,
+                Description = vm.Description,
+                IsAdmin = vm.IsAdmin,
+                Enabled = vm.Enabled,
+                Version = vm.Version
+            };
+        }
+        public static VmRoleAddorEdit ToFormVm(this RoleDto dto)
+        {
+            return new VmRoleAddorEdit(dto.Id)
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Description = dto.Description,
+                IsAdmin = dto.IsAdmin,
+                Enabled = dto.Enabled,
+                Version = dto.Version
+            };
+        }
     }
 }

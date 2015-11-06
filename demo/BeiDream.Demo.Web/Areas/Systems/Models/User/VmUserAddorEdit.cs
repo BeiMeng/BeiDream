@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using BeiDream.Demo.Service.Dtos;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.User
 {
@@ -44,5 +45,35 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.User
         [Required(ErrorMessage = "启用不能为空")]
         public bool? Enabled { get; set; }
         public byte[] Version { get; set; }
+    }
+
+    public static class VmUserAddorEditExtension
+    {
+        public static UserDto ToDto(this VmUserAddorEdit vm)
+        {
+            return new UserDto
+            {
+                Id = vm.Id,
+                Name = vm.Name,
+                Password = vm.Password,
+                DisplayName = vm.DisplayName,
+                Email = vm.Email,
+                Enabled = vm.Enabled,
+                Version = vm.Version
+            };
+        }
+        public static VmUserAddorEdit ToFormVm(this UserDto dto)
+        {
+            return new VmUserAddorEdit(dto.Id)
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Password = dto.Password,
+                Email = dto.Email,
+                DisplayName = dto.DisplayName,
+                Enabled = dto.Enabled,
+                Version = dto.Version
+            };
+        }
     }
 }

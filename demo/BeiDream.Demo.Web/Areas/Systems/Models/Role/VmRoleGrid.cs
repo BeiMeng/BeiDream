@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using BeiDream.Demo.Service.Dtos;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
 {
@@ -28,5 +29,21 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
         /// 选中（当前角色是否属于选择的用户）
         /// </summary>
         public bool Checked { get; set; }
+    }
+
+    public static class VmRoleGridExtension
+    {
+        public static VmRoleGrid ToGridVm(this RoleDto dto)
+        {
+            return new VmRoleGrid
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                IsAdmin = dto.IsAdmin,
+                Enabled = dto.Enabled,
+                DateCreated = dto.DateCreated,
+                Checked = dto.Checked
+            };
+        }
     }
 }
