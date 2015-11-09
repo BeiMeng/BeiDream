@@ -1,16 +1,4 @@
 ﻿(function ($) {
-    //$(function () {
-    //    $.ajaxSetup({
-    //        //请求成功后触发
-    //        success: function (data) {
-    //            $.easyui.showMessage(result);
-    //        },
-    //        //请求失败遇到异常触发
-    //        error: function (xhr, status, e) {
-    //            $.easyui.showMessage(result);
-    //        }
-    //    });
-    //});
     //index页面对应的jQuery对象
     var $parent = parent.$;
     //弹出窗口标识

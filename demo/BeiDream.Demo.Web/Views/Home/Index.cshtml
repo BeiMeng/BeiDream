@@ -2,11 +2,11 @@
     ViewBag.Title = "BeiDream后台管理系统";
 }
 @section head{
-<script src="~/Scripts/Projects/project.js"></script>
-    <script type="text/javascript">       
+    <script src="~/Scripts/Projects/project.js"></script>
+    <script type="text/javascript">
         $(function() {
             $('#tt').tree({
-                url: '@Url.Action("GetTree","Home")',
+                url: '@Url.Action("GetTree", "Home")',
                 onClick: $.project.clickMainMenuNode
             });
         });

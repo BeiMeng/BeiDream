@@ -36,7 +36,7 @@ namespace BeiDream.Demo.Service.Impl
         [NoUnitOfWork]
         public PagerList<UserDto> Query(UserQuery query)
         {
-            //throw new Exception("用户查询异常，全局异常测试");
+            throw new Exception("用户查询异常，全局异常测试");
             return UserDomainService.Query(query).Convert(ToDto);
         }
         private UserDto ToDto(User entity)

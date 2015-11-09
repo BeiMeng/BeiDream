@@ -30,7 +30,7 @@ namespace BeiDream.Web.Mvc.Filter
         }
         private ActionResult GenerateAjaxResult(ExceptionContext context)
         {
-            context.HttpContext.Response.StatusCode = 200;
+            context.HttpContext.Response.StatusCode = 500;
             return new AjaxResponse(StateCode.Fail, context.Exception.Message).GetJsonResult();
         }
         private ActionResult GenerateNonAjaxResult(ExceptionContext context)

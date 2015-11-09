@@ -60,6 +60,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Services\IApplicationService.cs" />
+    <Compile Include="Caches\CacheManagerBase.cs" />
+    <Compile Include="Caches\CacheProviderBase.cs" />
+    <Compile Include="Caches\DefaultCacheKey.cs" />
+    <Compile Include="Caches\DefaultCacheManager.cs" />
+    <Compile Include="Caches\ICacheConfig.cs" />
+    <Compile Include="Caches\ICacheKey.cs" />
+    <Compile Include="Caches\ICacheManager.cs" />
+    <Compile Include="Caches\ICacheProvider.cs" />
+    <Compile Include="Caches\LocalCacheProvider.cs" />
     <Compile Include="Dependency\BasicConventionalRegistrar.cs" />
     <Compile Include="Dependency\Bootstrapper.cs" />
     <Compile Include="Dependency\ConventionalRegistrarConfig.cs" />
