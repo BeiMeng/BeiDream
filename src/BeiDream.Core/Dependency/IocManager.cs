@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Castle.Windsor;
-using Castle.MicroKernel.Registration;
 
 namespace BeiDream.Core.Dependency
 {
@@ -15,16 +15,20 @@ namespace BeiDream.Core.Dependency
         /// 一个依赖注入管理器的单例,方便使用,当无法使用构造函数注入的时候(例如：IocManager.Instance,)
         /// </summary>
         public static IocManager Instance { get; private set; }
+
         public IWindsorContainer IocContainer { get; private set; }
         public Guid TracId { get; private set; }
+
         /// <summary>
         /// 所有的注册依赖注入实现类集合
         /// </summary>
         private readonly List<IConventionalDependencyRegistrar> _conventionalRegistrars;
+
         static IocManager()
         {
             Instance = new IocManager();
         }
+
         public IocManager()
         {
             TracId = Guid.NewGuid();
@@ -36,6 +40,7 @@ namespace BeiDream.Core.Dependency
                 Component.For<IocManager, IIocManager, IIocRegistrar, IIocResolver>().UsingFactoryMethod(() => this)
                 );
         }
+
         /// <summary>
         /// 检查当前接口是否已注册实例
         /// </summary>
@@ -53,6 +58,7 @@ namespace BeiDream.Core.Dependency
         {
             return IocContainer.Kernel.HasComponent(typeof(TType));
         }
+
         /// <summary>
         /// 将依赖注入注册实现类添加到依赖注入实现类集合
         /// </summary>
@@ -74,6 +80,7 @@ namespace BeiDream.Core.Dependency
                 registerer.RegisterAssembly(context);
             }
         }
+
         public void Dispose()
         {
             IocContainer.Dispose();
@@ -88,12 +95,14 @@ namespace BeiDream.Core.Dependency
         {
             IocContainer.Register(ApplyLifestyle(Component.For<TType>(), lifeStyle));
         }
+
         public void Register<TType, TImpl>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
             where TType : class
             where TImpl : class, TType
         {
             IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>(), lifeStyle));
         }
+
         private static ComponentRegistration<T> ApplyLifestyle<T>(ComponentRegistration<T> registration, DependencyLifeStyle lifeStyle)
     where T : class
         {
@@ -101,8 +110,10 @@ namespace BeiDream.Core.Dependency
             {
                 case DependencyLifeStyle.Transient:
                     return registration.LifestyleTransient();
+
                 case DependencyLifeStyle.Singleton:
                     return registration.LifestyleSingleton();
+
                 default:
                     return registration;
             }

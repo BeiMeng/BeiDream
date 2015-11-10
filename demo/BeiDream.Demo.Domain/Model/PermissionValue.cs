@@ -1,10 +1,8 @@
-﻿
-namespace BeiDream.Demo.Domain.Model
+﻿namespace BeiDream.Demo.Domain.Model
 {
-
-	public enum PermissionValue : int
-	{
-		Allow,
-		Deny,
-	}
+    public enum PermissionValue : int
+    {
+        Allow,
+        Deny,
+    }
 }

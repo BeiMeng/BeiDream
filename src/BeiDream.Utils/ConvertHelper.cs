@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BeiDream.Utils.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using BeiDream.Utils.Reflection;
 
 namespace BeiDream.Utils
 {
@@ -32,6 +32,7 @@ namespace BeiDream.Utils
                 return default(T);
             }
         }
+
         /// <summary>
         /// 转换为目标元素集合
         /// </summary>

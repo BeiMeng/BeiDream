@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using BeiDream.Core.Linq.Extensions;
+﻿using BeiDream.Core.Linq.Extensions;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Domain.Repositories;
 using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Utils.PagerHelper;
+using System;
+using System.Linq;
 
 namespace BeiDream.Demo.Domain.Services.Impl
 {
@@ -15,6 +15,7 @@ namespace BeiDream.Demo.Domain.Services.Impl
         ///角色仓储
         /// </summary>
         public IRoleRepository RoleRepository { get; set; }
+
         public RoleDomainService(IRoleRepository roleRepository)
         {
             RoleRepository = roleRepository;
@@ -33,6 +34,7 @@ namespace BeiDream.Demo.Domain.Services.Impl
             result.AddRange(roles.ToList());
             return result;
         }
+
         /// <summary>
         /// 构造前台传递的查询条件
         /// </summary>
@@ -49,6 +51,7 @@ namespace BeiDream.Demo.Domain.Services.Impl
                 queryable = queryable.Where(p => p.IsAdmin == query.IsAdmin);
             return queryable;
         }
+
         public void AddorUpdate(Role entity)
         {
             var model = RoleRepository.Find(entity.Id);
@@ -68,14 +71,17 @@ namespace BeiDream.Demo.Domain.Services.Impl
                 //model.Version = entity.Version;
             }
         }
+
         private void AddBefore(Role entity)
         {
             entity.DateCreated = DateTime.Now;
         }
+
         private void UpdateBefore(Role entity)
         {
             entity.DateUpdated = DateTime.Now;
         }
+
         public Role Find(Guid id)
         {
             return RoleRepository.Find(id);

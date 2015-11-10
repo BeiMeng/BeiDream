@@ -1,5 +1,4 @@
 ﻿using Castle.DynamicProxy;
-using Castle.MicroKernel.Lifestyle;
 using Castle.MicroKernel.Registration;
 
 namespace BeiDream.Core.Dependency
@@ -9,7 +8,6 @@ namespace BeiDream.Core.Dependency
     /// </summary>
     public class BasicConventionalRegistrar : IConventionalDependencyRegistrar
     {
-
         public void RegisterAssembly(IConventionalRegistrationContext context)
         {
             //Transient

@@ -6,18 +6,21 @@ namespace BeiDream.Demo.Service
     {
         string TaskSave(string msg);
     }
+
     /// <summary>
     /// 属性注入
     /// </summary>
     public class TaskMange : ITaskMange
     {
         public ITaskService TaskService { get; set; }
+
         [Aop(true)]
         public string TaskSave(string msg)
         {
-            return TaskService.SaveTask(msg+"属性注入");
+            return TaskService.SaveTask(msg + "属性注入");
         }
     }
+
     /// <summary>
     /// 构造函数注入
     /// </summary>
@@ -35,6 +38,7 @@ namespace BeiDream.Demo.Service
             return TaskService.SaveTask(msg + "构造函数注入");
         }
     }
+
     public interface ITaskService : ITransientDependency
     {
         string SaveTask(string msg);

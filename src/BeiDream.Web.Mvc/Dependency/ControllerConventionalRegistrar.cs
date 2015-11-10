@@ -1,6 +1,6 @@
-﻿using System.Web.Mvc;
-using BeiDream.Core.Dependency;
+﻿using BeiDream.Core.Dependency;
 using Castle.MicroKernel.Registration;
+using System.Web.Mvc;
 
 namespace BeiDream.Web.Mvc.Dependency
 {
@@ -9,7 +9,6 @@ namespace BeiDream.Web.Mvc.Dependency
     /// </summary>
     public class ControllerConventionalRegistrar : IConventionalDependencyRegistrar
     {
-
         public void RegisterAssembly(IConventionalRegistrationContext context)
         {
             context.IocManager.IocContainer.Register(

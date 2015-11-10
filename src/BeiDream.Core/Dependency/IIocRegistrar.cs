@@ -19,6 +19,7 @@ namespace BeiDream.Core.Dependency
         /// </summary>
         /// <typeparam name="TType">接口</typeparam>
         bool IsRegistered<TType>();
+
         /// <summary>
         /// 将依赖注入注册实现类添加到依赖注入实现类集合
         /// </summary>
@@ -30,6 +31,7 @@ namespace BeiDream.Core.Dependency
         /// </summary>
         /// <param name="assembly"></param>
         void RegisterAssemblyByConvention(Assembly assembly);
+
         /// <summary>
         /// Registers a type as self registration.
         /// </summary>
@@ -37,6 +39,7 @@ namespace BeiDream.Core.Dependency
         /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
         void Register<T>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
             where T : class;
+
         /// <summary>
         /// Registers a type with it's implementation.
         /// </summary>

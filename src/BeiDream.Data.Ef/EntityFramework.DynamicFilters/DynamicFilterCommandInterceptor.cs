@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
 {
-    class DynamicFilterCommandInterceptor : IDbCommandInterceptor
+    internal class DynamicFilterCommandInterceptor : IDbCommandInterceptor
     {
         public void NonQueryExecuted(DbCommand command, DbCommandInterceptionContext<int> interceptionContext)
         {

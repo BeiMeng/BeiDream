@@ -1,10 +1,10 @@
 ﻿(function ($) {
     //获取Url中的域名部分
-    $.getUrlDomain = function() {
+    $.getUrlDomain = function () {
         return window.location.protocol + "//" + window.location.host;
     }
     //获取Url中的路径部分
-    $.getUrlPath = function(url) {
+    $.getUrlPath = function (url) {
         return url.trimStart($.getUrlDomain());
     }
     //移除url的参数
@@ -16,7 +16,7 @@
             return url;
         return url.substring(0, index);
     }
-    $.joinUrl = function(url, param) {
+    $.joinUrl = function (url, param) {
         ///	<summary>
         ///	连接url与参数
         ///	</summary>
@@ -69,7 +69,7 @@
         ///	 是否截断，传入true，则按精度截断，否则四舍五入
         ///	</param>
         ///	<returns type="Number" />
-        if( !$.isNumeric( value )  )
+        if (!$.isNumeric(value))
             return 0;
         if (!isTruncate && (precision === undefined || precision === null))
             return parseFloat(value);
@@ -78,7 +78,7 @@
             result = value.substring(0, value.indexOf(".") + parseInt(precision) + 1);
             return parseFloat(result);
         }
-        return parseFloat(parseFloat(value).toFixed(precision) );
+        return parseFloat(parseFloat(value).toFixed(precision));
     }
     $.isNumber = function (value) {
         ///	<summary>
@@ -144,7 +144,7 @@
         return result;
     };
     //将字符串转换为Json对象
-    $.toJsonObject = function(data) {
+    $.toJsonObject = function (data) {
         try {
             if ($.type(data) !== 'string')
                 return data;
@@ -165,7 +165,7 @@
     $.newIsoDate = function () {
         return new Date().format("yyyy-MM-ddTHH:mm:ss+08:00");
     };
-    $.containsProperty = function(obj, propertyName) {
+    $.containsProperty = function (obj, propertyName) {
         ///	<summary>
         ///	检查对象是否包含指定属性
         ///	</summary>

@@ -1,3 +1,5 @@
+using BeiDream.Utils.Collections;
+using BeiDream.Utils.Reflection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,8 +7,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using BeiDream.Utils.Collections;
-using BeiDream.Utils.Reflection;
 
 namespace BeiDream.Core.Validations.Interception
 {
@@ -44,10 +44,10 @@ namespace BeiDream.Core.Validations.Interception
                 return;
             }
 
-            if (_method.IsDefined(typeof (DisableValidationAttribute)))
+            if (_method.IsDefined(typeof(DisableValidationAttribute)))
             {
                 //Don't validate if explicitly requested!
-                return;                
+                return;
             }
 
             if (_parameters.IsNullOrEmpty())

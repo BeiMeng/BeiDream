@@ -325,7 +325,7 @@ namespace BeiDream.Utils.Logging
             }
         }
 
-        #endregion
+        #endregion Implementation of ILogger
 
         #region 私有方法
 
@@ -334,6 +334,6 @@ namespace BeiDream.Utils.Logging
             return EntryEnabled && level >= EntryLogLevel;
         }
 
-        #endregion
+        #endregion 私有方法
     }
 }

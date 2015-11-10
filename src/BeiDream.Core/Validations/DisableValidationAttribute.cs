@@ -8,6 +8,5 @@ namespace BeiDream.Core.Validations
     [AttributeUsage(AttributeTargets.Method)]
     public class DisableValidationAttribute : Attribute
     {
-        
     }
 }

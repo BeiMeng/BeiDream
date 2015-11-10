@@ -946,6 +946,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\BeiDream.AutoMapper\BeiDream.AutoMapper.csproj">
+      <Project>{3f76edf7-58aa-4ee0-b632-9751636ea5c3}</Project>
+      <Name>BeiDream.AutoMapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">
       <Project>{3720f3de-fbbd-454c-adc0-ce6e256b6d9b}</Project>
       <Name>BeiDream.Core</Name>

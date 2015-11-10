@@ -2,6 +2,7 @@
 using BeiDream.Data.Ef.Repositories;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Repositories;
+
 namespace BeiDream.Demo.Infrastructure.Repositories
 {
     /// <summary>
@@ -9,7 +10,8 @@ namespace BeiDream.Demo.Infrastructure.Repositories
     /// </summary>
     public class UserRepository : Repository<User>, IUserRepository
     {
-        public UserRepository(IDbContext dbContext) : base(dbContext)
+        public UserRepository(IDbContext dbContext)
+            : base(dbContext)
         {
         }
     }

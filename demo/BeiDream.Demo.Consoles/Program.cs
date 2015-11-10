@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using BeiDream.Core.Dependency;
+﻿using BeiDream.Core.Dependency;
 using BeiDream.Demo.Service;
-using Castle.Core;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
+using System;
 
 namespace BeiDream.Demo.Consoles
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             ConsolesBootstrapper consolesBootstrapper = new ConsolesBootstrapper();
             AopRegistrar.Initialize(consolesBootstrapper.IocManager);

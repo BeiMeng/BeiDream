@@ -6,11 +6,11 @@
 //  <last-date>2015-03-22 20:33</last-date>
 // -----------------------------------------------------------------------
 
+using BeiDream.Utils.Extensions;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using BeiDream.Utils.Extensions;
 
 namespace BeiDream.Utils.Logging
 {
@@ -94,7 +94,7 @@ namespace BeiDream.Utils.Logging
                 }
                 logger = new InternalLogger(name);
                 Loggers[name] = logger;
-                return logger; 
+                return logger;
             }
         }
 

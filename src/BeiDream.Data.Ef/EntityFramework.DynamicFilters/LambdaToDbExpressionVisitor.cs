@@ -27,7 +27,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
         private Dictionary<string, DbPropertyExpression> _Properties = new Dictionary<string, DbPropertyExpression>();
         private Dictionary<string, DbParameterReferenceExpression> _Parameters = new Dictionary<string, DbParameterReferenceExpression>();
 
-        #endregion
+        #endregion Privates
 
         #region Static methods & private Constructor
 
@@ -46,7 +46,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             _ObjectContext = objectContext;
         }
 
-        #endregion
+        #endregion Static methods & private Constructor
 
         #region ExpressionVisitor Overrides
 
@@ -83,18 +83,23 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
                         else
                             dbExpression = DbExpressionBuilder.Equal(leftExpression, rightExpression);
                         break;
+
                     case ExpressionType.NotEqual:
                         dbExpression = DbExpressionBuilder.NotEqual(leftExpression, rightExpression);
                         break;
+
                     case ExpressionType.GreaterThan:
                         dbExpression = DbExpressionBuilder.GreaterThan(leftExpression, rightExpression);
                         break;
+
                     case ExpressionType.GreaterThanOrEqual:
                         dbExpression = DbExpressionBuilder.GreaterThanOrEqual(leftExpression, rightExpression);
                         break;
+
                     case ExpressionType.LessThan:
                         dbExpression = DbExpressionBuilder.LessThan(leftExpression, rightExpression);
                         break;
+
                     case ExpressionType.LessThanOrEqual:
                         dbExpression = DbExpressionBuilder.LessThanOrEqual(leftExpression, rightExpression);
                         break;
@@ -102,6 +107,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
                     case ExpressionType.AndAlso:
                         dbExpression = DbExpressionBuilder.And(leftExpression, rightExpression);
                         break;
+
                     case ExpressionType.OrElse:
                         dbExpression = DbExpressionBuilder.Or(leftExpression, rightExpression);
                         break;
@@ -145,6 +151,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             {
                 case ExpressionType.Equal:
                     return dbExpression;
+
                 case ExpressionType.NotEqual:
                     //  Creates expression: !([expression] is null)
                     return DbExpressionBuilder.Not(dbExpression);
@@ -267,16 +274,18 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             var objectExpression = GetDbExpressionForExpression(expression.Expression);
 
             DbExpression dbExpression;
-            switch(expression.Member.Name)
+            switch (expression.Member.Name)
             {
                 case "HasValue":
                     //  Map HasValue to !IsNull
                     dbExpression = DbExpressionBuilder.Not(DbExpressionBuilder.IsNull(objectExpression));
                     break;
+
                 case "Value":
                     //  This is a nullable Value accessor so just map to the object itself and it will be mapped for us
                     dbExpression = objectExpression;
                     break;
+
                 default:
                     throw new ApplicationException(string.Format("Unhandled property accessor in expression: {0}", expression));
             }
@@ -347,9 +356,11 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
                 case ExpressionType.Not:
                     MapExpressionToDbExpression(expression, DbExpressionBuilder.Not(operandExpression));
                     break;
+
                 case ExpressionType.Convert:
                     MapExpressionToDbExpression(expression, DbExpressionBuilder.CastTo(operandExpression, TypeUsageForPrimitiveType(expression.Type)));
                     break;
+
                 default:
                     throw new NotImplementedException(string.Format("Unhandled NodeType of {0} in LambdaToDbExpressionVisitor.VisitUnary", expression.NodeType));
             }
@@ -375,14 +386,16 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
 
             var expression = base.VisitMethodCall(node) as MethodCallExpression;
 
-            switch(node.Method.Name)
+            switch (node.Method.Name)
             {
                 case "Contains":
                     MapContainsExpression(expression);
                     break;
+
                 case "StartsWith":
                     MapStartsWithExpression(expression);
                     break;
+
                 default:
                     throw new NotImplementedException(string.Format("Unhandled Method of {0} in LambdaToDbExpressionVisitor.VisitMethodCall", node.Method.Name));
             }
@@ -442,7 +455,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
 
                 if (parameterExpressionList.Any() || !SupportsIn())
                 {
-                    //  Have parameters or the EF provider does not support the DbInExpression.  Need to build a series of OR conditions so 
+                    //  Have parameters or the EF provider does not support the DbInExpression.  Need to build a series of OR conditions so
                     //  that we can include the DbParameterReferences.  EF will optimize this into an "in" condition but with our
                     //  DbParameterReferences preserved (which is not possible with a DbInExpression).
                     //  The DbParameterReferences will be intercepted as any other parameter.
@@ -527,7 +540,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             return DbExpressionBuilder.Constant(value);
         }
 
-        #endregion
+        #endregion ExpressionVisitor Overrides
 
         #region Expression Mapping helpers
 
@@ -662,6 +675,6 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             return (constantExpr.Value == null);
         }
 
-        #endregion
+        #endregion Expression Mapping helpers
     }
 }

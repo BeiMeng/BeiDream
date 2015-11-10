@@ -15,7 +15,7 @@ namespace BeiDream.Utils.Reflection
         /// </summary>
         /// <typeparam name="TAttribute">Type of the attribute</typeparam>
         /// <param name="memberInfo">MemberInfo</param>
-        public static List<TAttribute> GetAttributesOfMemberAndDeclaringType<TAttribute>(MemberInfo memberInfo) 
+        public static List<TAttribute> GetAttributesOfMemberAndDeclaringType<TAttribute>(MemberInfo memberInfo)
             where TAttribute : Attribute
         {
             var attributeList = new List<TAttribute>();

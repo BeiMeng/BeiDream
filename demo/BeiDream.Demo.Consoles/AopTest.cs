@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using BeiDream.Core.Dependency;
+﻿using BeiDream.Core.Dependency;
 using BeiDream.Utils.Logging;
 using BeiDream.Utils.Reflection;
 using Castle.Core;
 using Castle.DynamicProxy;
 using Castle.MicroKernel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace BeiDream.Demo.Service
 {
     public class AopTest
     {
-         
     }
+
     /// <summary>
     /// AOP方法拦截器
     /// </summary>
@@ -35,6 +35,7 @@ namespace BeiDream.Demo.Service
     public class AopInterceptor : IInterceptor
     {
         private static readonly ILogger Logger = LogManager.GetLogger(typeof(AopInterceptor));
+
         public void Intercept(IInvocation invocation)
         {
             var aopAttributes =
@@ -65,6 +66,7 @@ namespace BeiDream.Demo.Service
             }
         }
     }
+
     public static class AopRegistrar
     {
         /// <summary>

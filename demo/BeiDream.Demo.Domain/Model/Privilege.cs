@@ -1,13 +1,11 @@
-﻿
-namespace BeiDream.Demo.Domain.Model
+﻿namespace BeiDream.Demo.Domain.Model
 {
-
-	public enum Privilege : int
-	{
-		SystemAdministration,
-		Ignore,
-		ManageAccounts,
-		SystemDelegation,
-		ManageRoles,
-	}
+    public enum Privilege : int
+    {
+        SystemAdministration,
+        Ignore,
+        ManageAccounts,
+        SystemDelegation,
+        ManageRoles,
+    }
 }

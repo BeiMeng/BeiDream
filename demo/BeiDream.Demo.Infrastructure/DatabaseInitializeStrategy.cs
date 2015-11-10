@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BeiDream.Demo.Domain.Model;
+using System;
 using System.Data.Entity;
-using BeiDream.Demo.Domain.Model;
 
 namespace BeiDream.Demo.Infrastructure
 {
@@ -18,18 +17,13 @@ namespace BeiDream.Demo.Infrastructure
     {
         protected override void Seed(DemoDbContext context)
         {
-            //var adminPermission = new Permission
-            //{
-            //    Privilege = Privilege.SystemAdministration,
-            //    Value = PermissionValue.Allow
-            //};
             for (int i = 0; i < 100; i++)
             {
                 var role = new Role
                 {
                     Id = Guid.NewGuid(),
-                    Name = "系统管理员"+i,
-                    Description = "执行系统管理任务的一组账户"+i,
+                    Name = "系统管理员" + i,
+                    Description = "执行系统管理任务的一组账户" + i,
                     IsAdmin = true,
                     DateCreated = DateTime.Now.AddDays(i),
                     Enabled = true
@@ -43,11 +37,11 @@ namespace BeiDream.Demo.Infrastructure
                 {
                     Id = Guid.NewGuid(),
                     DateCreated = DateTime.Now.AddDays(i),
-                    DisplayName = "管理员"+i,
+                    DisplayName = "管理员" + i,
                     Email = "admin@easymemo.com",
-                    Name = "admin"+i,
+                    Name = "admin" + i,
                     Enabled = true,
-                    Password = "admin"+i
+                    Password = "admin" + i
                 };
                 context.Users.Add(administrator);
             }

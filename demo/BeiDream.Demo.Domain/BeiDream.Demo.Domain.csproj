@@ -42,10 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Account.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Model\Memo.cs" />
     <Compile Include="Model\Permission.cs" />
     <Compile Include="Model\PermissionValue.cs" />
     <Compile Include="Model\Privilege.cs" />

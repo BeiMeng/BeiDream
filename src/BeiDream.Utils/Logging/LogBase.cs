@@ -266,6 +266,6 @@ namespace BeiDream.Utils.Logging
             }
         }
 
-        #endregion
+        #endregion Implementation of ILog
     }
 }

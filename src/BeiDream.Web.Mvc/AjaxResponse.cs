@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using BeiDream.Core.Json;
+﻿using BeiDream.Core.Json;
 using BeiDream.Utils.Extensions;
 using BeiDream.Web.Mvc.Web.Enum;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace BeiDream.Web.Mvc
 {
@@ -28,14 +28,17 @@ namespace BeiDream.Web.Mvc
         /// 状态码
         /// </summary>
         private readonly StateCode _code;
+
         /// <summary>
         /// 消息
         /// </summary>
         private readonly string _message;
+
         /// <summary>
         /// 数据
         /// </summary>
         private readonly IEnumerable<object> _data;
+
         /// <summary>
         /// 获取输出结果
         /// </summary>

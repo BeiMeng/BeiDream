@@ -29,7 +29,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
         /// </summary>
         private static ConcurrentDictionary<DbContext, ConcurrentDictionary<string, DynamicFilterParameters>> _ScopedParameterValues = new ConcurrentDictionary<DbContext, ConcurrentDictionary<string, DynamicFilterParameters>>();
 
-        #endregion
+        #endregion Privates
 
         #region Initialize
 
@@ -60,7 +60,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             _ScopedParameterValues = new ConcurrentDictionary<DbContext, ConcurrentDictionary<string, DynamicFilterParameters>>();
         }
 
-        #endregion
+        #endregion Initialize
 
         #region Add Filters
 
@@ -109,6 +109,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
         /// <param name="globalFuncValue">If not null, specifies a globally scoped value for this parameter as a delegate.</param>
         /// <returns></returns>
 #pragma warning disable 618
+
         [Obsolete("Use modelBuilder.Filter() instead")]
         public static EntityTypeConfiguration<TEntity> Filter<TEntity, TProperty>(this EntityTypeConfiguration<TEntity> config,
             string filterName, Expression<Func<TEntity, TProperty>> path, Func<object> globalFuncValue = null)
@@ -117,7 +118,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             return config.Filter(filterName, ParseColumnNameFromExpression(path), globalFuncValue);
         }
 
-        #endregion
+        #endregion EntityTypeConfiguration<TEntity> Extensions
 
         #region Single column equality only filter
 
@@ -133,7 +134,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
 
             filterName = ScrubFilterName(filterName);
 
-            //  If ParseColumnNameFromExpression returns null, path is a lambda expression, not a single column expression. 
+            //  If ParseColumnNameFromExpression returns null, path is a lambda expression, not a single column expression.
             LambdaExpression predicate = null;
             string columnName = ParseColumnNameFromExpression(path);
             if (columnName == null)
@@ -148,7 +149,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
                 SetFilterGlobalParameterValue(null, filterName, columnName, globalValue);
         }
 
-        #endregion
+        #endregion Single column equality only filter
 
         #region Lambda expression filters
 
@@ -240,9 +241,9 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             }
         }
 
-        #endregion
+        #endregion Lambda expression filters
 
-        #endregion
+        #endregion Add Filters
 
         #region Enable/Disable filters
 
@@ -294,7 +295,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
         {
             context.Database.Initialize(false);
 
-            foreach(var filterName in _GlobalParameterValues.Keys.ToList())
+            foreach (var filterName in _GlobalParameterValues.Keys.ToList())
                 DisableFilter(context, filterName);
         }
 
@@ -321,7 +322,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
                 });
         }
 
-        #endregion
+        #endregion Enable/Disable filters
 
         #region Set Filter Parameter Values
 
@@ -391,7 +392,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             filterParams.SetParameter(parameterName, value);
         }
 
-        #endregion
+        #endregion Set Scoped Parameter Values
 
         #region Set Global Parameter Values
 
@@ -450,9 +451,9 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
                 });
         }
 
-        #endregion
+        #endregion Set Global Parameter Values
 
-        #endregion
+        #endregion Set Filter Parameter Values
 
         #region Get Filter Parameter Values
 
@@ -544,7 +545,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             return true;
         }
 
-        #endregion
+        #endregion Get Filter Parameter Values
 
         #region Clear Parameter Values
 
@@ -560,7 +561,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             System.Diagnostics.Debug.Print("Cleared scoped parameters.  Have {0} scopes", _ScopedParameterValues.Count);
         }
 
-        #endregion
+        #endregion Clear Parameter Values
 
         #region Set Sql Parameters
 
@@ -715,7 +716,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             return false;
         }
 
-        #endregion
+        #endregion Set Sql Parameters
 
         #region Private Methods
 
@@ -800,6 +801,6 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             return body.Member.Name;
         }
 
-        #endregion
+        #endregion Private Methods
     }
 }

@@ -7,6 +7,5 @@ namespace BeiDream.Core.Application.Services
     /// </summary>
     public interface IApplicationService : ITransientDependency
     {
-         
     }
 }

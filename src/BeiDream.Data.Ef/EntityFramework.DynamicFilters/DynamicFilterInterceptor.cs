@@ -30,5 +30,4 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             }
         }
     }
-
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BeiDream.Core.Dependency
+﻿namespace BeiDream.Core.Dependency
 {
     /// <summary>
     /// 依赖注入注册功能的扩展
@@ -25,6 +23,7 @@ namespace BeiDream.Core.Dependency
 
             iocRegistrar.Register<T>(lifeStyle);
         }
+
         /// <summary>
         /// 首先判断是否已注册，已注册直接返回，没注册，再进行注册
         /// </summary>
@@ -44,6 +43,6 @@ namespace BeiDream.Core.Dependency
             iocRegistrar.Register<TType, TImpl>(lifeStyle);
         }
 
-        #endregion
+        #endregion RegisterIfNot
     }
 }

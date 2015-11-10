@@ -1,5 +1,4 @@
-﻿
-namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
+﻿namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
 {
     internal static class DynamicFilterConstants
     {

@@ -126,6 +126,6 @@ namespace BeiDream.Utils.Logging
         /// <param name="args">格式化参数</param>
         void Fatal(string format, Exception exception, params object[] args);
 
-        #endregion
+        #endregion 方法
     }
 }

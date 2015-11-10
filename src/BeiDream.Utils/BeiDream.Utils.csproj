@@ -58,12 +58,16 @@
     <Compile Include="PagerHelper\Pager.cs" />
     <Compile Include="PagerHelper\PagerList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\CurrentDomainAssemblyFinder.cs" />
+    <Compile Include="Reflection\IAssemblyFinder.cs" />
+    <Compile Include="Reflection\ITypeFinder.cs" />
     <Compile Include="Reflection\ReflectionHelper.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reflection\TypeFinder.cs" />
     <Compile Include="Reflection\TypeHelper.cs" />
   </ItemGroup>
   <ItemGroup>

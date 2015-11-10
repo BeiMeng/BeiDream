@@ -6,10 +6,10 @@
 //  <last-date>2014-08-10 22:15</last-date>
 // -----------------------------------------------------------------------
 
-using System;
-using System.Collections.Concurrent;
 using BeiDream.Utils.Extensions;
 using BeiDream.Utils.Properties;
+using System;
+using System.Collections.Concurrent;
 
 namespace BeiDream.Utils.Logging
 {
@@ -52,7 +52,7 @@ namespace BeiDream.Utils.Logging
             return GetLoggerInternal(name);
         }
 
-        #endregion
+        #endregion Implementation of ILoggerFactoryAdapter
 
         /// <summary>
         /// 创建指定名称的缓存实例
@@ -75,7 +75,7 @@ namespace BeiDream.Utils.Logging
         /// <param name="name">指定名称</param>
         /// <returns>日志实例</returns>
         /// <exception cref="NotSupportedException">指定名称的日志缓存实例不存在则返回异常<see cref="NotSupportedException"/></exception>
-        protected  virtual ILog GetLoggerInternal(string name)
+        protected virtual ILog GetLoggerInternal(string name)
         {
             ILog log;
             if (_cacheLoggers.TryGetValue(name, out log))

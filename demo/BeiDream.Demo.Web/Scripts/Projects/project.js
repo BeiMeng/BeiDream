@@ -15,11 +15,10 @@
                 $.project.addToMainTabs(node.text, node.attributes.url, node.iconCls, true);
             },
             //添加主界面选项卡
-            addToMainTabs : function(txt,url,icon,closable) {
+            addToMainTabs: function (txt, url, icon, closable) {
                 $.easyui.addIframeToTabs("divMainTabs", txt, url, icon, closable);
                 var tabs = $('#divMainTabs');
             }
-
         };
     })();
 })(jQuery);

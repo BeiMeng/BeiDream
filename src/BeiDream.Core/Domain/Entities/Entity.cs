@@ -14,6 +14,5 @@ namespace BeiDream.Core.Domain.Entities
     [Serializable]
     public abstract class Entity : Entity<Guid>
     {
-        
     }
 }

@@ -7,7 +7,8 @@ namespace BeiDream.Demo.Infrastructure.Repositories
 {
     public class RoleRepository : Repository<Role>, IRoleRepository
     {
-        public RoleRepository(IDbContext dbContext) : base(dbContext)
+        public RoleRepository(IDbContext dbContext)
+            : base(dbContext)
         {
         }
     }

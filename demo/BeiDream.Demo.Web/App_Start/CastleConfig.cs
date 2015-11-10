@@ -1,5 +1,4 @@
 ﻿using BeiDream.Core.Dependency;
-using BeiDream.Demo.Service;
 using BeiDream.Web.Mvc.Dependency;
 
 namespace BeiDream.Demo.Web
@@ -11,11 +10,9 @@ namespace BeiDream.Demo.Web
     {
         public static void Initialize()
         {
-
             MvcBootstrapper mvcBootstrapper = new MvcBootstrapper(new ConventionalRegistrarConfig());
             //依赖注入初始化
             mvcBootstrapper.Initialize();
         }
-
     }
 }

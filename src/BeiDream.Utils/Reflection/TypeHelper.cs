@@ -42,6 +42,7 @@ namespace BeiDream.Utils.Reflection
 
             return false;
         }
+
         /// <summary>
         /// 获取类型,对可空类型进行处理
         /// </summary>
@@ -50,6 +51,7 @@ namespace BeiDream.Utils.Reflection
         {
             return Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
         }
+
         private static bool IsPrimitiveExtended(Type type)
         {
             if (type.IsPrimitive)
@@ -57,12 +59,12 @@ namespace BeiDream.Utils.Reflection
                 return true;
             }
 
-            return type == typeof (string) ||
-                   type == typeof (decimal) ||
-                   type == typeof (DateTime) ||
-                   type == typeof (DateTimeOffset) ||
-                   type == typeof (TimeSpan) ||
-                   type == typeof (Guid);
+            return type == typeof(string) ||
+                   type == typeof(decimal) ||
+                   type == typeof(DateTime) ||
+                   type == typeof(DateTimeOffset) ||
+                   type == typeof(TimeSpan) ||
+                   type == typeof(Guid);
         }
     }
 }

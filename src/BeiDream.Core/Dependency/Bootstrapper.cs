@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BeiDream.Core.Domain.Uow.Interception;
+using BeiDream.Core.Validations.Interception;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Web.Compilation;
-using BeiDream.Core.Domain.Uow.Interception;
-using BeiDream.Core.Validations.Interception;
 
 namespace BeiDream.Core.Dependency
 {
@@ -15,14 +15,16 @@ namespace BeiDream.Core.Dependency
         /// 需要跳过的程序集列表
         /// </summary>
         private const string AssemblySkipLoadingPattern = "^System|^mscorlib|^Microsoft|^AjaxControlToolkit|^Antlr3|^Autofac|^NSubstitute|^AutoMapper|^Castle|^ComponentArt|^CppCodeProvider|^DotNetOpenAuth|^EntityFramework|^EPPlus|^FluentValidation|^ImageResizer|^itextsharp|^log4net|^MaxMind|^MbUnit|^MiniProfiler|^Mono.Math|^MvcContrib|^Newtonsoft|^NHibernate|^nunit|^Org.Mentalis|^PerlRegex|^QuickGraph|^Recaptcha|^Remotion|^RestSharp|^Telerik|^Iesi|^TestFu|^UserAgentStringLibrary|^VJSharpCodeProvider|^WebActivator|^WebDev|^WebGrease";
+
         public IIocManager IocManager { get; private set; }
         public ConventionalRegistrarConfig ConventionalRegistrarConfig { get; private set; }
+
         public Bootstrapper(ConventionalRegistrarConfig conventionalRegistrarConfig)
         {
             IocManager = Dependency.IocManager.Instance;
             ConventionalRegistrarConfig = conventionalRegistrarConfig;
-
         }
+
         /// <summary>
         /// 过滤系统程序集
         /// </summary>
@@ -32,6 +34,7 @@ namespace BeiDream.Core.Dependency
                 .Where(assembly => !Regex.IsMatch(assembly.FullName, AssemblySkipLoadingPattern, RegexOptions.IgnoreCase | RegexOptions.Compiled))
                 .ToArray();
         }
+
         public virtual void Initialize()
         {
             UnitOfWorkRegistrar.Initialize(IocManager);
@@ -49,7 +52,6 @@ namespace BeiDream.Core.Dependency
                 return;
             }
             IocManager.RegisterAssemblyByConvention(ConventionalRegistrarConfig.Assembly);
-
         }
     }
 }

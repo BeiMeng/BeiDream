@@ -240,19 +240,19 @@
             initEditDialog: function (options) {
                 return $.easyui.initDialogByGrid(options, $.easyui.editNotSelectedMessage);
             },
-            initDialog:function (options, msg, id) {
-            ///	<summary>
-            ///	初始化弹出窗口
-            ///	</summary>
-            ///	<param name="options" type="Object">
-            ///	选项
-            ///	</param>
-            ///	<param name="msg" type="String">
-            ///	消息
-            ///	</param>
-            ///	<param name="id" type="String">
-            ///	业务编号
-            ///	</param>
+            initDialog: function (options, msg, id) {
+                ///	<summary>
+                ///	初始化弹出窗口
+                ///	</summary>
+                ///	<param name="options" type="Object">
+                ///	选项
+                ///	</param>
+                ///	<param name="msg" type="String">
+                ///	消息
+                ///	</param>
+                ///	<param name="id" type="String">
+                ///	业务编号
+                ///	</param>
                 if (!id) {
                     $.easyui.message.warn(msg);
                     return false;
@@ -260,7 +260,7 @@
                 options.url = $.joinUrl(options.url, "id=" + id);
                 return true;
             },
-            initDialogByGrid:function (options, msg, gridId) {
+            initDialogByGrid: function (options, msg, gridId) {
                 ///	<summary>
                 ///	初始化弹出窗口-表格
                 ///	</summary>
@@ -286,7 +286,7 @@
             getMessager: function () {
                 return $parent.messager;
             },
-            info: function (msg, title) {
+            info: function (msg, title, callback) {
                 ///	<summary>
                 ///	弹出信息框
                 ///	</summary>
@@ -296,11 +296,14 @@
                 ///	<param name="title" type="String">
                 ///	标题
                 ///	</param>
+                ///	<param name="callback" type="Function">
+                ///	点击ok按钮后的回调函数
+                ///	</param>
                 if (!msg)
                     return;
                 $.easyui.message.getMessager().alert(title || "信息", msg, 'info');
             },
-            warn: function (msg, title) {
+            warn: function (msg, title, callback) {
                 ///	<summary>
                 ///	弹出警告框
                 ///	</summary>
@@ -312,7 +315,7 @@
                 ///	</param>
                 if (!msg)
                     return;
-                $.easyui.message.getMessager().alert(title || "错误", msg, 'error');
+                $.easyui.message.getMessager().alert(title || "错误", msg, 'error', callback);
             },
             confirm: function (msg, callback, title) {
                 ///	<summary>
@@ -371,11 +374,10 @@
         });
     }
     //显示消息
-    $.easyui.showMessage = function (result) {
+    $.easyui.showMessage = function (result, callback) {
         if (result.Code === $.easyui.state.ok)
-            $.easyui.message.info(result.Message);
+            $.easyui.message.info(result.Message,"提示", callback);
         else if (result.Code === $.easyui.state.fail)
-            $.easyui.message.warn(result.Message);
+            $.easyui.message.warn(result.Message, "警告");
     };
 })(jQuery);
-

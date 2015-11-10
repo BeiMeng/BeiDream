@@ -2,17 +2,17 @@
 
 namespace BeiDream.Demo.Web.Areas.Systems
 {
-    public class SystemsAreaRegistration : AreaRegistration 
+    public class SystemsAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Systems";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Systems_default",

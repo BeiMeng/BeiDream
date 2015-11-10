@@ -7,7 +7,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
     internal class DynamicFilterConvention : Convention
     {
         public DynamicFilterConvention(string filterName, Type entityType, string columnName)
-            :this(filterName, entityType, null, columnName)
+            : this(filterName, entityType, null, columnName)
         {
         }
 

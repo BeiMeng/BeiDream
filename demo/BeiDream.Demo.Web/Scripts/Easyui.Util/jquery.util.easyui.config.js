@@ -79,11 +79,11 @@
         btnId = btnId || $.easyui.btnEditId;
         return $("#" + btnId);
     }
-   
-    //状态:ok为成功，fail为失败
+
+    //状态:ok为成功,fail为失败
     $.easyui.state = {
         ok: 1,
-        fail: 2
+        fail:3
     };
     //提示消息
     $.easyui.editNotSelectedMessage = "请选择待编辑的记录";
@@ -96,6 +96,4 @@
     $.easyui.moveDownNotSelectedMessage = "请选择需要下移的记录";
     $.easyui.editTreeNotSelectedMessage = "请选择待编辑的树节点";
     $.easyui.treeNotCheckedMessage = "请勾选需要操作的树节点";
-    
 })(jQuery);
-

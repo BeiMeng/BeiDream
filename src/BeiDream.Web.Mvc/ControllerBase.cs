@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using BeiDream.Core.Json;
+﻿using BeiDream.Core.Json;
 using BeiDream.Web.Mvc.Web.Enum;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace BeiDream.Web.Mvc
 {
@@ -15,6 +15,7 @@ namespace BeiDream.Web.Mvc
         {
             return Content(data.ToJsonString());
         }
+
         /// <summary>
         /// 返回成功消息
         /// </summary>

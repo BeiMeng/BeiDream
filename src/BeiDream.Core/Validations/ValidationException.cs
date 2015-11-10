@@ -7,6 +7,7 @@ namespace BeiDream.Core.Validations
     public class ValidationException : Exception
     {
         public List<ValidationResult> ValidationErrors { get; set; }
+
         public ValidationException(string message, List<ValidationResult> validationErrors)
             : base(message)
         {

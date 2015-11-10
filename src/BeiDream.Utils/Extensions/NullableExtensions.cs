@@ -9,6 +9,6 @@
         public static T SafeValue<T>(this T? value) where T : struct
         {
             return value ?? default(T);
-        } 
+        }
     }
 }

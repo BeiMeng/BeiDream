@@ -1,9 +1,12 @@
-﻿using System;
+﻿using BeiDream.Demo.Service.Dtos;
+using System;
 using System.ComponentModel.DataAnnotations;
-using BeiDream.Demo.Service.Dtos;
+using BeiDream.AutoMapper;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
 {
+    [AutoMapFrom(typeof(RoleDto))]
+    [AutoMapTo(typeof(RoleDto))]
     public class VmRoleAddorEdit
     {
         public VmRoleAddorEdit()
@@ -36,31 +39,32 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
         public byte[] Version { get; set; }
     }
 
-    public static class VmRoleAddorEditExtension
-    {
-        public static RoleDto ToDto( this VmRoleAddorEdit vm)
-        {
-            return new RoleDto()
-            {
-                Id = vm.Id,
-                Name = vm.Name,
-                Description = vm.Description,
-                IsAdmin = vm.IsAdmin,
-                Enabled = vm.Enabled,
-                Version = vm.Version
-            };
-        }
-        public static VmRoleAddorEdit ToFormVm(this RoleDto dto)
-        {
-            return new VmRoleAddorEdit(dto.Id)
-            {
-                Id = dto.Id,
-                Name = dto.Name,
-                Description = dto.Description,
-                IsAdmin = dto.IsAdmin,
-                Enabled = dto.Enabled,
-                Version = dto.Version
-            };
-        }
-    }
+    //public static class VmRoleAddorEditExtension
+    //{
+        //public static RoleDto ToDto(this VmRoleAddorEdit vm)
+        //{
+        //    return new RoleDto()
+        //    {
+        //        Id = vm.Id,
+        //        Name = vm.Name,
+        //        Description = vm.Description,
+        //        IsAdmin = vm.IsAdmin,
+        //        Enabled = vm.Enabled,
+        //        Version = vm.Version
+        //    };
+        //}
+
+        //public static VmRoleAddorEdit ToFormVm(this RoleDto dto)
+        //{
+        //    return new VmRoleAddorEdit
+        //    {
+        //        Id = dto.Id,
+        //        Name = dto.Name,
+        //        Description = dto.Description,
+        //        IsAdmin = dto.IsAdmin,
+        //        Enabled = dto.Enabled,
+        //        Version = dto.Version
+        //    };
+        //}
+    //}
 }

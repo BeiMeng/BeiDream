@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using BeiDream.Core.Domain.Uow;
-using BeiDream.Core.Domain.Uow.Interception;
+﻿using BeiDream.Core.Domain.Uow.Interception;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Domain.Services.Contracts;
@@ -10,6 +6,8 @@ using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
 using BeiDream.Utils.Extensions;
 using BeiDream.Utils.PagerHelper;
+using System;
+using System.Collections.Generic;
 
 namespace BeiDream.Demo.Service.Impl
 {
@@ -18,11 +16,11 @@ namespace BeiDream.Demo.Service.Impl
     /// </summary>
     public class UserService : IUserService
     {
-
         /// <summary>
         ///用户领域服务
         /// </summary>
         public IUserDomainService UserDomainService { get; set; }
+
         public UserService(IUserDomainService userDomainService)
         {
             UserDomainService = userDomainService;
@@ -36,46 +34,21 @@ namespace BeiDream.Demo.Service.Impl
         [NoUnitOfWork]
         public PagerList<UserDto> Query(UserQuery query)
         {
-            throw new Exception("用户查询异常，全局异常测试");
-            return UserDomainService.Query(query).Convert(ToDto);
+            //throw new Exception("用户查询异常，easyui ajax操作全局异常测试");
+            return UserDomainService.Query(query).Convert(p=>p.ToDto());
         }
-        private UserDto ToDto(User entity)
-        {
-            return new UserDto()
-            {
-                Id=entity.Id,
-                Name=entity.Name,
-                Password=entity.Password,
-                Email=entity.Email,
-                DisplayName=entity.DisplayName,
-                Enabled=entity.Enabled,
-                DateCreated = entity.DateCreated.ToChineseDateTimeString(true),
-                Version=entity.Version
-            };
-        }
+
         public void AddorUpdate(UserDto dto)
         {
-            throw new Exception("用户保存异常，全局异常测试");
-            UserDomainService.AddorUpdate(ToEntity(dto));
+            //throw new Exception("用户保存异常，Form表单提交全局异常测试");
+            UserDomainService.AddorUpdate(dto.ToEntity());
         }
-        private User ToEntity(UserDto dto)
-        {
-            return new User()
-            {
-                Id = dto.Id,
-                Password=dto.Password,
-                Name = dto.Name,
-                Email = dto.Email,
-                DisplayName = dto.DisplayName,
-                Enabled = dto.Enabled.SafeValue(),
-                Version = dto.Version
-            };
-        }
+
         [NoUnitOfWork]
         public UserDto Find(Guid id)
         {
-            var user=UserDomainService.Find(id);
-            return ToDto(user);
+            var user = UserDomainService.Find(id);
+            return user.ToDto();
         }
 
         public void Delete(Guid id)

@@ -7,6 +7,5 @@ namespace BeiDream.Core.Domain.Services
     /// </summary>
     public interface IDomainService : ITransientDependency
     {
-         
     }
 }

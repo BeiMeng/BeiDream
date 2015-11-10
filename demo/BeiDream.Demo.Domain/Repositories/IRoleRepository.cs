@@ -5,6 +5,5 @@ namespace BeiDream.Demo.Domain.Repositories
 {
     public interface IRoleRepository : IRepository<Role>
     {
-         
     }
 }

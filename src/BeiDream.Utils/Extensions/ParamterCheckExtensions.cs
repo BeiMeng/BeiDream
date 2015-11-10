@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BeiDream.Utils.Properties;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using BeiDream.Utils.Properties;
 
 namespace BeiDream.Utils.Extensions
 {

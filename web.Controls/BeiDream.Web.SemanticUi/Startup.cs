@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(BeiDream.Web.SemanticUi.Startup))]
+
 namespace BeiDream.Web.SemanticUi
 {
     public partial class Startup

@@ -46,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web.Controls", "web.Control
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.Web.SemanticUi", "web.Controls\BeiDream.Web.SemanticUi\BeiDream.Web.SemanticUi.csproj", "{810AF492-6DE5-445C-BA6D-10976A0227BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeiDream.AutoMapper", "src\BeiDream.AutoMapper\BeiDream.AutoMapper.csproj", "{3F76EDF7-58AA-4EE0-B632-9751636EA5C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{810AF492-6DE5-445C-BA6D-10976A0227BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{810AF492-6DE5-445C-BA6D-10976A0227BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{810AF492-6DE5-445C-BA6D-10976A0227BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F76EDF7-58AA-4EE0-B632-9751636EA5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F76EDF7-58AA-4EE0-B632-9751636EA5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F76EDF7-58AA-4EE0-B632-9751636EA5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F76EDF7-58AA-4EE0-B632-9751636EA5C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,5 +128,6 @@ Global
 		{9FB150C6-E1DE-4422-8727-775C29DF590B} = {D09F9437-E50D-4F16-A9B5-CD9FD1CBED33}
 		{AE6BADB0-5277-42A1-9711-DA00B15F4C35} = {735F22EE-ABF0-4A3E-832D-00C32C9E8A40}
 		{810AF492-6DE5-445C-BA6D-10976A0227BB} = {96571A2F-83D7-463A-8457-D253B767DC97}
+		{3F76EDF7-58AA-4EE0-B632-9751636EA5C3} = {D09F9437-E50D-4F16-A9B5-CD9FD1CBED33}
 	EndGlobalSection
 EndGlobal

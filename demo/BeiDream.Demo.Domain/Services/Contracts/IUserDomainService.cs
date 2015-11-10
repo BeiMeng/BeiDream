@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using BeiDream.Core.Domain.Entities;
-using BeiDream.Core.Domain.Services;
+﻿using BeiDream.Core.Domain.Services;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Utils.PagerHelper;
+using System;
+using System.Collections.Generic;
 
 namespace BeiDream.Demo.Domain.Services.Contracts
 {
@@ -21,8 +20,11 @@ namespace BeiDream.Demo.Domain.Services.Contracts
         void SetRoles(Guid userId, List<Guid> roleIds);
 
         PagerList<User> Query(UserQuery query);
+
         void AddorUpdate(User entity);
+
         User Find(Guid id);
+
         void Delete(Guid id);
     }
 }

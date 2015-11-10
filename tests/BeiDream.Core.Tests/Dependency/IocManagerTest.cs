@@ -8,14 +8,16 @@ namespace BeiDream.Core.Tests.Dependency
     public class IocManagerTest
     {
         private IIocManager _iocManager;
+
         /// <summary>
         /// 测试初始化
         /// </summary>
         [TestInitialize]
         public void Init()
         {
-            _iocManager=new IocManager();
+            _iocManager = new IocManager();
         }
+
         /// <summary>
         /// 使用封装的IOC管理器包装的原生Castle容器注册
         /// </summary>
@@ -26,6 +28,7 @@ namespace BeiDream.Core.Tests.Dependency
             ITaskService taskService = _iocManager.Resolve<ITaskService>();
             Assert.AreEqual("aa", taskService.SaveTask("aa"));
         }
+
         /// <summary>
         /// 使用封装的IOC管理器封装后的注册方法注册
         /// </summary>
@@ -36,6 +39,7 @@ namespace BeiDream.Core.Tests.Dependency
             ITaskService taskService = _iocManager.Resolve<ITaskService>();
             Assert.AreEqual("aa", taskService.SaveTask("aa"));
         }
+
         /// <summary>
         /// 重复注册异常，检查是否已注册功能测试
         /// </summary>
@@ -48,6 +52,7 @@ namespace BeiDream.Core.Tests.Dependency
             ITaskService taskService = _iocManager.Resolve<ITaskService>();
             Assert.AreEqual("aa", taskService.SaveTask("aa"));
         }
+
         /// <summary>
         /// 重复注册异常，检查是否已注册功能测试
         /// </summary>
@@ -60,6 +65,7 @@ namespace BeiDream.Core.Tests.Dependency
             ITaskService taskService = _iocManager.Resolve<ITaskService>();
             Assert.AreEqual("aa", taskService.SaveTask("aa"));
         }
+
         /// <summary>
         /// 包含重复注册检查的注册测试
         /// </summary>
@@ -71,6 +77,7 @@ namespace BeiDream.Core.Tests.Dependency
             ITaskService taskService = _iocManager.Resolve<ITaskService>();
             Assert.AreEqual("aa", taskService.SaveTask("aa"));
         }
+
         /// <summary>
         /// 包含重复注册检查的注册测试
         /// </summary>
@@ -82,6 +89,7 @@ namespace BeiDream.Core.Tests.Dependency
             ITaskService taskService = _iocManager.Resolve<ITaskService>();
             Assert.AreEqual("aa", taskService.SaveTask("aa"));
         }
+
         /// <summary>
         /// 属性注入测试
         /// </summary>
@@ -91,8 +99,9 @@ namespace BeiDream.Core.Tests.Dependency
             _iocManager.RegisterIfNot<ITaskMange, TaskMange>(DependencyLifeStyle.Transient);
             _iocManager.RegisterIfNot<ITaskService, TaskService>(DependencyLifeStyle.Transient);
             ITaskMange taskMange = _iocManager.Resolve<ITaskMange>();
-             Assert.AreEqual("aa", taskMange.TaskSave("aa"));
+            Assert.AreEqual("aa", taskMange.TaskSave("aa"));
         }
+
         /// <summary>
         /// 构造函数注入测试
         /// </summary>
@@ -110,6 +119,7 @@ namespace BeiDream.Core.Tests.Dependency
     {
         string TaskSave(string msg);
     }
+
     /// <summary>
     /// 属性注入
     /// </summary>
@@ -122,6 +132,7 @@ namespace BeiDream.Core.Tests.Dependency
             return TaskService.SaveTask(msg);
         }
     }
+
     /// <summary>
     /// 构造函数注入
     /// </summary>
@@ -139,6 +150,7 @@ namespace BeiDream.Core.Tests.Dependency
             return TaskService.SaveTask(msg);
         }
     }
+
     public interface ITaskService
     {
         string SaveTask(string msg);

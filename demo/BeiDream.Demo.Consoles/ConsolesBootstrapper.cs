@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using BeiDream.Core.Dependency;
+﻿using BeiDream.Core.Dependency;
 
 namespace BeiDream.Demo.Consoles
 {
@@ -12,7 +11,6 @@ namespace BeiDream.Demo.Consoles
 
         public override void Initialize()
         {
-
             //IocManager.Register<ITaskService, TaskService>(DependencyLifeStyle.Transient);
             //IocManager.Register<ITaskMange, TaskMange2>(DependencyLifeStyle.Transient);
             base.Initialize();

@@ -4,7 +4,6 @@ namespace BeiDream.Core.Validations.Interception
 {
     public class ValidationInterceptor : IInterceptor
     {
-
         public void Intercept(IInvocation invocation)
         {
             new MethodInvocationValidator(

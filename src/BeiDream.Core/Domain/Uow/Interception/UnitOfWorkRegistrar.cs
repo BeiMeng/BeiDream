@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
-using BeiDream.Core.Application.Services;
+﻿using BeiDream.Core.Application.Services;
 using BeiDream.Core.Dependency;
 using Castle.Core;
 using Castle.MicroKernel;
@@ -22,9 +20,8 @@ namespace BeiDream.Core.Domain.Uow.Interception
                 //    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                 //    .Any(m =>! m.IsDefined(typeof (NoUnitOfWorkAttribute), true)))
                 //{
-                    handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof(UnitOfWorkInterceptor)));
+                handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof(UnitOfWorkInterceptor)));
                 //}
-
             }
         }
     }

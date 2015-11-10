@@ -50,7 +50,6 @@ namespace BeiDream.Utils.Logging
         /// </summary>
         bool IsFatalEnabled { get; }
 
-        #endregion
-
+        #endregion 属性
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Data.Entity;
-using BeiDream.Data.Ef;
+﻿using BeiDream.Data.Ef;
 using BeiDream.Demo.Domain.Model;
-using BeiDream.Demo.Infrastructure.Mappings;
+using System;
+using System.Data.Entity;
 
 namespace BeiDream.Demo.Infrastructure
 {
@@ -14,11 +13,8 @@ namespace BeiDream.Demo.Infrastructure
             TraceId = Guid.NewGuid();
         }
 
-        //public DbSet<Account> Accounts { get; set; }
-
         public DbSet<Role> Roles { get; set; }
 
-        //public DbSet<Memo> Memos { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

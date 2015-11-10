@@ -1,8 +1,7 @@
-﻿using System;
-using BeiDream.Utils.Logging;
+﻿using BeiDream.Utils.Logging;
 using log4net.Core;
+using System;
 using ILogger = log4net.Core.ILogger;
-
 
 namespace BeiDream.Logging.Log4Net
 {
@@ -33,20 +32,28 @@ namespace BeiDream.Logging.Log4Net
             {
                 case LogLevel.All:
                     return Level.All;
+
                 case LogLevel.Trace:
                     return Level.Trace;
+
                 case LogLevel.Debug:
                     return Level.Debug;
+
                 case LogLevel.Info:
                     return Level.Info;
+
                 case LogLevel.Warn:
                     return Level.Warn;
+
                 case LogLevel.Error:
                     return Level.Error;
+
                 case LogLevel.Fatal:
                     return Level.Fatal;
+
                 case LogLevel.Off:
                     return Level.Off;
+
                 default:
                     return Level.Off;
             }
@@ -132,6 +139,6 @@ namespace BeiDream.Logging.Log4Net
             get { return _logger.IsEnabledFor(Level.Fatal); }
         }
 
-        #endregion
+        #endregion Overrides of LogBase
     }
 }

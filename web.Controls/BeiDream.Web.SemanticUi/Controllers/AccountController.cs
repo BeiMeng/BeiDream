@@ -1,14 +1,11 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using BeiDream.Web.SemanticUi.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BeiDream.Web.SemanticUi.Models;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace BeiDream.Web.SemanticUi.Controllers
 {
@@ -22,7 +19,7 @@ namespace BeiDream.Web.SemanticUi.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +31,9 @@ namespace BeiDream.Web.SemanticUi.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -80,10 +77,13 @@ namespace BeiDream.Web.SemanticUi.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "无效的登录尝试。");
@@ -120,13 +120,15 @@ namespace BeiDream.Web.SemanticUi.Controllers
             // 如果用户输入错误代码的次数达到指定的次数，则会将
             // 该用户帐户锁定指定的时间。
             // 可以在 IdentityConfig 中配置帐户锁定设置
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(model.ReturnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "代码无效。");
@@ -155,8 +157,8 @@ namespace BeiDream.Web.SemanticUi.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771
                     // 发送包含此链接的电子邮件
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -212,7 +214,7 @@ namespace BeiDream.Web.SemanticUi.Controllers
                 // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771
                 // 发送包含此链接的电子邮件
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "重置密码", "请通过单击 <a href=\"" + callbackUrl + "\">此处</a>来重置你的密码");
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -334,10 +336,13 @@ namespace BeiDream.Web.SemanticUi.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+
                 case SignInStatus.Failure:
                 default:
                     // 如果用户没有帐户，则提示该用户创建帐户
@@ -424,6 +429,7 @@ namespace BeiDream.Web.SemanticUi.Controllers
         }
 
         #region 帮助程序
+
         // 用于在添加外部登录名时提供 XSRF 保护
         private const string XsrfKey = "XsrfId";
 
@@ -480,6 +486,7 @@ namespace BeiDream.Web.SemanticUi.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-        #endregion
+
+        #endregion 帮助程序
     }
 }

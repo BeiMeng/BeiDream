@@ -7,17 +7,15 @@
 //  <last-date>2015-09-23 8:58</last-date>
 // -----------------------------------------------------------------------
 
-
-using System;
-using System.IO;
 using BeiDream.Utils.Logging;
 using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
 using log4net.Filter;
 using log4net.Layout;
+using System;
+using System.IO;
 using LogManager = log4net.LogManager;
-
 
 namespace BeiDream.Logging.Log4Net
 {
@@ -72,6 +70,6 @@ namespace BeiDream.Logging.Log4Net
             return new Log4NetLog(log);
         }
 
-        #endregion
+        #endregion Overrides of LoggerAdapterBase
     }
 }

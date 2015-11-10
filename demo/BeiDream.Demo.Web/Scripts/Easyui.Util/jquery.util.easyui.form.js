@@ -1,9 +1,8 @@
 ﻿(function ($) {
-
     //form表单操作
     $.easyui.form = (function () {
         return {
-            submit: function(fnBefore, fnSuccess, formId) {
+            submit: function (fnBefore, fnSuccess, formId) {
                 ///	<summary>
                 ///	提交更新表单
                 ///	</summary>
@@ -71,7 +70,6 @@
                     return form.attr("gridId") || $.easyui.gridId;
                 }
             }
-
         };
     })();
 })(jQuery);

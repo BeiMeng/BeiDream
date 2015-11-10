@@ -1,5 +1,5 @@
-﻿using System.Data.Entity;
-using BeiDream.Demo.Infrastructure;
+﻿using BeiDream.Demo.Infrastructure;
+using System.Data.Entity;
 
 namespace BeiDream.Demo.Web
 {

@@ -100,7 +100,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             var baseCLRType = clrType.BaseType;
             if (baseCLRType.FullName == "System.Object")
                 return;     //  No base
-            
+
             //  Find the EntitySet for the base type (if there is one)
             var baseEntitySet = entityContainer.EntitySets
                 .Where(e => e.ElementType.MetadataProperties.Any(mp => mp.Name.Contains("customannotation:" + DynamicFilterConstants.ATTRIBUTE_NAME_PREFIX)
@@ -132,7 +132,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
 
             List<DbExpression> conditionList = new List<DbExpression>();
 
-            HashSet<string> processedFilterNames = new HashSet<string>(); 
+            HashSet<string> processedFilterNames = new HashSet<string>();
             foreach (var filter in filterList)
             {
                 if (processedFilterNames.Contains(filter.FilterName))
@@ -153,7 +153,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
                     var columnProperty = DbExpressionBuilder.Property(DbExpressionBuilder.Variable(binding.VariableType, binding.VariableName), edmProp.Name);
                     var param = columnProperty.Property.TypeUsage.Parameter(filter.CreateDynamicFilterName(filter.ColumnName));
 
-                    if ((columnProperty.ResultType.EdmType.FullName == "Edm.Boolean") 
+                    if ((columnProperty.ResultType.EdmType.FullName == "Edm.Boolean")
                         && param.ResultType.EdmType.FullName.StartsWith("Oracle", StringComparison.CurrentCultureIgnoreCase) && (param.ResultType.EdmType.Name == "number"))    //  Don't trust Oracle's type name to stay the same...
                     {
                         //  Special handling needed for columnProperty boolean.  For some reason, the Oracle EF driver does not correctly
@@ -185,7 +185,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             }
 
             int numConditions = conditionList.Count;
-            DbExpression newPredicate; 
+            DbExpression newPredicate;
             switch (numConditions)
             {
                 case 0:

@@ -8,6 +8,5 @@ namespace BeiDream.Demo.Domain.Repositories
     /// </summary>
     public interface IUserRepository : IRepository<User>
     {
-         
     }
 }

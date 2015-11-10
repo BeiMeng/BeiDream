@@ -17,7 +17,6 @@ namespace BeiDream.Core.Dependency
         /// </summary>
         public IIocManager IocManager { get; private set; }
 
-
         /// <summary>
         /// 依赖注入上下文构造函数,
         /// </summary>

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Castle.DynamicProxy;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BeiDream.Utils.Reflection;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BeiDream.Core.Tests.Dependency
 {
     [TestClass]
     public class AopTest
     {
-         
     }
 }

@@ -1,5 +1,4 @@
 ﻿(function ($) {
-
     //grid的操作
     $.easyui.grid = (function () {
         return {
@@ -91,7 +90,7 @@
                 }
             },
             //提交选中的Id
-            submitCheckedIds: function (gridId, url, param,callback,fnRefresh) {
+            submitCheckedIds: function (gridId, url, param, callback, fnRefresh) {
                 var grid = $.easyui.getGrid(gridId);
                 var rows = grid.datagrid("getChecked");
                 if (rows.length === 0) {
@@ -103,7 +102,7 @@
                 //发送请求
                 function ajax() {
                     var ids = $.easyui.grid.getIds(rows);
-                    param =$.extend({ ids: ids, __RequestVerificationToken: $.getAntiForgeryToken() },param || {});                   
+                    param = $.extend({ ids: ids, __RequestVerificationToken: $.getAntiForgeryToken() }, param || {});
                     $.easyui.ajax(url, param, ajaxCallback);
 
                     //回调

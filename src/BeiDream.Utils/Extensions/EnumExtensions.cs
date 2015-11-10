@@ -15,6 +15,7 @@ namespace BeiDream.Utils.Extensions
         {
             return GetValue(instance.GetType(), instance);
         }
+
         /// <summary>
         /// 获取成员值
         /// </summary>

@@ -66,7 +66,7 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
         /// </summary>
         /// <param name="dbParameter"></param>
         /// <returns></returns>
-        public static Tuple<string,string> GetFilterAndParamFromDBParameter(string dbParameter)
+        public static Tuple<string, string> GetFilterAndParamFromDBParameter(string dbParameter)
         {
             if (!dbParameter.StartsWith(DynamicFilterConstants.PARAMETER_NAME_PREFIX))
                 return null;    //  Not dynamic filter param
@@ -89,6 +89,6 @@ namespace BeiDream.Data.Ef.EntityFramework.DynamicFilters
             return filterParamKey;
         }
 
-        #endregion
+        #endregion Filter Name mapping
     }
 }

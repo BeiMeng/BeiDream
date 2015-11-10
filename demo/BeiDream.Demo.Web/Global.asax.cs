@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BeiDream.Utils.Logging;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using BeiDream.Core.Dependency;
-using BeiDream.Web.Mvc;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using System.Reflection;
-using BeiDream.Demo.Service;
-using BeiDream.Logging.Log4Net;
-using BeiDream.Utils.Logging;
-using BeiDream.Web.Mvc.Dependency;
-using Castle.Windsor.Installer;
 
 namespace BeiDream.Demo.Web
 {

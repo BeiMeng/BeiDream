@@ -2,7 +2,7 @@
 
 namespace BeiDream.Demo.Domain.Queries
 {
-    public class UserQuery:Pager
+    public class UserQuery : Pager
     {
         public string Name { get; set; }
         public bool? Enabled { get; set; }

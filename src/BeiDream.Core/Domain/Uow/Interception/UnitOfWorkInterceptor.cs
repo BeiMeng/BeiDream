@@ -1,6 +1,6 @@
-﻿using System;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using System.Reflection;
+
 namespace BeiDream.Core.Domain.Uow.Interception
 {
     internal class UnitOfWorkInterceptor : IInterceptor
@@ -31,6 +31,7 @@ namespace BeiDream.Core.Domain.Uow.Interception
             }
             _unitOfWork.Commit();
         }
+
         internal static NoUnitOfWorkAttribute GetUnitOfWorkAttributeOrNull(MemberInfo methodInfo)
         {
             var attrs = methodInfo.GetCustomAttributes(typeof(NoUnitOfWorkAttribute), false);

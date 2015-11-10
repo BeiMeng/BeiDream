@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Castle.MicroKernel;
+using Castle.MicroKernel.Lifestyle;
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Castle.MicroKernel;
-using Castle.MicroKernel.Lifestyle;
 
 namespace BeiDream.Web.Mvc.Dependency
 {
@@ -47,7 +47,7 @@ namespace BeiDream.Web.Mvc.Dependency
             //开启单次请求周期作用域范围
             using (var scope = _kernel.BeginScope())
             {
-                return (IController) _kernel.Resolve(controllerType);
+                return (IController)_kernel.Resolve(controllerType);
             }
         }
     }

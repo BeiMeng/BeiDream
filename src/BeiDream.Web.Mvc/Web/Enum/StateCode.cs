@@ -9,6 +9,7 @@
         /// 成功
         /// </summary>
         Ok = 1,
+
         /// <summary>
         /// 失败
         /// </summary>

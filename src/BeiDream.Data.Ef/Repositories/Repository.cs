@@ -1,13 +1,12 @@
-﻿using System;
+﻿using BeiDream.Core.Domain.Entities;
+using BeiDream.Core.Domain.Repositories;
+using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
-using BeiDream.Core.Domain.Entities;
-using BeiDream.Core.Domain.Repositories;
 
 namespace BeiDream.Data.Ef.Repositories
 {
-    public abstract class Repository<TAggregateRoot> : Repository<TAggregateRoot,Guid>
+    public abstract class Repository<TAggregateRoot> : Repository<TAggregateRoot, Guid>
         where TAggregateRoot : class, IAggregateRoot<Guid>
     {
         protected Repository(IDbContext dbContext)
@@ -16,9 +15,10 @@ namespace BeiDream.Data.Ef.Repositories
         }
     }
 
-    public abstract class Repository<TAggregateRoot,  TKey> : IRepository<TAggregateRoot,TKey> where TAggregateRoot : class, IAggregateRoot<TKey>
+    public abstract class Repository<TAggregateRoot, TKey> : IRepository<TAggregateRoot, TKey> where TAggregateRoot : class, IAggregateRoot<TKey>
     {
         protected IDbContext DbContext { get; private set; }
+
         protected Repository(IDbContext dbContext)
         {
             DbContext = dbContext;
@@ -28,6 +28,7 @@ namespace BeiDream.Data.Ef.Repositories
         {
             get { return DbContext.Set<TAggregateRoot>(); }
         }
+
         public void Add(TAggregateRoot entity)
         {
             Set.Add(entity);
@@ -46,7 +47,7 @@ namespace BeiDream.Data.Ef.Repositories
 
         public TAggregateRoot Find(TKey id)
         {
-           return Set.Find(id);
+            return Set.Find(id);
         }
 
         public IQueryable<TAggregateRoot> GetAll()

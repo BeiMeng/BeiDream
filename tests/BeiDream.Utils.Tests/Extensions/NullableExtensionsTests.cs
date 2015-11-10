@@ -1,6 +1,6 @@
-﻿using System;
-using BeiDream.Utils.Extensions;
+﻿using BeiDream.Utils.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace BeiDream.Utils.Tests.Extensions
 {
@@ -14,6 +14,7 @@ namespace BeiDream.Utils.Tests.Extensions
             var dtt = dt.SafeValue();
             Console.WriteLine(dtt);
         }
+
         [TestMethod]
         public void TestMethod2()
         {
@@ -21,6 +22,7 @@ namespace BeiDream.Utils.Tests.Extensions
             var dtt = dt.SafeValue();
             Console.WriteLine(dtt);
         }
+
         [TestMethod]
         public void TestMethod3()
         {

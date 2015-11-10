@@ -1,8 +1,7 @@
-﻿using System;
+﻿using BeiDream.Utils.PagerHelper;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using BeiDream.Core.Json;
-using BeiDream.Utils.PagerHelper;
 
 namespace BeiDream.Web.Mvc.EasyUi
 {
@@ -20,6 +19,7 @@ namespace BeiDream.Web.Mvc.EasyUi
         }
 
         #region 分页设置
+
         /// <summary>
         /// 设置分页
         /// </summary>
@@ -30,6 +30,7 @@ namespace BeiDream.Web.Mvc.EasyUi
             query.PageSize = GetPageSize();
             query.Order = GetOrder();
         }
+
         /// <summary>
         /// 获取分页的页索引
         /// </summary>
@@ -47,13 +48,15 @@ namespace BeiDream.Web.Mvc.EasyUi
             var pageSize = Convert.ToInt32(Request["rows"]);
             return pageSize > 0 ? pageSize : 20;
         }
+
         /// <summary>
         /// 获取排序
         /// </summary>
         protected string GetOrder()
         {
             return string.Format("{0} {1}", Convert.ToString(Request["sort"]), Convert.ToString(Request["order"]));
-        } 
-        #endregion
+        }
+
+        #endregion 分页设置
     }
 }
