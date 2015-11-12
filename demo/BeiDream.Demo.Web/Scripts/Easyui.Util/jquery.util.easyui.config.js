@@ -83,7 +83,7 @@
     //状态:ok为成功,fail为失败
     $.easyui.state = {
         ok: 1,
-        fail:3
+        fail:2
     };
     //提示消息
     $.easyui.editNotSelectedMessage = "请选择待编辑的记录";

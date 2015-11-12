@@ -34,6 +34,7 @@ namespace BeiDream.Demo.Service.Impl
         [NoUnitOfWork]
         public PagerList<UserDto> Query(UserQuery query)
         {
+            //todo：easyui组件的ajax请求异常，暂时无法拦截
             //throw new Exception("用户查询异常，easyui ajax操作全局异常测试");
             return UserDomainService.Query(query).Convert(p=>p.ToDto());
         }
