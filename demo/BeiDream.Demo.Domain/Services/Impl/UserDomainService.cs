@@ -76,12 +76,12 @@ namespace BeiDream.Demo.Domain.Services.Impl
             var model = UserRepository.Find(entity.Id);
             if (model == null)
             {
-                AddBefore(entity);
+                //AddBefore(entity);
                 UserRepository.Add(entity);
             }
             else
             {
-                UpdateBefore(entity);
+                //UpdateBefore(entity);
                 //model.Id = entity.Id;
                 model.Name = entity.Name;
                 model.Password = entity.Password;
@@ -92,15 +92,15 @@ namespace BeiDream.Demo.Domain.Services.Impl
             }
         }
 
-        private void AddBefore(User entity)
-        {
-            entity.DateCreated = DateTime.Now;
-        }
+        //private void AddBefore(User entity)
+        //{
+        //    entity.DateCreated = DateTime.Now;
+        //}
 
-        private void UpdateBefore(User entity)
-        {
-            entity.DateUpdated = DateTime.Now;
-        }
+        //private void UpdateBefore(User entity)
+        //{
+        //    entity.DateUpdated = DateTime.Now;
+        //}
 
         public User Find(Guid id)
         {

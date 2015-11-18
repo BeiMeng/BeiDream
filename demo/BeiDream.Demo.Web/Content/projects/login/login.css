@@ -1,0 +1,38 @@
+﻿* { margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%;overflow-x: hidden; }
+body { background: #1c77ac; font-size: 12px; overflow-x: hidden;}
+/*顶部*/
+.top { background: #14547a; width: 100%; height: 36px; margin: 0; }
+.top ul { margin: 0; color: #afc5d2; }
+.top ul li { display: inline; }
+.top ul li.top_title { position: relative; top: -4px; left: 10px; }
+.top ul li a { color: #afc5d2; text-decoration: none; }
+.top ul li a:hover { text-decoration: underline; }
+/*内容*/
+#main { width: 100%; height: 88%;position:relative; }
+.login_background { background: url(images/002.png) no-repeat; width: 933px; height: 652px; margin: 0 auto;z-index: 9999 }
+.logo { background: url(images/003.png) no-repeat; width: 300px; height: 73px; position: relative; top: 100px; left: 266px; }
+.user_login { background: url(images/004.png) no-repeat; width: 707px; height: 321px; margin: 136px auto 0 auto; }
+.user_login_left, .user_login_right { width: 294px; height: 320px; float: left; }
+.user_login_right { width: 406px; }
+.user_login_blank, .user_login_user, .user_login_password, .user_login_verification { width: 300px; height: 105px; }
+.user_login_user { height: 53px; margin-left: 30px; }
+.user_login_password { height: 50px; margin-left: 30px; }
+.user_login_verification { height: 56px; }
+.user_login_log_in { height: 50px; width: 260px; }
+.txtUser, .txtPassword { width: 230px; padding: 7px 0; border: none; background: none; font-size: 14px; font-family: Tahoma; color: #3d96c9; }
+.verification_number, .verification_pic { height: 38px; width: 80px; float: left; }
+.verification_pic { width: 110px; }
+.verification { padding: 7px 1px; margin-top: 3px; width: 64px; border: none; background: none; text-align: center; font-size: 14px; font-family: Tahoma; color: #3d96c9; }
+ul.user_login_operation { margin: 0; }
+ul.user_login_operation li { display: inline; }
+.btnLogin,.btnLogin:hover,.btnLogin:active,.btnReset,.btnReset:hover,.btnReset:active{ width: 110px; line-height: 28px !important; height: 35px; cursor: pointer; background: url(images/button1.png) no-repeat; border: none; font-size: 14px; font-weight: bold; color: #FFF; letter-spacing: 3px;background-position:-3px -127px }
+.login:hover,.btnLogin:hover,.btnReset:hover{background:url(images/button1.png) no-repeat;background-position:-3px -68px}
+.login:active,.btnLogin:active,.btnReset:active{background:url(images/button1.png) no-repeat;background-position:-3px -10px}
+.btnLogin { margin-left: 9px; }
+.btnReset{margin-left: 15px}
+/*底部*/
+.foot{background:#428eba;width:100%;height:74px; position:fixed; bottom:0}
+.foot p{text-align:center; margin:0; padding:30px 0 0 0; letter-spacing:1px; color:#14547a}
+/* 进度条 */
+.loading {z-index: 999; display: none; position: fixed; _position: absolute; top: 50%; _top: expression( (-20 + (document.documentElement.clientHeight ? document.documentElement.clientHeight/2 : document.body.clientHeight/2 ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop )) + 'px'); left: 40%; margin-top: -20px; _margin-top: 0; margin-left: -20px; cursor: pointer; z-index: 9999999; background: url("images/loading.gif") left top no-repeat; width: 270px; height: 15px; }

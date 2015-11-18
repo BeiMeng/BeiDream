@@ -57,12 +57,12 @@ namespace BeiDream.Demo.Domain.Services.Impl
             var model = RoleRepository.Find(entity.Id);
             if (model == null)
             {
-                AddBefore(entity);
+                //AddBefore(entity);
                 RoleRepository.Add(entity);
             }
             else
             {
-                UpdateBefore(entity);
+                //UpdateBefore(entity);
                 //model.Id = entity.Id;
                 model.Name = entity.Name;
                 model.Description = entity.Description;
@@ -72,15 +72,15 @@ namespace BeiDream.Demo.Domain.Services.Impl
             }
         }
 
-        private void AddBefore(Role entity)
-        {
-            entity.DateCreated = DateTime.Now;
-        }
+        //private void AddBefore(Role entity)
+        //{
+        //    entity.DateCreated = DateTime.Now;
+        //}
 
-        private void UpdateBefore(Role entity)
-        {
-            entity.DateUpdated = DateTime.Now;
-        }
+        //private void UpdateBefore(Role entity)
+        //{
+        //    entity.DateUpdated = DateTime.Now;
+        //}
 
         public Role Find(Guid id)
         {

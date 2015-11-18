@@ -128,15 +128,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Owin">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Owin">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -166,8 +157,8 @@
     </Compile>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\LogConfig.cs" />
-    <Compile Include="App_Start\OwinConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Systems\Controllers\ResourceController.cs" />
     <Compile Include="Areas\Systems\Controllers\RoleController.cs" />
     <Compile Include="Areas\Systems\Controllers\UserController.cs" />
     <Compile Include="Areas\Systems\Models\Role\VmRoleAddorEdit.cs" />
@@ -177,13 +168,25 @@
     <Compile Include="Areas\Systems\SystemsAreaRegistration.cs" />
     <Compile Include="Controllers\DesktopController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Authentication\AuthenticationModuleRegister.cs" />
+    <Compile Include="Security\Authentication\OwinConfig.cs" />
+    <Compile Include="Security\Authorization\RoleAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\common.css" />
+    <Content Include="Content\projects\login\images\001.png" />
+    <Content Include="Content\projects\login\images\002.png" />
+    <Content Include="Content\projects\login\images\003.png" />
+    <Content Include="Content\projects\login\images\004.png" />
+    <Content Include="Content\projects\login\images\button1.png" />
+    <Content Include="Content\projects\login\images\loading.gif" />
+    <Content Include="Content\projects\login\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="log4net.config" />
@@ -921,7 +924,10 @@
     <Content Include="Scripts\jquery-easyui-1.4.3\themes\ui-sunny\tree.css" />
     <Content Include="Scripts\jquery-easyui-1.4.3\themes\ui-sunny\validatebox.css" />
     <Content Include="Scripts\jquery-easyui-1.4.3\themes\ui-sunny\window.css" />
+    <Content Include="Scripts\jquery.browser.min.js" />
+    <Content Include="Scripts\jquery.jqlouds.min.js" />
     <Content Include="Scripts\jquery.json-2.4.min.js" />
+    <Content Include="Scripts\Projects\login.js" />
     <Content Include="Scripts\Projects\project.js" />
     <Content Include="Scripts\Util\jquery.util.js" />
     <Content Include="Scripts\Util\util.js" />
@@ -1021,6 +1027,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Systems\Views\User\Parts\UserRoles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Systems\Views\Resource\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Security\LogIn.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using BeiDream.Core.Domain.Entities.Auditing;
 
 namespace BeiDream.Demo.Domain.Model
 {
-    public class Role : AggregateRoot
+    public class Role : AggregateRoot, IAudited
     {
         [Required(ErrorMessage = "角色名不能为空")]
         [StringLength(16, ErrorMessage = "角色名输入过长，不能超过16位")]
@@ -33,22 +34,17 @@ namespace BeiDream.Demo.Domain.Model
         /// </summary>
         public bool Enabled { get; set; }
 
-        public virtual DateTime DateCreated
+        public virtual ICollection<User> Users
         {
             get;
             set;
         }
-
-        public virtual DateTime? DateUpdated
-        {
-            get;
-            set;
-        }
-
-        public virtual List<User> Users
-        {
-            get;
-            set;
-        }
+        public virtual ICollection<Permission> Permissions { get; set; }
+        [StringLength(50)]
+        public string CreatorUserId { get; set; }
+        public DateTime CreationTime { get; set; }
+        [StringLength(50)]
+        public string LastModifierUserId { get; set; }
+        public DateTime? LastModificationTime { get; set; }
     }
 }

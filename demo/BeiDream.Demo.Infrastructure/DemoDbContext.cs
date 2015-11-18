@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace BeiDream.Demo.Infrastructure
 {
-    public class DemoDbContext : BeiDreamDbContext, IDbContext
+    public class DemoDbContext : DbContextBase, IDbContext
     {
         public DemoDbContext()
             : base("BeiDreamDemo")
@@ -14,8 +14,9 @@ namespace BeiDream.Demo.Infrastructure
         }
 
         public DbSet<Role> Roles { get; set; }
-
         public DbSet<User> Users { get; set; }
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ResourceType.cs" />
     <Compile Include="Model\Permission.cs" />
-    <Compile Include="Model\PermissionValue.cs" />
-    <Compile Include="Model\Privilege.cs" />
+    <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

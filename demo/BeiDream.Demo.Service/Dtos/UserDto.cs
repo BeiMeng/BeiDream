@@ -64,7 +64,7 @@ namespace BeiDream.Demo.Service.Dtos
                 Email = entity.Email,
                 DisplayName = entity.DisplayName,
                 Enabled = entity.Enabled,
-                DateCreated = entity.DateCreated.ToChineseDateTimeString(true),
+                DateCreated = entity.CreationTime.ToChineseDateTimeString(true),
                 Version = entity.Version
             };
         }

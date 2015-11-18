@@ -1,0 +1,67 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <title>BeiDream后台管理系统 - 系统登录</title>
+    <link type="text/css" rel="stylesheet" href="/Content/projects/login/login.css" />
+    <script src="~/Scripts/jquery-easyui-1.4.3/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.browser.min.js"></script>
+    <script src="~/Scripts/jquery.jqlouds.min.js"></script>
+    <script src="/Scripts/projects/login.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+    @*顶部*@
+    <div class="top">
+        <ul>
+            <li><img src="/Content/projects/login/images/001.png" width="16" height="27" alt="" /></li>
+            <li class="top_title">BeiDream后台管理系统</li>
+        </ul>
+    </div>
+    @*内容*@
+    <div id="main">
+        <div id="cloud"></div>
+        <div class="login_background">
+            <div class="logo"></div>
+            <div class="user_login">
+                <div class="user_login_left"></div>
+                <div class="user_login_right">
+                    <div class="user_login_blank"></div>
+                    <div class="user_login_user">
+                        <input type="text" class="txtUser" id="txtUserName" />
+                    </div>
+                    <div class="user_login_password">
+                        <input type="password" class="txtPassword" id="txtPasword" />
+                    </div>
+                    <div class="user_login_verification">
+                        <div class="verification_number"><input id="txtValidateCode" type="text" class="verification"/>
+                        </div>
+                        <div class="verification_pic"></div>
+                    </div>
+                    <div class="user_login_password">
+                        <input type="checkbox" id="chkRememberMe" />
+                    </div>
+                    <ul class="user_login_operation">
+                        <li><button type="button" class="btnLogin" id="btnLogin">登录</button></li>
+                        <li><button type="button" class="btnReset" id="btnReset">重置</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*进度条*@
+    <div id="loading" class="loading">
+    </div>
+    @*底部*@
+    <div class="foot">
+        <p>© 2015 BeiDream版权所有 </p>
+    </div>
+</body>
+</html>
+
+

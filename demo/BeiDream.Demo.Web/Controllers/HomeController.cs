@@ -1,9 +1,11 @@
 ﻿using BeiDream.Utils.Logging;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using BeiDream.Demo.Web.Security.Authorization;
 
 namespace BeiDream.Demo.Web.Controllers
 {
+    [RoleAuthorize]
     public class HomeController : Controller
     {
         private static readonly ILogger Logger = LogManager.GetLogger(typeof(HomeController));

@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BeiDreamDbContext.cs" />
+    <Compile Include="DbContextBase.cs" />
     <Compile Include="Datas\EfFilterNames.cs" />
     <Compile Include="EntityFramework.DynamicFilters\DynamicFilterCommandInterceptor.cs" />
     <Compile Include="EntityFramework.DynamicFilters\DynamicFilterConstants.cs" />

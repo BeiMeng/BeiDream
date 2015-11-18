@@ -17,7 +17,7 @@ namespace BeiDream.Demo.Infrastructure
     {
         protected override void Seed(DemoDbContext context)
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5; i++)
             {
                 var role = new Role
                 {
@@ -25,18 +25,16 @@ namespace BeiDream.Demo.Infrastructure
                     Name = "系统管理员" + i,
                     Description = "执行系统管理任务的一组账户" + i,
                     IsAdmin = true,
-                    DateCreated = DateTime.Now.AddDays(i),
                     Enabled = true
                 };
                 context.Roles.Add(role);
             }
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5; i++)
             {
                 var administrator = new User
                 {
                     Id = Guid.NewGuid(),
-                    DateCreated = DateTime.Now.AddDays(i),
                     DisplayName = "管理员" + i,
                     Email = "admin@easymemo.com",
                     Name = "admin" + i,
