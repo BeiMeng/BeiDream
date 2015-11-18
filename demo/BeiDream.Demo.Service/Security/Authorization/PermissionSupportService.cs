@@ -38,12 +38,12 @@ namespace BeiDream.Demo.Service.Security.Authorization
         {
             List<Permission> permissions=new List<Permission>();
             //todo 先从缓存里获取，缓存没有就从数据库获取，在存入缓存中
-            if (resourceUri == "/Home/Test")
+            if (resourceUri == "/Systems/User" || resourceUri == "/Systems/User/Query")
             {
                 permissions.Add(new Permission("R1",false));
                 permissions.Add(new Permission("R2", false));
             }
-            if (resourceUri == "/Home/Test2")
+            if (resourceUri == "/Systems/Role" || resourceUri == "/Systems/Role/Query")
             {
                 permissions.Add(new Permission("R3", false));
                 permissions.Add(new Permission("R4", false));

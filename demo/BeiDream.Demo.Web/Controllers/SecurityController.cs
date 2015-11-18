@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BeiDream.Core.Security.Authentication;
 using BeiDream.Demo.Web.Model;
 
 
@@ -10,14 +11,27 @@ namespace BeiDream.Demo.Web.Controllers
 {
     public class SecurityController : BeiDream.Web.Mvc.ControllerBase
     {
-        // GET: Security
+        private readonly ISignInManager _signInManager;
+
+        public SecurityController(ISignInManager signInManager)
+        {
+            _signInManager = signInManager;
+        }
+
         public ActionResult LogIn()
         {
             return View();
         }
-        public ActionResult LogInA(LoginViewModel model)
+        [HttpPost]
+        public ActionResult LogIn(LoginViewModel model)
         {
-            return AjaxOkResponse("保存成功！");
+            _signInManager.SignIn(model.UserName,model.RememberMe);
+            return AjaxOkResponse("登陆成功！");
+        }
+        public ActionResult LogOut()
+        {
+            _signInManager.SignOut();
+            return View("LogIn");
         }
 
     }

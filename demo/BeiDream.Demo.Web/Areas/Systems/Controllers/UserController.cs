@@ -5,9 +5,11 @@ using BeiDream.Utils;
 using BeiDream.Web.Mvc.EasyUi;
 using System;
 using System.Web.Mvc;
+using BeiDream.Demo.Web.Security.Authorization;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
+     [RoleAuthorize]
     public class UserController : EasyUiControllerBase
     {
         private readonly IUserService _userService;

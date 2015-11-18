@@ -6,9 +6,11 @@ using System;
 using System.Web.Mvc;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Service.Dtos;
+using BeiDream.Demo.Web.Security.Authorization;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
+    [RoleAuthorize]
     public class RoleController : EasyUiControllerBase
     {
         private readonly IRoleService _roleService;

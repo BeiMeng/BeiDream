@@ -5,7 +5,7 @@ using BeiDream.Demo.Web.Security.Authorization;
 
 namespace BeiDream.Demo.Web.Controllers
 {
-    [RoleAuthorize]
+    [RoleAuthorize(true)]
     public class HomeController : Controller
     {
         private static readonly ILogger Logger = LogManager.GetLogger(typeof(HomeController));
