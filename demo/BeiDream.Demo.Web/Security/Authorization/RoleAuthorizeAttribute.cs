@@ -1,6 +1,6 @@
 ﻿using System;
 using BeiDream.Core.Security.Authorization;
-using BeiDream.Demo.Service.Security.Authorization;
+using BeiDream.Demo.Infrastructure.Security.Authorization;
 using BeiDream.Web.Mvc.Filter;
 
 namespace BeiDream.Demo.Web.Security.Authorization

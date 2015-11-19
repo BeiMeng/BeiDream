@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\RoleQuery.cs" />
     <Compile Include="Queries\UserQuery.cs" />
+    <Compile Include="Repositories\IResourceRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Services\Contracts\IRoleDomainService.cs" />

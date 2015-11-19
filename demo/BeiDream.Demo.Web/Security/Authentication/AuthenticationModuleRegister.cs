@@ -1,5 +1,5 @@
 ﻿using System.Web;
-using BeiDream.Demo.Service.Security.Authentication;
+using BeiDream.Demo.Infrastructure.Security.Authentication;
 using BeiDream.Demo.Web.Security.Authentication;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 

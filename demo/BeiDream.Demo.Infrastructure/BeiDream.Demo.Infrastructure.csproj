@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,8 +59,11 @@
     <Compile Include="Mappings\MemoEntityConfiguration.cs" />
     <Compile Include="Mappings\RoleEntityConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Security\Authentication\OwnAuthenticationModule.cs" />
+    <Compile Include="Security\Authorization\PermissionSupportService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\..\src\BeiDream.Data.Ef\BeiDream.Data.Ef.csproj">
       <Project>{9fb150c6-e1de-4422-8727-775c29df590b}</Project>
       <Name>BeiDream.Data.Ef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BeiDream.Utils\BeiDream.Utils.csproj">
+      <Project>{e2af3398-5cd1-4b41-995f-be11c7622e6e}</Project>
+      <Name>BeiDream.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\BeiDream.Demo.Domain\BeiDream.Demo.Domain.csproj">
       <Project>{1ffd3d96-d69c-4473-9fc0-de76d56cdde1}</Project>
