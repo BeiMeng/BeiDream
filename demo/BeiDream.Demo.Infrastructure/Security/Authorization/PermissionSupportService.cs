@@ -46,7 +46,7 @@ namespace BeiDream.Demo.Infrastructure.Security.Authorization
             var resource = resourceRepository.GetAll().Include(p => p.Permissions).SingleOrDefault(p=>p.Uri==resourceUri);
             resource.CheckNotNull("resource");
             var listPermissions = resource.Permissions.Where(p => p.Enabled);
-            return listPermissions.Select(item => new Permission(item.Id.ToString(), item.IsDeny)).ToList();
+            return listPermissions.Select(item => new Permission(item.RoleId.ToString(), item.IsDeny)).ToList();
 
             //if (resourceUri == "/Systems/User" || resourceUri == "/Systems/User/Query")
             //{

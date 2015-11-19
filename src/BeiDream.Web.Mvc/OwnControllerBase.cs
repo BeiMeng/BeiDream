@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace BeiDream.Web.Mvc
 {
-    public class ControllerBase : Controller
+    public class OwnControllerBase : Controller
     {
         /// <summary>
         /// 转换为Json结果

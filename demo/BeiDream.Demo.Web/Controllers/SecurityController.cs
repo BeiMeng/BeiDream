@@ -5,11 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using BeiDream.Core.Security.Authentication;
 using BeiDream.Demo.Web.Model;
+using BeiDream.Web.Mvc;
 
 
 namespace BeiDream.Demo.Web.Controllers
 {
-    public class SecurityController : BeiDream.Web.Mvc.ControllerBase
+    public class SecurityController : OwnControllerBase
     {
         private readonly ISignInManager _signInManager;
 

@@ -1,8 +1,23 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
-
-@{
-    ViewBag.Title = "错误";
-}
-
-<h1 class="text-danger">错误。</h1>
-<h2 class="text-danger">处理你的请求时出错。</h2>
+﻿@model HandleErrorInfo
+<br />
+<div class="container">
+    <div class="alert alert-error">
+        <h4>
+            Exception:
+        </h4>
+        <br />
+        <p>
+            There was a <b>@Model.Exception.GetType().Name</b> while rendering <b>@Model.ControllerName</b>'s <b>@Model.ActionName</b> action.
+        </p>
+        <p>
+            @Model.Exception.Message
+        </p>
+    </div>
+    <div class="alert">
+        <h4>
+            Stack trace:
+        </h4>
+        <br />
+        <pre>@Model.Exception.StackTrace</pre>
+    </div>
+</div>

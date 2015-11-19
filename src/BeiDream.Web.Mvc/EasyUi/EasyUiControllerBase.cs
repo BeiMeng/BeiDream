@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace BeiDream.Web.Mvc.EasyUi
 {
-    public class EasyUiControllerBase : ControllerBase
+    public class EasyUiControllerBase : OwnControllerBase
     {
         /// <summary>
         /// 转换为DataGrid输出结果
