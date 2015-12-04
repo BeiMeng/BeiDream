@@ -1,6 +1,7 @@
 ﻿using BeiDream.Demo.Domain.Model;
 using System;
 using System.Data.Entity;
+using BeiDream.Demo.Domain.Enums;
 
 namespace BeiDream.Demo.Infrastructure
 {
@@ -29,7 +30,23 @@ namespace BeiDream.Demo.Infrastructure
                 };
                 context.Roles.Add(role);
             }
-
+            for (int i = 0; i < 5; i++)
+            {
+                var resource = new Resource
+                {
+                    Id = Guid.NewGuid(),
+                    ApplicationId = null,
+                    ParentId = null,
+                    Path = "aaaa",
+                    Level = 1,
+                    SortId = null,
+                    Uri = "ffff",
+                    Name = "gggggg",
+                    Type = ResourceType.Module,
+                    Enabled = true                    
+                };
+                context.Resources.Add(resource);
+            }
             for (int i = 0; i < 5; i++)
             {
                 var administrator = new User

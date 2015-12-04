@@ -18,6 +18,11 @@ namespace BeiDream.Web.Mvc.EasyUi
             return ToJsonResult(new { total = totalCount, rows = data });
         }
 
+        public ActionResult  ToDataTreeGridResult(IEnumerable<IEeasyUiTreeNode> data, bool isAyncLoad = false, int totalCount = -1)
+        {
+            throw new Exception();
+        }
+
         #region 分页设置
 
         /// <summary>

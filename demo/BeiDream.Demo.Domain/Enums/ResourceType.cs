@@ -6,10 +6,15 @@ namespace BeiDream.Demo.Domain.Enums {
     /// </summary>
     public enum ResourceType {
         /// <summary>
-        /// 模块(菜单)
+        /// 模块
         /// </summary>
-        [Description( "模块(菜单)" )]
-        Module = 1,
+        [Description("模块")]
+        Module = 0,
+        /// <summary>
+        /// 菜单
+        /// </summary>
+        [Description( "菜单" )]
+        Menu = 1,
         /// <summary>
         /// 操作(按钮)
         /// </summary>

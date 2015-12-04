@@ -9,7 +9,7 @@ using BeiDream.Demo.Web.Security.Authorization;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
-     [RoleAuthorize]
+     //[RoleAuthorize]
     public class UserController : EasyUiControllerBase
     {
         private readonly IUserService _userService;

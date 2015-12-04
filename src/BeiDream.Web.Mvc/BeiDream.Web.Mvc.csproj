@@ -81,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AjaxResponse.cs" />
+    <Compile Include="EasyUi\EeasyUiTreeNode.cs" />
+    <Compile Include="EasyUi\IEeasyUiTreeNode.cs" />
+    <Compile Include="EasyUi\ITreeNode.cs" />
     <Compile Include="OwnControllerBase.cs" />
     <Compile Include="Dependency\ControllerConventionalRegistrar.cs" />
     <Compile Include="Dependency\MvcBootstrapper.cs" />
