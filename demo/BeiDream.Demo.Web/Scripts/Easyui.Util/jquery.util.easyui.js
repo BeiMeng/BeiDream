@@ -237,6 +237,10 @@
                 iframe[0].contentWindow.location.href = iframe[0].contentWindow.location.href;
             },
             //初始化编辑窗口
+            initAddDialog: function (options) {
+                return $.easyui.initDialogByGrid(options, null);
+            },
+            //初始化编辑窗口
             initEditDialog: function (options) {
                 return $.easyui.initDialogByGrid(options, $.easyui.editNotSelectedMessage);
             },
@@ -253,10 +257,11 @@
                 ///	<param name="id" type="String">
                 ///	业务编号
                 ///	</param>
-                if (!id) {
+                if (!id && msg) {     //id为null且警告消息不为null的时候才进行提示
                     $.easyui.message.warn(msg);
                     return false;
                 }
+                id = id === null ? "" : id;
                 options.url = $.joinUrl(options.url, "id=" + id);
                 return true;
             },

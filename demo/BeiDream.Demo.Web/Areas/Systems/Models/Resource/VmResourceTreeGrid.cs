@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Enums;
 using BeiDream.Demo.Service.Dtos;
+using BeiDream.Utils.Extensions;
 using BeiDream.Web.Mvc.EasyUi;
+using BeiDream.Web.Mvc.EasyUi.Tree;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.Resource
 {
     [AutoMapFrom(typeof(ResourceDto))]
     public class VmResourceTreeGrid : EeasyUiTreeNode
     {
-        public string Name { get; set; }
         /// <summary>
         /// 资源类型
         /// </summary>
@@ -21,7 +22,18 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Resource
         public string Uri { get; set; }
 
         public bool Enabled { get; set; }
-        public DateTime CreationTime { get; set; }
+        public string CreationTime { get; set; }
 
+    }
+
+    public static class VmResourceTreeGridExtension
+    {
+        public static VmResourceTreeGrid ToTreeGridVm(this ResourceDto dto)
+        {
+            VmResourceTreeGrid vmRoleGrid = dto.MapTo<VmResourceTreeGrid>();
+            vmRoleGrid.Type = dto.Type.ToString();
+            vmRoleGrid.CreationTime = dto.CreationTime.ToChineseDateTimeString();
+            return vmRoleGrid;
+        }
     }
 }

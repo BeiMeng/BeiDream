@@ -10,6 +10,10 @@ namespace BeiDream.Web.Mvc.EasyUi {
         /// </summary>
         string Id { get; set; }
         /// <summary>
+        /// 名称
+        /// </summary>
+        string Name { get; set; }
+        /// <summary>
         /// 父标识
         /// </summary>
         string ParentId { get; set; }

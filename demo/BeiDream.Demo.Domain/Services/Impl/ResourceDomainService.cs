@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using BeiDream.Core.Linq.Extensions;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
@@ -31,6 +33,17 @@ namespace BeiDream.Demo.Domain.Services.Impl
             result.AddRange(roles.ToList());
             return result;
         }
+
+        public List<Resource> QueryAll()
+        {
+            return ResourceRepository.GetAll().ToList();
+        }
+
+        public Resource Find(Guid id)
+        {
+            return ResourceRepository.Find(id);
+        }
+
         /// <summary>
         /// 构造前台传递的查询条件
         /// </summary>
@@ -39,6 +52,10 @@ namespace BeiDream.Demo.Domain.Services.Impl
         /// <returns></returns>
         private IQueryable<Resource> GetQueryConditions(IQueryable<Resource> queryable, ResourceQuery query)
         {
+            if (!string.IsNullOrWhiteSpace(query.Name))
+                queryable = queryable.Where(p => p.Name.Contains(query.Name));
+            if (query.Enabled != null)
+                queryable = queryable.Where(p => p.Enabled == query.Enabled);
             return queryable;
         }
     }

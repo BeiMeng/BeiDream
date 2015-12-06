@@ -1,0 +1,68 @@
+﻿@model BeiDream.Demo.Web.Areas.Systems.Models.Resource.VmResourceAddorEdit
+<script type="text/javascript">
+
+    $(function () {
+        $('#Resource').combotree({
+            //combotree的valueField为id和textField为text是默认的，不可改的
+            url: "@Url.Action("GetResources", "Resource")",
+            required: true
+        });
+        $('#Type').combobox({
+            valueField:'value',    
+            textField:'text',
+            url: "@Url.Action("GetResourceTypes", "Resource")",
+            required: true
+        });
+    });
+</script>
+    <div class="divForm">
+        <div class="formtitle">资源管理</div>
+        <form id="form" class="form" action="@Url.Action("Save", "Resource")" gridid="dg" confirm="确认是否保存吗？">
+            <dl>
+                <dt><label for="ParentId">父级名称</label></dt>
+                <dd>
+                    <input id="Resource" name="ParentId" value="@Model.ParentId" />
+                </dd>
+            </dl>
+            <dl>
+                <dt><label for="Name">资源名称</label></dt>
+                <dd>
+                    <input class="easyui-textbox" name="Name" data-options="required:true,missingMessage:'用户名不能为空',validType:'maxLength[100]'" value="@Model.Name" />
+                </dd>
+            </dl>
+            <dl>
+                <dt><label for="Type">资源类型</label></dt>
+                <dd>
+                    <input id="Type" name="Type" value="@Model.Type" />
+                </dd>
+            </dl>
+            <dl>
+                <dt><label for="Uri">资源标识</label></dt>
+                <dd>
+                    <input class="easyui-textbox" name="Uri" data-options="required:true,validType:'maxLength[200]'" value="@Model.Uri" />
+                </dd>
+            </dl>
+            <dl>
+                <dt><label for="SortId">排序号</label></dt>
+                <dd>
+                    <input class="easyui-textbox" name="SortId" data-options="required:true,validType:'maxLength[20]'" value="@Model.SortId" />
+                </dd>
+            </dl>
+            <dl>
+                <dt><label for="Enabled">启用</label></dt>
+                <dd>
+                    <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Resource/ToYesOrNoResult'" value="@Model.Enabled.ToString()" />
+                </dd>
+            </dl>
+                    @*Id是数据标识*@
+                    @Html.HiddenFor(t => t.Id)
+                    @*Version是版本号,控制并发*@
+                    @Html.HiddenFor(t => t.Version)
+                    @*防止伪造提交操作*@
+                    @Html.AntiForgeryToken()
+        </form>
+    </div>
+    <div id="dialogButtons">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.form.submit(null, null, '', '')">保 存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',width:90" onclick="$.easyui.closeDialog()">关 闭</a>
+    </div>

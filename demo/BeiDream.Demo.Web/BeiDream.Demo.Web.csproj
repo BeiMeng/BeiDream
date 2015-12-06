@@ -163,6 +163,7 @@
     <Compile Include="Areas\Systems\Controllers\ResourceController.cs" />
     <Compile Include="Areas\Systems\Controllers\RoleController.cs" />
     <Compile Include="Areas\Systems\Controllers\UserController.cs" />
+    <Compile Include="Areas\Systems\Models\Resource\VmResourceAddorEdit.cs" />
     <Compile Include="Areas\Systems\Models\Resource\VmResourceTreeGrid.cs" />
     <Compile Include="Areas\Systems\Models\Role\VmRoleAddorEdit.cs" />
     <Compile Include="Areas\Systems\Models\Role\VmRoleGrid.cs" />
@@ -199,6 +200,7 @@
     <Content Include="Scripts\Easyui.Util\jquery.util.easyui.form.js" />
     <Content Include="Scripts\Easyui.Util\jquery.util.easyui.grid.js" />
     <Content Include="Scripts\Easyui.Util\jquery.util.easyui.js" />
+    <Content Include="Scripts\Easyui.Util\jquery.util.easyui.treegrid.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\jquery.easyui.min.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\jquery.min.js" />
     <Content Include="Scripts\jquery-easyui-1.4.3\locale\easyui-lang-en.js" />
@@ -1044,6 +1046,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Systems\Views\Resource\Parts\QueryForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Systems\Views\Resource\Parts\Form.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

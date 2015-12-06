@@ -1,4 +1,8 @@
-﻿using BeiDream.AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BeiDream.AutoMapper;
+using BeiDream.Core.Domain.Uow.Interception;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Demo.Domain.Services.Impl;
@@ -16,10 +20,23 @@ namespace BeiDream.Demo.Service.Impl
         {
             _resourceDomainService = resourceDomainService;
         }
-
+        [NoUnitOfWork]
         public PagerList<ResourceDto> Query(ResourceQuery query)
         {
             return _resourceDomainService.Query(query).Convert(p => p.MapTo<ResourceDto>());
+        }
+        [NoUnitOfWork]
+        public List<ResourceDto> QueryAll()
+        {
+            var list = _resourceDomainService.QueryAll();
+            List<ResourceDto> dtos= list.Select(item => item.MapTo<ResourceDto>()).ToList();
+            return dtos;
+        }
+        [NoUnitOfWork]
+        public ResourceDto Find(Guid id)
+        {
+            var role = _resourceDomainService.Find(id);
+            return role.MapTo<ResourceDto>();
         }
     }
 }

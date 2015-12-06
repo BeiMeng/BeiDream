@@ -7,7 +7,9 @@ using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Web.Areas.Systems.Models.Resource;
+using BeiDream.Utils.Reflection;
 using BeiDream.Web.Mvc.EasyUi;
+using BeiDream.Web.Mvc.EasyUi.Tree;
 using Castle.Components.DictionaryAdapter;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
@@ -29,64 +31,43 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         public ActionResult Query(ResourceQuery query)
         {
             SetPage(query);
-            var result = _resourceService.Query(query).Convert(p => p.MapTo<VmResourceTreeGrid>());
+            var result = _resourceService.Query(query).Convert(p => p.ToTreeGridVm());
+            return ToDataTreeGridResult(result, false, result.TotalCount);
+        }
+        public PartialViewResult Add(string id)
+        {
+            return PartialView("Parts/Form", new VmResourceAddorEdit(id));
+        }
+        public PartialViewResult Edit(Guid id)
+        {
+            var dto = _resourceService.Find(id);
+            return PartialView("Parts/Form", dto.MapTo<VmResourceAddorEdit>());
+        }
 
-            //List<VmResourceTreeGrid> li = new List<VmResourceTreeGrid>();
-            //List<VmResourceTreeGrid> li2 = new List<VmResourceTreeGrid>();
-            //List<VmResourceTreeGrid> li3 = new List<VmResourceTreeGrid>();
-            //VmResourceTreeGrid v1=new VmResourceTreeGrid();
-            //v1.Id = Guid.NewGuid().ToString();
-            //v1.Name = "系统管理";
-            //v1.Uri = "xtgl";
-            //v1.Type = "模块";
-            //v1.state = "closed";
-            //v1.Enabled = true;
-            //v1.DateCreated = DateTime.Now;
-            //v1.children = li2;
-            //li.Add(v1);
-            //VmResourceTreeGrid v2 = new VmResourceTreeGrid();
-            //v2.Id = Guid.NewGuid().ToString();
-            //v2.Name = "应用管理";
-            //v2.Uri = "yygl";
-            //v2.Type = "模块";
-            //v2.state = "closed";
-            //v2.Enabled = true;
-            //v2.DateCreated = DateTime.Now;
-            //v2.children = li3;
-            //li.Add(v2);
-            //VmResourceTreeGrid item5 = new VmResourceTreeGrid();
-            //item5.Id = Guid.NewGuid().ToString();
-            //item5.Name = "资源管理";
-            //item5.Type = "菜单";
-            //item5.Uri = "/Systems/Resource";
-            //item5.state = "closed";
-            //item5.Enabled = true;
-            //item5.DateCreated = DateTime.Now;
-            //item5.children = null;
-            //li2.Add(item5);
-
-            //VmResourceTreeGrid item = new VmResourceTreeGrid();
-            //item.Id = Guid.NewGuid().ToString();
-            //item.Name = "用户管理";
-            //item.Type = "菜单";
-            //item.Uri = "/Systems/User";
-            //item.state = "closed";
-            //item.Enabled = true;
-            //item.DateCreated = DateTime.Now;
-            //item.children = null;
-            //li3.Add(item);
-            //VmResourceTreeGrid item2 = new VmResourceTreeGrid();
-            //item2.Id = Guid.NewGuid().ToString();
-            //item2.Name = "角色管理";
-            //item2.Uri = "/Systems/Role";
-            //item2.Type = "菜单";
-            //item2.state = "closed";
-            //item2.Enabled = true;
-            //item2.DateCreated = DateTime.Now;
-            //item2.children = null;
-            //li3.Add(item2);
-            return ToDataTreeGridResult(result, true, result.TotalCount);
-            //return ToDataGridResult(li, 5);
+        public ActionResult Save(VmResourceAddorEdit vm)
+        {
+            return AjaxOkResponse("保存成功！");
+        }
+        [HttpPost]
+        public ActionResult Delete(string ids)
+        {
+            //_resourceService.Delete(new Guid(ids));
+            return AjaxOkResponse("删除成功！");
+        }
+        public ActionResult GetResources()
+        {
+            var list = _resourceService.QueryAll();
+            List<VmResourceTreeGrid> dtos = list.Select(item => item.MapTo<VmResourceTreeGrid>()).ToList();
+            return ToJsonResult(new EasyUiTreeData(dtos).GetNodes());
+        }
+        public ActionResult GetResourceTypes()
+        {
+            //todo，设计成通用的，传入枚举类型，自动生成下拉列表模式
+            List<EasyUiCombobox> list=new List<EasyUiCombobox>();
+            list.Add(new EasyUiCombobox() { value = "Module", text = "模块", group = "" });
+            list.Add(new EasyUiCombobox() { value = "Menu", text = "菜单", group = "" });
+            list.Add(new EasyUiCombobox() { value = "Operation", text = "操作(按钮)", group = "" });
+            return ToJsonResult(list);
         }
     }
 }

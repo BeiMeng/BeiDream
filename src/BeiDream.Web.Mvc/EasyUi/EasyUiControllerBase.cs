@@ -1,7 +1,12 @@
 ﻿using BeiDream.Utils.PagerHelper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.WebPages;
+using BeiDream.Utils.Extensions;
+using BeiDream.Web.Mvc.EasyUi.Tree;
 
 namespace BeiDream.Web.Mvc.EasyUi
 {
@@ -20,9 +25,15 @@ namespace BeiDream.Web.Mvc.EasyUi
 
         public ActionResult  ToDataTreeGridResult(IEnumerable<IEeasyUiTreeNode> data, bool isAyncLoad = false, int totalCount = -1)
         {
-            throw new Exception();
+            return ToJsonResult(new { total = totalCount, rows = new EasyUiTreeData(data, isAyncLoad).GetNodes() });
         }
-
+        public ActionResult ToYesOrNoResult()
+        {
+            List<EasyUiCombobox> list = new List<EasyUiCombobox>();
+            list.Add(new EasyUiCombobox() { value = "True", text = "是", group = "" });
+            list.Add(new EasyUiCombobox() { value = "False", text = "否", group = "" });
+            return ToJsonResult(list);
+        }
         #region 分页设置
 
         /// <summary>

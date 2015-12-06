@@ -1,4 +1,5 @@
 ﻿using System;
+using BeiDream.Utils.Reflection;
 
 namespace BeiDream.Utils.Extensions
 {
@@ -7,6 +8,7 @@ namespace BeiDream.Utils.Extensions
     /// </summary>
     public static class EnumExtensions
     {
+        #region 获取成员值
         /// <summary>
         /// 获取成员值
         /// </summary>
@@ -27,6 +29,8 @@ namespace BeiDream.Utils.Extensions
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentNullException("member");
             return (int)Enum.Parse(type, value, true);
-        }
+        } 
+        #endregion
+
     }
 }

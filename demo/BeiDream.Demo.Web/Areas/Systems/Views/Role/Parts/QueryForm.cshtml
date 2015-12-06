@@ -10,13 +10,13 @@
         <dl>
             <dt><label for="Enable">是否管理员</label></dt>
             <dd>
-                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50" name="IsAdmin"><option value="false">否</option><option value="true">是</option></select>
+                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Role/ToYesOrNoResult'"/>
             </dd>
         </dl>
         <dl>
             <dt><label for="Enable">是否启用</label></dt>
             <dd>
-                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50" name="Enabled"><option value="false">否</option><option value="true">是</option></select>
+                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Role/ToYesOrNoResult'"/>
             </dd>
         </dl>
         <span class="button">

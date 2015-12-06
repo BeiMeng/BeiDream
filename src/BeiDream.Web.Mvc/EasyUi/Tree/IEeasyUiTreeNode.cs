@@ -1,9 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace BeiDream.Web.Mvc.EasyUi
+namespace BeiDream.Web.Mvc.EasyUi.Tree
 {
     public interface IEeasyUiTreeNode : ITreeNode
     {
+        /// <summary>
+        /// 标识
+        /// </summary>
+        string id { get; }
+        /// <summary>
+        /// 名称
+        /// </summary>
+        string text { get; }
         object attributes { get; set; }
         bool? @checked { get; set; }
         string iconClass { get; set; }

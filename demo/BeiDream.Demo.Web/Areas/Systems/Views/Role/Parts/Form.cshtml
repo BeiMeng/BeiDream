@@ -23,7 +23,7 @@
         <dl>
             <dt><label for="Enabled">启用</label></dt>
             <dd>
-                <select class="easyui-combobox" data-options="editable:false,panelHeight:'auto',width:50,required:true,missingMessage:'启用不能为空'" name="Enabled"><option value="false" selected="selected">否</option><option value="true">是</option></select>
+                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Role/ToYesOrNoResult'" value="@Model.Enabled.ToString()" />
             </dd>
         </dl>
         @*Id是数据标识*@
