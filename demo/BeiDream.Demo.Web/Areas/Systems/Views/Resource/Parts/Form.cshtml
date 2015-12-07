@@ -54,7 +54,8 @@
                 </dd>
             </dl>
             @*Id是数据标识*@
-            @Html.HiddenFor(t => t.Id)
+            <input data-val="true"  id="Id" name="Id" type="hidden" value="@Model.Id" />
+            @*@Html.HiddenFor(t => t.Id)*@
             @*Version是版本号,控制并发*@
             @Html.HiddenFor(t => t.Version)
             @*防止伪造提交操作*@

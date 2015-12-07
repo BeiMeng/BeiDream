@@ -47,21 +47,21 @@ namespace BeiDream.Demo.Domain.Services.Impl
         public void AddorUpdate(Resource entity)
         {
             var model = ResourceRepository.Find(entity.Id);
-            
+            Resource resourceParent = entity.ParentId == null ? null : ResourceRepository.Find((Guid)entity.ParentId);
             if (model == null)
             {
-                entity.Path = "aaa";
+                entity.FixPathAndLevel(resourceParent);
                 ResourceRepository.Add(entity);
             }
             else
             {
-                model.Path = "aaa";
+                model.FixPathAndLevel(resourceParent);
                 //model.Id = entity.Id;
                 model.ApplicationId = entity.ApplicationId;
                 model.ParentId = entity.ParentId;
                 model.Name = entity.Name;
                 //model.Path = entity.Path;
-                model.Level = entity.Level;
+                //model.Level = entity.Level;
                 model.SortId = entity.SortId;
                 model.Uri = entity.Uri;
                 model.Type = entity.Type;

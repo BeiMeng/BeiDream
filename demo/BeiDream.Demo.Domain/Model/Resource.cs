@@ -41,5 +41,25 @@ namespace BeiDream.Demo.Domain.Model
         [StringLength(50)]
         public string LastModifierUserId { get; set; }
         public DateTime? LastModificationTime { get; set; }
+
+
+        #region 充血模型方法体
+
+        /// <summary>
+        /// 修正树形数据的物理路径和层级
+        /// </summary>
+        /// <param name="parent"></param>
+        public void FixPathAndLevel(Resource parent)
+        {
+            if (Equals(parent, null))
+            {
+                Level = 1;
+                Path = Id.ToString() + ",";
+                return;
+            }
+            Level = parent.Level + 1;
+            Path = string.Format("{0}{1},", parent.Path, Id);
+        } 
+        #endregion
     }
 }
