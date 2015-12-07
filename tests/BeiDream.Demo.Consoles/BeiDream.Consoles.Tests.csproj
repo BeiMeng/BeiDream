@@ -7,8 +7,8 @@
     <ProjectGuid>{FAB4A2BC-7336-4137-A7DF-BCD3D9C6583F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BeiDream.Demo.Consoles</RootNamespace>
-    <AssemblyName>BeiDream.Demo.Consoles</AssemblyName>
+    <RootNamespace>BeiDream.Consoles.Tests</RootNamespace>
+    <AssemblyName>BeiDream.Consoles.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

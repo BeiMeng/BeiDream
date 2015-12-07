@@ -37,7 +37,7 @@ namespace BeiDream.Web.Mvc.EasyUi.Tree
             var result = new List<IEeasyUiTreeNode>();
             if (_nodes == null)
                 return result;
-            foreach (var root in _nodes.Where(IsRoot))
+            foreach (var root in _nodes.Where(IsRoot).OrderBy(p=>p.SortId))
                 AddNode(result, root);
             return result;
         }
@@ -93,7 +93,7 @@ namespace BeiDream.Web.Mvc.EasyUi.Tree
         /// </summary>
         private List<IEeasyUiTreeNode> GetChilds(IEeasyUiTreeNode node)
         {
-            return _nodes.Where(t => t.ParentId == node.Id).ToList();
+            return _nodes.Where(t => t.ParentId == node.Id).OrderBy(p=>p.SortId).ToList();
         }
     }
 }

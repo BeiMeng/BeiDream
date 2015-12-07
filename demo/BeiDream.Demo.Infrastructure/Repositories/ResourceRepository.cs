@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BeiDream.Data.Ef;
 using BeiDream.Data.Ef.Repositories;
@@ -16,5 +17,14 @@ namespace BeiDream.Demo.Infrastructure.Repositories
         {
         }
 
+        public List<Resource> GetChildrenNodes(Guid parentId)
+        {
+            return this.GetAll().Where(p => p.ParentId == parentId).OrderBy(p => p.SortId).ToList();
+        }
+
+        public List<Resource> GetAllNodes(Guid parentId)
+        {
+            return this.GetAll().Where(p => p.Path.StartsWith(parentId.ToString()) && p.Id != parentId).OrderBy(p => p.SortId).ToList();
+        }
     }
 }

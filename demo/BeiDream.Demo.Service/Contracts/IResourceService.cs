@@ -12,5 +12,11 @@ namespace BeiDream.Demo.Service.Contracts
         PagerList<ResourceDto> Query(ResourceQuery query);
         List<ResourceDto> QueryAll();
         ResourceDto Find(Guid id);
+        void AddorUpdate(ResourceDto dto);
+        /// <summary>
+        /// 树形结构数据删除模式，节点删除，相应的它的所有子节点全部删除
+        /// </summary>
+        /// <param name="id"></param>
+        void DeleteTree(Guid id);
     }
 }

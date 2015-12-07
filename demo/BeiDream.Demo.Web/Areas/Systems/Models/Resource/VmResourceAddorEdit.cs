@@ -15,7 +15,8 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Resource
         public VmResourceAddorEdit(string parentId)
         {
             if(!string.IsNullOrWhiteSpace(parentId))
-                ParentId=new Guid(parentId);               
+                ParentId=new Guid(parentId);
+           Id=Guid.NewGuid();    
         }
         public Guid Id { get; set; }
         public string Name { get; set; }

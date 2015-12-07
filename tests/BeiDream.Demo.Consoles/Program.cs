@@ -1,8 +1,7 @@
-﻿using BeiDream.Core.Dependency;
-using BeiDream.Demo.Service;
-using System;
+﻿using System;
+using BeiDream.Core.Dependency;
 
-namespace BeiDream.Demo.Consoles
+namespace BeiDream.Consoles.Tests
 {
     internal class Program
     {

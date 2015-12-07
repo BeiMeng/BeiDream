@@ -4,8 +4,7 @@
     $(function () {
         $('#Resource').combotree({
             //combotree的valueField为id和textField为text是默认的，不可改的
-            url: "@Url.Action("GetResources", "Resource")",
-            required: true
+            url: "@Url.Action("GetResources", "Resource")"
         });
         $('#Type').combobox({
             valueField:'value',    
@@ -17,7 +16,7 @@
 </script>
     <div class="divForm">
         <div class="formtitle">资源管理</div>
-        <form id="form" class="form" action="@Url.Action("Save", "Resource")" gridid="dg" confirm="确认是否保存吗？">
+        <form id="form" class="form" action="@Url.Action("Save", "Resource")" gridid="treegrid" confirm="确认是否保存吗？">
             <dl>
                 <dt><label for="ParentId">父级名称</label></dt>
                 <dd>
@@ -54,15 +53,15 @@
                     <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Resource/ToYesOrNoResult'" value="@Model.Enabled.ToString()" />
                 </dd>
             </dl>
-                    @*Id是数据标识*@
-                    @Html.HiddenFor(t => t.Id)
-                    @*Version是版本号,控制并发*@
-                    @Html.HiddenFor(t => t.Version)
-                    @*防止伪造提交操作*@
-                    @Html.AntiForgeryToken()
+            @*Id是数据标识*@
+            @Html.HiddenFor(t => t.Id)
+            @*Version是版本号,控制并发*@
+            @Html.HiddenFor(t => t.Version)
+            @*防止伪造提交操作*@
+            @Html.AntiForgeryToken()
         </form>
     </div>
     <div id="dialogButtons">
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.form.submit(null, null, '', '')">保 存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.form.submit(null, null, '')">保 存</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',width:90" onclick="$.easyui.closeDialog()">关 闭</a>
     </div>

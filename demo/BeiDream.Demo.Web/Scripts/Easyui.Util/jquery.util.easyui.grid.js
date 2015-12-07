@@ -85,7 +85,7 @@
 
                 //删除成功回调函数
                 function deleteSuccess(result) {
-                    grid.datagrid('reload');
+                    gridId.toLowerCase() === "treegrid" ? grid.treegrid("reload") : grid.datagrid("reload");
                     $.easyui.showMessage(result);
                 }
             },

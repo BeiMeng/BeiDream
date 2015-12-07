@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Service.Contracts;
+using BeiDream.Demo.Service.Dtos;
 using BeiDream.Demo.Web.Areas.Systems.Models.Resource;
 using BeiDream.Utils.Reflection;
 using BeiDream.Web.Mvc.EasyUi;
@@ -46,12 +47,13 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 
         public ActionResult Save(VmResourceAddorEdit vm)
         {
+            _resourceService.AddorUpdate(vm.MapTo<ResourceDto>());
             return AjaxOkResponse("保存成功！");
         }
         [HttpPost]
         public ActionResult Delete(string ids)
         {
-            //_resourceService.Delete(new Guid(ids));
+            _resourceService.DeleteTree(new Guid(ids));
             return AjaxOkResponse("删除成功！");
         }
         public ActionResult GetResources()

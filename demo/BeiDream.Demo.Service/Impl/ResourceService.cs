@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BeiDream.AutoMapper;
 using BeiDream.Core.Domain.Uow.Interception;
+using BeiDream.Demo.Domain.Model;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Demo.Domain.Services.Impl;
@@ -37,6 +38,16 @@ namespace BeiDream.Demo.Service.Impl
         {
             var role = _resourceDomainService.Find(id);
             return role.MapTo<ResourceDto>();
+        }
+
+        public void AddorUpdate(ResourceDto dto)
+        {
+            _resourceDomainService.AddorUpdate(dto.MapTo<Resource>());
+        }
+
+        public void DeleteTree(Guid id)
+        {
+            _resourceDomainService.DeleteTree(id);
         }
     }
 }

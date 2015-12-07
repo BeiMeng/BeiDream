@@ -1,6 +1,6 @@
 ﻿using BeiDream.Core.Dependency;
 
-namespace BeiDream.Demo.Consoles
+namespace BeiDream.Consoles.Tests
 {
     public class ConsolesBootstrapper : Bootstrapper
     {

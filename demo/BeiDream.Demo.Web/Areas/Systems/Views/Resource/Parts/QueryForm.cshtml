@@ -1,6 +1,6 @@
 ﻿@model BeiDream.Demo.Domain.Queries.ResourceQuery
 <div id="divQuery" class="divQueryForm">
-    <form id="formQuery" class="form" gridid="dg">
+    <form id="formQuery" class="form" gridid="treegrid">
         <dl>
             <dt><label for="Name">资源名称</label></dt>
             <dd>
@@ -10,12 +10,12 @@
         <dl>
             <dt><label for="Enable">是否启用</label></dt>
             <dd>
-                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Resource/ToYesOrNoResult'"/>
+                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Resource/ToYesOrNoResult'" />
             </dd>
         </dl>
         <span class="button">
             @*<a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-search'" onclick="$.easyui.grid.Query('formQuery', 'dg')">查 询</a>*@
-            <input type="button" value="查   询" onclick="$.easyui.treegrid.Query('formQuery', 'dg')" />
+            <input type="button" value="查   询" onclick="$.easyui.treegrid.Query('formQuery', 'treegrid')" />
         </span>
     </form>
 </div>

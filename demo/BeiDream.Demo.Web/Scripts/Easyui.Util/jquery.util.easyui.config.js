@@ -90,6 +90,7 @@
     $.easyui.lookNotSelectedMessage = "请选择待查看的记录";
     $.easyui.deleteNotSelectedMessage = "请选择待删除的记录";
     $.easyui.deleteConfirmMessage = "您确定删除选中的记录吗?";
+    $.easyui.deleteTreeConfirmMessage = "选中数据的子节点数据都会被删除，您确定删除选中的记录吗?";
     $.easyui.saveNotChangeMessage = "没有需要保存的记录";
     $.easyui.notCheckedMessage = "请勾选需要操作的记录";
     $.easyui.moveUpNotSelectedMessage = "请选择需要上移的记录";

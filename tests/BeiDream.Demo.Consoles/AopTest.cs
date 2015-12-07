@@ -1,15 +1,15 @@
-﻿using BeiDream.Core.Dependency;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using BeiDream.Core.Dependency;
 using BeiDream.Utils.Logging;
 using BeiDream.Utils.Reflection;
 using Castle.Core;
 using Castle.DynamicProxy;
 using Castle.MicroKernel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
-namespace BeiDream.Demo.Service
+namespace BeiDream.Consoles.Tests
 {
     public class AopTest
     {

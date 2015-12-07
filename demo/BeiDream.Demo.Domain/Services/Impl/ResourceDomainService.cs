@@ -44,6 +44,43 @@ namespace BeiDream.Demo.Domain.Services.Impl
             return ResourceRepository.Find(id);
         }
 
+        public void AddorUpdate(Resource entity)
+        {
+            var model = ResourceRepository.Find(entity.Id);
+            
+            if (model == null)
+            {
+                entity.Path = "aaa";
+                ResourceRepository.Add(entity);
+            }
+            else
+            {
+                model.Path = "aaa";
+                //model.Id = entity.Id;
+                model.ApplicationId = entity.ApplicationId;
+                model.ParentId = entity.ParentId;
+                model.Name = entity.Name;
+                //model.Path = entity.Path;
+                model.Level = entity.Level;
+                model.SortId = entity.SortId;
+                model.Uri = entity.Uri;
+                model.Type = entity.Type;
+                model.Enabled = entity.Enabled;
+                //model.Version = entity.Version;
+            }
+        }
+
+        public void DeleteTree(Guid id)
+        {
+            var resource = ResourceRepository.Find(id);
+            List<Resource> resources = ResourceRepository.GetAllNodes(id);
+            ResourceRepository.Delete(resource);
+            foreach (var item in resources)
+            {
+                ResourceRepository.Delete(item);
+            }
+        }
+
         /// <summary>
         /// 构造前台传递的查询条件
         /// </summary>
