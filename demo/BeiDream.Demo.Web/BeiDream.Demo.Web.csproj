@@ -1050,6 +1050,9 @@
   <ItemGroup>
     <Content Include="Areas\Systems\Views\Resource\Parts\Form.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Systems\Views\Role\Parts\RolePermissions.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

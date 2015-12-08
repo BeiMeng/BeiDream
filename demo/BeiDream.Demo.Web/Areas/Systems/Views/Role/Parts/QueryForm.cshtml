@@ -1,6 +1,6 @@
 ﻿@model BeiDream.Demo.Domain.Queries.RoleQuery
 <div id="divQuery" class="divQueryForm">
-    <form id="formQuery" class="form" gridid="dg">
+    <form id="formQuery" class="form" gridid="grid">
         <dl>
             <dt><label for="Name">角色名</label></dt>
             <dd>
@@ -10,18 +10,18 @@
         <dl>
             <dt><label for="Enable">是否管理员</label></dt>
             <dd>
-                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Role/ToYesOrNoResult'"/>
+                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Role/ToYesOrNoResult'" />
             </dd>
         </dl>
         <dl>
             <dt><label for="Enable">是否启用</label></dt>
             <dd>
-                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Role/ToYesOrNoResult'"/>
+                <input class="easyui-combobox" name="Enabled" data-options="valueField:'value',textField:'text',url:'/Role/ToYesOrNoResult'" />
             </dd>
         </dl>
         <span class="button">
             @*<a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-search'" onclick="$.easyui.grid.Query('formQuery', 'dg')">查 询</a>*@
-            <input type="button" value="查询" onclick="$.easyui.grid.Query('formQuery', 'dg')" />
+            <input type="button" value="查询" onclick="$.easyui.grid.Query('formQuery', 'grid')" />
         </span>
     </form>
 </div>

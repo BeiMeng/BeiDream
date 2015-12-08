@@ -21,18 +21,19 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-remove'" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "User")','', 'dg')">删 除</a>*@
         <input type="button" value="新   增" onclick="$.easyui.Showdialog({ title: '添加角色', buttons: 'dialogButtons', url: '@Url.Action("Add", "Role")' })" />
         <input type="button" value="修   改" onclick="$.easyui.Showdialog({ title: '编辑角色', buttons: 'dialogButtons', url: '@Url.Action("Edit", "Role")', onInit: $.easyui.initEditDialog })" />
-        <input type="button" value="删   除" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Role")','', 'dg')" />
+        <input type="button" value="删   除" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Role")', '', 'grid')" />
+        <input type="button" value="设置权限" onclick="$.easyui.Showdialog({ title: '设置权限', buttons: 'dialogButtons', url: '@Url.Action("EditResources", "Role")', onInit: $.easyui.initEditDialog })" />
     </div>
 }
 @section content {
     @*查询表单*@
     @Html.Partial("Parts/QueryForm")
-    <table id="dg"></table>
+    <table id="grid"></table>
 }
 @section Scripts {
     <script type="text/javascript">
         $(function () {
-            $('#dg').datagrid({
+            $('#grid').datagrid({
                 idField: "Id",
                 fit: true,
                 toolbar: "#divQuery",
@@ -49,7 +50,7 @@
                     { field: 'Name', title: '角色名', sortable: true, width: 100, halign: "center" },
                     { field: 'IsAdmin', title: '是否管理员', align: 'right', width: 100, halign: "center", formatter: $.easyui.format.Bool },
                     { field: 'Enabled', title: '是否启用', align: 'right', sortable: true, width: 100, halign: "center", formatter: $.easyui.format.Bool },
-                    { field: 'DateCreated', title: '创建时间', align: 'right', sortable: true, width: 100, halign: "center" }
+                    { field: 'CreationTime', title: '创建时间', align: 'right', sortable: true, width: 100, halign: "center" }
                 ]]
             });
         });

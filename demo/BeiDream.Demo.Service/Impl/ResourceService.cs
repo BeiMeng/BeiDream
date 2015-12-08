@@ -49,5 +49,10 @@ namespace BeiDream.Demo.Service.Impl
         {
             _resourceDomainService.DeleteTree(id);
         }
+        [NoUnitOfWork]
+        public PagerList<ResourceDto> Query(ResourceQuery query, Guid roleId)
+        {
+            return _resourceDomainService.Query(query).Convert(p => p.ToDto(roleId));
+        }
     }
 }

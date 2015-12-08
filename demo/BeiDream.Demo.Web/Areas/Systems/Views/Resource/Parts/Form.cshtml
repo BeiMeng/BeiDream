@@ -16,7 +16,7 @@
 </script>
     <div class="divForm">
         <div class="formtitle">资源管理</div>
-        <form id="form" class="form" action="@Url.Action("Save", "Resource")" gridid="treegrid" confirm="确认是否保存吗？">
+        <form id="form" class="form" action="@Url.Action("Save", "Resource")" gridid="treeGrid" confirm="确认是否保存吗？">
             <dl>
                 <dt><label for="ParentId">父级名称</label></dt>
                 <dd>
@@ -54,7 +54,7 @@
                 </dd>
             </dl>
             @*Id是数据标识*@
-            <input data-val="true"  id="Id" name="Id" type="hidden" value="@Model.Id" />
+            <input data-val="true" id="Id" name="Id" type="hidden" value="@Model.Id" />
             @*@Html.HiddenFor(t => t.Id)*@
             @*Version是版本号,控制并发*@
             @Html.HiddenFor(t => t.Version)

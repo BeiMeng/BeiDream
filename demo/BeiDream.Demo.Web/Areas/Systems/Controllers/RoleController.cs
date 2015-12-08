@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Service.Dtos;
 using BeiDream.Demo.Web.Security.Authorization;
+using BeiDream.Utils;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
@@ -72,6 +73,27 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             SetPage(query);
             var result = _roleService.Query(query, userId).Convert(p => p.ToGridVm());
             return ToDataGridResult(result, result.TotalCount);
+        }
+
+        /// <summary>
+        /// 显示设置界面
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public PartialViewResult EditResources(Guid id)
+        {
+            return PartialView("Parts/RolePermissions", id);
+        }
+        /// <summary>
+        /// 保存用户操作的资源设置信息
+        /// </summary>
+        /// <param name="roleId">当前设置的角色id</param>
+        /// <param name="ids">选中的资源id集合</param>
+        /// <returns></returns>
+        public ActionResult SetRoles(Guid roleId, string ids)
+        {
+            _roleService.SetPermissions(roleId, ConvertHelper.ToList<Guid>(ids));
+            return AjaxOkResponse("保存成功！");
         }
     }
 }

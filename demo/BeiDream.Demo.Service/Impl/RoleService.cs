@@ -5,6 +5,7 @@ using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
 using BeiDream.Utils.PagerHelper;
 using System;
+using System.Collections.Generic;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Model;
 
@@ -49,6 +50,11 @@ namespace BeiDream.Demo.Service.Impl
         public PagerList<RoleDto> Query(RoleQuery query, Guid userId)
         {
             return _roleDomainService.Query(query).Convert(item => item.ToDto(userId));
+        }
+
+        public void SetPermissions(Guid roleId, List<Guid> resourceIds)
+        {
+            throw new NotImplementedException();
         }
     }
 }

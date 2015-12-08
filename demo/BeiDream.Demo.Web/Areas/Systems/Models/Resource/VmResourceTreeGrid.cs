@@ -23,6 +23,10 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Resource
 
         public bool Enabled { get; set; }
         public string CreationTime { get; set; }
+        /// <summary>
+        /// 选中（当前资源是否属于选择的角色）
+        /// </summary>
+        public bool Checked { get; set; }
 
     }
 

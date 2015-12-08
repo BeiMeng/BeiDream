@@ -21,18 +21,18 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-remove'" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "User")','', 'dg')">删 除</a>*@
         <input type="button" value="新   增" onclick="$.easyui.Showdialog({ title: '添加资源', buttons: 'dialogButtons', url: '@Url.Action("Add", "Resource")', onInit: $.easyui.initAddDialog })" />
         <input type="button" value="修   改" onclick="$.easyui.Showdialog({ title: '编辑资源', buttons: 'dialogButtons', url: '@Url.Action("Edit", "Resource")', onInit: $.easyui.initEditDialog })" />
-        <input type="button" value="删   除" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Resource")','', 'treegrid')" />
+        <input type="button" value="删   除" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Resource")','', 'treeGrid')" />
     </div>
 }
 @section content {
     @*查询表单*@
     @Html.Partial("Parts/QueryForm")
-    <table id="treegrid"></table>
+    <table id="treeGrid"></table>
 }
 @section Scripts {
     <script type="text/javascript">
         $(function () {
-            $('#treegrid').treegrid({
+            $('#treeGrid').treegrid({
                 idField: "Id",
                 treeField: 'Name',
                 fit: true,

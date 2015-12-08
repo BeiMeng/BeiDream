@@ -18,5 +18,12 @@ namespace BeiDream.Demo.Service.Contracts
         /// </summary>
         /// <param name="id"></param>
         void DeleteTree(Guid id);
+        /// <summary>
+        ///查询角色数据
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <param name="roleId">角色ID,与此角色ID关联的资源checked属性设置为true</param>
+        /// <returns></returns>
+        PagerList<ResourceDto> Query(ResourceQuery query, Guid roleId);
     }
 }

@@ -5,6 +5,7 @@ using BeiDream.Demo.Domain.Repositories;
 using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Utils.PagerHelper;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BeiDream.Demo.Domain.Services.Impl
@@ -91,6 +92,16 @@ namespace BeiDream.Demo.Domain.Services.Impl
         {
             var role = RoleRepository.Find(id);
             RoleRepository.Delete(role);
+        }
+
+        public void SetPermissions(Guid roleId, List<Guid> resourceIds)
+        {
+            var role = RoleRepository.Find(roleId);
+            if (role == null)
+                throw new Exception("设置角色不存在");
+            //先把角色的资源权限信息全删除
+            role.Permissions.Clear();
+
         }
     }
 }
