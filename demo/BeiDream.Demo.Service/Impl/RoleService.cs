@@ -54,7 +54,7 @@ namespace BeiDream.Demo.Service.Impl
 
         public void SetPermissions(Guid roleId, List<Guid> resourceIds)
         {
-            throw new NotImplementedException();
+            _roleDomainService.SetPermissions(roleId,resourceIds);
         }
     }
 }

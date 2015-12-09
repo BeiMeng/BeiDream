@@ -90,7 +90,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         /// <param name="roleId">当前设置的角色id</param>
         /// <param name="ids">选中的资源id集合</param>
         /// <returns></returns>
-        public ActionResult SetRoles(Guid roleId, string ids)
+        public ActionResult SetPermissions(Guid roleId, string ids)
         {
             _roleService.SetPermissions(roleId, ConvertHelper.ToList<Guid>(ids));
             return AjaxOkResponse("保存成功！");

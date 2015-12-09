@@ -26,5 +26,12 @@ namespace BeiDream.Demo.Domain.Services.Contracts
         User Find(Guid id);
 
         void Delete(Guid id);
+        /// <summary>
+        /// 登录验证
+        /// </summary>
+        /// <param name="userNameOrEmail">用户名或邮箱</param>
+        /// <param name="password">密码</param>
+        /// <returns></returns>
+        User Login(string userNameOrEmail, string password);
     }
 }

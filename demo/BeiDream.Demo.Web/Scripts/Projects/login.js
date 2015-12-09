@@ -37,10 +37,10 @@
             dataType: "json",
             type: "POST",
             url: "/Security/LogIn",
-            data: "userName=" + $userName.val() + "&password=" + $password.val() + "&validateCode=" + $validateCode.val() + "&rememberMe=" + $rememberMe.is(':checked'),
+            data: "UserNameOrEmail=" + $userName.val() + "&password=" + $password.val() + "&validateCode=" + $validateCode.val() + "&rememberMe=" + $rememberMe.is(':checked'),
             beforeSend: function () {
                 if ($.trim($userName.val()) === "") {
-                    alert("用户名不能为空");
+                    alert("用户名或邮箱不能为空");
                     $userName.focus();
                     $userName.val("");
                     return false;

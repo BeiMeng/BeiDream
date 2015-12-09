@@ -101,7 +101,18 @@ namespace BeiDream.Demo.Domain.Services.Impl
                 throw new Exception("设置角色不存在");
             //先把角色的资源权限信息全删除
             role.Permissions.Clear();
-
+            foreach (var resourceId in resourceIds)
+            {
+                Permission permission = new Permission
+                {
+                    Id = Guid.NewGuid(),
+                    ResourceId = resourceId,
+                    RoleId = roleId,
+                    IsDeny = false,
+                    Enabled = true
+                };
+                role.Permissions.Add(permission);
+            }
         }
     }
 }

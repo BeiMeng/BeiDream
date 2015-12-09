@@ -114,5 +114,16 @@ namespace BeiDream.Demo.Domain.Services.Impl
                 throw new Exception("删除的用户不存在");
             UserRepository.Delete(user);
         }
+
+        public User Login(string userNameOrEmail, string password)
+        {
+            var user = UserRepository.GetAll().FirstOrDefault(p => p.Name == userNameOrEmail || p.Email == userNameOrEmail);
+            if(user==null)
+                throw new Exception("用户名或邮箱错误");
+            user.ValidateDisabled();
+            user.ValidatePassword(password);
+            user.UpdateLoginSuccess();
+            return user;
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace BeiDream.Demo.Service.Dtos
         public static ResourceDto ToDto(this Resource entity, Guid roleId)
         {
             ResourceDto dto = entity.MapTo<ResourceDto>();
-            dto.Checked = entity.Permissions.Where(p => p.RoleId == roleId).ToList().Count > 0;
+            dto.Checked = entity.Permissions.Any(p => p.RoleId == roleId);
             return dto;
         }
     }

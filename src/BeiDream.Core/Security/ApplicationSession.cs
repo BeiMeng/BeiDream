@@ -27,6 +27,10 @@ namespace BeiDream.Core.Security
         /// </summary>
         public string[] RoleIds { get; set; }
         /// <summary>
+        /// 是否超级管理员
+        /// </summary>
+        public bool IsAdmin { get; set; }
+        /// <summary>
         /// 当前用户安全主体
         /// </summary>
         public static OwnPrincipal User

@@ -60,5 +60,45 @@ namespace BeiDream.Demo.Domain.Model
         [StringLength(50)]
         public string LastModifierUserId { get; set; }
         public DateTime? LastModificationTime { get; set; }
+
+
+
+
+        #region ValidateDisabled(验证用户被冻结)
+
+        /// <summary>
+        /// 验证用户被冻结
+        /// </summary>
+        public void ValidateDisabled()
+        {
+            if (Enabled == false)
+                throw new Exception("当前用户已被冻结，请联系管理员！");
+        }
+
+        #endregion
+        #region ValidatePassword(验证密码)
+
+        /// <summary>
+        /// 验证密码
+        /// </summary>
+        /// <param name="password">密码,加密前的明文</param>
+        public void ValidatePassword(string password)
+        {
+            if (Password.ToLower() != password.ToLower())
+                throw new Exception("密码错误！");
+        }
+
+        #endregion
+        #region UpdateLoginSuccess(更新登录成功)
+
+        /// <summary>
+        /// 更新登录成功
+        /// </summary>
+        public void UpdateLoginSuccess()
+        {
+            DateLastLogon = DateTime.Now;
+        }
+
+        #endregion
     }
 }

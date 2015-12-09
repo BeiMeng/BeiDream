@@ -8,6 +8,7 @@ using BeiDream.Utils.Extensions;
 using BeiDream.Utils.PagerHelper;
 using System;
 using System.Collections.Generic;
+using BeiDream.AutoMapper;
 
 namespace BeiDream.Demo.Service.Impl
 {
@@ -55,6 +56,22 @@ namespace BeiDream.Demo.Service.Impl
         public void Delete(Guid id)
         {
             _userDomainService.Delete(id);
+        }
+
+        public UserDto Login(string userNameOrEmail, string password)
+        {
+            ValidateArgument(userNameOrEmail, password);
+            return _userDomainService.Login(userNameOrEmail, password).MapTo<UserDto>();
+        }
+        /// <summary>
+        /// 验证参数
+        /// </summary>
+        private void ValidateArgument(string userNameOrEmail, string password)
+        {
+            if (string.IsNullOrWhiteSpace(userNameOrEmail))
+                throw new Exception("用户名或邮箱不能为空！");
+            if (string.IsNullOrWhiteSpace(password))
+                throw new Exception("密码不能为空！");
         }
     }
 }
