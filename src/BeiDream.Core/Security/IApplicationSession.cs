@@ -17,5 +17,9 @@
         /// 角色编号列表
         /// </summary>
         string[] RoleIds { get; }
+        /// <summary>
+        /// 是否超级管理员
+        /// </summary>
+        bool IsAdmin { get; set; }
     }
 }

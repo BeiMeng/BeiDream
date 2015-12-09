@@ -8,6 +8,7 @@ using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
 using BeiDream.Demo.Web.Areas.Systems.Models.Resource;
+using BeiDream.Demo.Web.Security.Authorization;
 using BeiDream.Utils.Reflection;
 using BeiDream.Web.Mvc.EasyUi;
 using BeiDream.Web.Mvc.EasyUi.Tree;
@@ -15,6 +16,7 @@ using Castle.Components.DictionaryAdapter;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
+    [RoleAuthorize]
     public class ResourceController : EasyUiControllerBase
     {
         private readonly IResourceService _resourceService;

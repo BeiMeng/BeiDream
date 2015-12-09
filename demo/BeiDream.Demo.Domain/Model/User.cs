@@ -8,9 +8,14 @@ namespace BeiDream.Demo.Domain.Model
 {
     public class User : AggregateRoot, IAudited
     {
+        public User()
+        {
+            Roles=new List<Role>();
+        }
+
         [Required(ErrorMessage = "用户名不能为空")]
         [StringLength(16, ErrorMessage = "用户名输入过长，不能超过16位")]
-        public virtual string Name
+        public string Name
         {
             get;
             set;
@@ -18,14 +23,14 @@ namespace BeiDream.Demo.Domain.Model
 
         [Required(ErrorMessage = "密码不能为空")]
         [StringLength(8, ErrorMessage = "密码输入过长，不能超过8位")]
-        public virtual string Password
+        public string Password
         {
             get;
             set;
         }
 
         [StringLength(20, ErrorMessage = "邮箱输入过长，不能超过20位")]
-        public virtual string Email
+        public string Email
         {
             get;
             set;
@@ -33,7 +38,7 @@ namespace BeiDream.Demo.Domain.Model
 
         [Required(ErrorMessage = "昵称不能为空")]
         [StringLength(8, ErrorMessage = "昵称输入过长，不能超过8位")]
-        public virtual string DisplayName
+        public string DisplayName
         {
             get;
             set;
@@ -44,12 +49,12 @@ namespace BeiDream.Demo.Domain.Model
         /// </summary>
         public bool Enabled { get; set; }
 
-        public virtual DateTime? DateLastLogon
+        public DateTime? DateLastLogon
         {
             get;
             set;
         }
-        public virtual ICollection<Role> Roles
+        public ICollection<Role> Roles
         {
             get;
             set;

@@ -16,16 +16,24 @@ namespace BeiDream.Demo.Infrastructure.Security.Authentication
             bool isAdmin;
             ApplicationSession applicationSession = new ApplicationSession(true, name)
             {
-                RoleIds = GetRolesIdByUserId(name,out isAdmin).ToArray()
+                RoleIds = GetRolesIdByUserId(name,out isAdmin).ToArray(),
+                IsAdmin=isAdmin
             };
             return applicationSession;
         }
 
         private List<string> GetRolesIdByUserId(string userId,out bool isAdmin)
         {
+            isAdmin = false;
             var userRepository = IocManager.Instance.Resolve<IUserRepository>();
             var user = userRepository.GetAll().Include(p => p.Roles).FirstOrDefault(p => p.Id == new Guid(userId));
-            isAdmin = false;
+            if (user != null)
+            {
+                if (user.Roles.Any(role => role.IsAdmin))
+                {
+                    isAdmin = true;
+                }
+            }
             return user != null ? user.Roles.Select(role => role.Id.ToString()).ToList() : new List<string>();
 
             //if (userId == "admin")

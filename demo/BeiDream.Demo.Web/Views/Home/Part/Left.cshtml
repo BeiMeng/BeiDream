@@ -1,5 +1,12 @@
-﻿<div class="easyui-accordion" data-options="fit:true,border:false">
-    <div title="系统管理" data-options="iconCls:'icon-save'" style="overflow:auto;">
+﻿@model ICollection<BeiDream.Demo.Web.Areas.Systems.Models.Resource.VmResourceTreeGrid>
+<div class="easyui-accordion" data-options="fit:true,border:false">
+    @foreach (var p in Model)
+    {
+        <div title="@p.Name" data-options="iconCls:'@p.iconClass'">
+            
+        </div>
+    }   
+    @*<div title="系统管理" data-options="iconCls:'icon-save'" style="overflow:auto;">
         <ul id="tt"></ul>
     </div>
     <div title="Title2" data-options="iconCls:'icon-reload'" style="padding:10px;">
@@ -7,5 +14,5 @@
     </div>
     <div title="Title3">
         content3
-    </div>
+    </div>*@
 </div>

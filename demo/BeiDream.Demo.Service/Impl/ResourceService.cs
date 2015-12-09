@@ -54,5 +54,10 @@ namespace BeiDream.Demo.Service.Impl
         {
             return _resourceDomainService.Query(query).Convert(p => p.ToDto(roleId));
         }
+        [NoUnitOfWork]
+        public List<ResourceDto> GetNavigationModule(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

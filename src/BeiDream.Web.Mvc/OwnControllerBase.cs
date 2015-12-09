@@ -2,11 +2,19 @@
 using BeiDream.Web.Mvc.Web.Enum;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using BeiDream.Core.Security;
 
 namespace BeiDream.Web.Mvc
 {
     public class OwnControllerBase : Controller
     {
+        /// <summary>
+        /// 获取应用程序上下文
+        /// </summary>
+        protected IApplicationSession GetApplicationSession()
+        {
+            return ApplicationSession.Current ?? new ApplicationSession(false, "");
+        }
         /// <summary>
         /// 转换为Json结果
         /// </summary>

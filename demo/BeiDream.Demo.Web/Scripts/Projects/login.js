@@ -65,12 +65,12 @@
                     location.href = "/Home/Index";
                     return;
                 }
-                clearValidateCode();
-                if (data === "ValidateCodeError") {
-                    $validateCode.focus();
-                    alert("验证码错误");
-                    return;
-                }
+                //clearValidateCode();
+                //if (data === "ValidateCodeError") {
+                //    $validateCode.focus();
+                //    alert("验证码错误");
+                //    return;
+                //}
                 if (data.code === "S3002") {
                     $userName.val("");
                     $userName.focus();
@@ -79,7 +79,7 @@
                     $password.val("");
                     $password.focus();
                 }
-                alert(data.msg);
+                alert(data.Message);
             },
             complete: function () {
                 $("#loading").hide();

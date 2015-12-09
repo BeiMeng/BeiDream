@@ -1,5 +1,6 @@
 ﻿using BeiDream.Demo.Domain.Model;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using BeiDream.Demo.Domain.Enums;
 
@@ -18,48 +19,27 @@ namespace BeiDream.Demo.Infrastructure
     {
         protected override void Seed(DemoDbContext context)
         {
-            for (int i = 0; i < 5; i++)
+            var role = new Role
             {
-                var role = new Role
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "系统管理员" + i,
-                    Description = "执行系统管理任务的一组账户" + i,
-                    IsAdmin = true,
-                    Enabled = true
-                };
-                context.Roles.Add(role);
-            }
-            for (int i = 0; i < 5; i++)
+                Id = Guid.NewGuid(),
+                Name = "超级管理员",
+                Description = "超级管理员角色，具有所有权限",
+                IsAdmin = true,
+                Enabled = true
+            };
+            context.Roles.Add(role);
+
+            var administrator = new User
             {
-                var resource = new Resource
-                {
-                    Id = Guid.NewGuid(),
-                    ApplicationId = null,
-                    ParentId = null,
-                    Path = "aaaa",
-                    Level = 1,
-                    SortId = null,
-                    Uri = "ffff",
-                    Name = "gggggg",
-                    Type = ResourceType.Module,
-                    Enabled = true                    
-                };
-                context.Resources.Add(resource);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                var administrator = new User
-                {
-                    Id = Guid.NewGuid(),
-                    DisplayName = "管理员" + i,
-                    Email = "admin@easymemo.com",
-                    Name = "admin" + i,
-                    Enabled = true,
-                    Password = "admin" + i
-                };
-                context.Users.Add(administrator);
-            }
+                Id = Guid.NewGuid(),
+                Name = "admin",
+                DisplayName = "超级管理员",
+                Email = "331341164@qq.com",
+                Enabled = true,
+                Password = "admin",
+            };
+            administrator.Roles.Add(role);
+            context.Users.Add(administrator);
             base.Seed(context);
         }
     }

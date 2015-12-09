@@ -19,7 +19,7 @@
         @Html.Partial("Part/Top")
     </div>
     <div data-options="region:'west',title:'功能菜单',split:true,maxWidth:500" style="width: 180px;">
-        @Html.Partial("Part/Left")
+        @Html.Action("LeftNavigationModule", "Home")
     </div>
     <div data-options="region:'center'">
         @Html.Partial("Part/Center")

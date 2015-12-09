@@ -61,7 +61,7 @@ namespace BeiDream.Demo.Service.Impl
         public UserDto Login(string userNameOrEmail, string password)
         {
             ValidateArgument(userNameOrEmail, password);
-            return _userDomainService.Login(userNameOrEmail, password).MapTo<UserDto>();
+            return _userDomainService.Login(userNameOrEmail, password).ToDto();
         }
         /// <summary>
         /// 验证参数

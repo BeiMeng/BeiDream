@@ -25,5 +25,11 @@ namespace BeiDream.Demo.Service.Contracts
         /// <param name="roleId">角色ID,与此角色ID关联的资源checked属性设置为true</param>
         /// <returns></returns>
         PagerList<ResourceDto> Query(ResourceQuery query, Guid roleId);
+        /// <summary>
+        /// 获取导航菜单模块
+        /// </summary>
+        /// <param name="userId">用户Id</param>
+        /// <returns></returns>
+        List<ResourceDto> GetNavigationModule(Guid userId);
     }
 }

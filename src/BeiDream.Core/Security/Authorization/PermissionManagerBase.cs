@@ -47,6 +47,8 @@ namespace BeiDream.Core.Security.Authorization
                 return false;
             if (_ignore)
                 return true;
+            if (ValidateIsAdmin())
+                return true;
             if (!ValidateRoles(resourceUri))
                 return false;
             return true;
@@ -86,6 +88,13 @@ namespace BeiDream.Core.Security.Authorization
         {
             var result = _permissionSupportService.IsInTenant(GetName());
             return result;
+        }
+        /// <summary>
+        /// 验证是否超级管理员
+        /// </summary>
+        private bool ValidateIsAdmin()
+        {
+            return _applicationSession.IsAdmin;
         }
         /// <summary>
         /// 初始化组件
