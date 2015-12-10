@@ -65,7 +65,7 @@ namespace BeiDream.Demo.Infrastructure
                 Path = moduleId + "," + menuId+"",
                 Level = 2,
                 SortId = 1,
-                Uri = "/System/Resource",
+                Uri = "/Systems/Resource",
                 Type = ResourceType.Menu,
                 Enabled = true
             };

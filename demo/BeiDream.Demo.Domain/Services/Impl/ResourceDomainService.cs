@@ -91,11 +91,12 @@ namespace BeiDream.Demo.Domain.Services.Impl
             var user = _userRepository.Find(userId);
             if (user.Roles.Any(p => p.IsAdmin))  //用户角色含有超级管理员角色将加载全部导航模块
                 return ResourceRepository.GetAll().Where(p => p.Type == ResourceType.Module && p.Enabled).ToList();
-            return ResourceRepository.GetAll().Include(p=>p.Permissions).
+            //todo:以下代码有待改进
+            var list= ResourceRepository.GetAll().Include(p=>p.Permissions).
                 Where(item => item.Type == ResourceType.Module 
-                    && item.Enabled && 
-                    user.Roles.Any(role => item.Permissions.Any(p => p.RoleId == role.Id))).ToList();
-            //List<Resource> li= list.Where(item => user.Roles.Any(role => item.Permissions.Any(p => p.RoleId == role.Id))).ToList();           
+                    && item.Enabled).ToList();
+            List<Resource> li= list.Where(item => user.Roles.Any(role => item.Permissions.Any(p => p.RoleId == role.Id))).ToList();
+            return li;
         }
 
         public List<Resource> GetNavigationMenuInModule(Guid parentId, Guid userId)
@@ -103,10 +104,12 @@ namespace BeiDream.Demo.Domain.Services.Impl
             var user = _userRepository.Find(userId);
             if (user.Roles.Any(p => p.IsAdmin))  //用户角色含有超级管理员角色将加载当前导航模块下的所有菜单
                 return ResourceRepository.GetAllNodes(parentId).Where(p=>p.Type==ResourceType.Menu).ToList();
-            return ResourceRepository.GetAllNodes(parentId).Include(p => p.Permissions).
+            //todo:以下代码有待改进
+            var list = ResourceRepository.GetAllNodes(parentId).Include(p => p.Permissions).
                 Where(item => item.Type == ResourceType.Menu
-                    && item.Enabled &&
-                    user.Roles.Any(role => item.Permissions.Any(p => p.RoleId == role.Id))).ToList();
+                    && item.Enabled).ToList();
+            List<Resource> li = list.Where(item => user.Roles.Any(role => item.Permissions.Any(p => p.RoleId == role.Id))).ToList();
+            return li;
         }
 
         /// <summary>
