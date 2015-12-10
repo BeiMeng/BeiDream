@@ -57,7 +57,12 @@ namespace BeiDream.Demo.Service.Impl
         [NoUnitOfWork]
         public List<ResourceDto> GetNavigationModule(Guid userId)
         {
-            throw new NotImplementedException();
+            return _resourceDomainService.GetNavigationModule(userId).Select(item => item.MapTo<ResourceDto>()).ToList();
+        }
+        [NoUnitOfWork]
+        public List<ResourceDto> GetNavigationMenuInModule(Guid parentId, Guid userId)
+        {
+            return _resourceDomainService.GetNavigationMenuInModule(parentId, userId).Select(item => item.MapTo<ResourceDto>()).ToList();
         }
     }
 }

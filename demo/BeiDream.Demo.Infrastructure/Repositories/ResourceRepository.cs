@@ -17,14 +17,14 @@ namespace BeiDream.Demo.Infrastructure.Repositories
         {
         }
 
-        public List<Resource> GetChildrenNodes(Guid parentId)
+        public IQueryable<Resource> GetChildrenNodes(Guid parentId)
         {
-            return this.GetAll().Where(p => p.ParentId == parentId).OrderBy(p => p.SortId).ToList();
+            return this.GetAll().Where(p => p.ParentId == parentId).OrderBy(p => p.SortId);
         }
 
-        public List<Resource> GetAllNodes(Guid parentId)
+        public IQueryable<Resource> GetAllNodes(Guid parentId)
         {
-            return this.GetAll().Where(p => p.Path.StartsWith(parentId.ToString()) && p.Id != parentId).OrderBy(p => p.SortId).ToList();
+            return this.GetAll().Where(p => p.Path.StartsWith(parentId.ToString()) && p.Id != parentId).OrderBy(p => p.SortId);
         }
     }
 }

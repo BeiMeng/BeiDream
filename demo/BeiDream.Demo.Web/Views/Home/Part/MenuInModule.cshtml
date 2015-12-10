@@ -1,0 +1,14 @@
+﻿@model Guid
+@*<script type="text/javascript">
+    $(function () {
+
+        $('#@Model').tree({
+            queryParams: { parentId: '@Model' },
+            url: '@Url.Action("LeftNavigationMenusInModule", "Home")',
+            onClick: $.project.clickMainMenuNode
+        });
+    });
+</script>*@
+<ul class="easyui-tree" data-options="queryParams: { parentId: '@Model' },url:'@Url.Action("LeftNavigationMenusInModule", "Home")',onClick:$.project.clickMainMenuNode"></ul>
+
+

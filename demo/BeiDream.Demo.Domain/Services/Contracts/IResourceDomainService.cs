@@ -18,5 +18,19 @@ namespace BeiDream.Demo.Domain.Services.Contracts
         /// </summary>
         /// <param name="id"></param>
         void DeleteTree(Guid id);
+        /// <summary>
+        /// 获取导航菜单模块
+        /// </summary>
+        /// <param name="userId">当前登录用户Id</param>
+        /// <returns></returns>
+        List<Resource> GetNavigationModule(Guid userId);
+
+        /// <summary>
+        /// 获取导航菜单某个模块的菜单树
+        /// </summary>
+        /// <param name="parentId">父Id</param>
+        /// <param name="userId">当前登录用户Id</param>
+        /// <returns></returns>
+        List<Resource> GetNavigationMenuInModule(Guid parentId, Guid userId);
     }
 }

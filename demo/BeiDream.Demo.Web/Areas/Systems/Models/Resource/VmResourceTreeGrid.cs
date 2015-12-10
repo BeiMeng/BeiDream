@@ -37,6 +37,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Resource
             VmResourceTreeGrid vmRoleGrid = dto.MapTo<VmResourceTreeGrid>();
             vmRoleGrid.Type = dto.Type.ToString();
             vmRoleGrid.CreationTime = dto.CreationTime.ToChineseDateTimeString();
+            vmRoleGrid.attributes = new {url=vmRoleGrid.Uri};
             return vmRoleGrid;
         }
     }

@@ -28,8 +28,16 @@ namespace BeiDream.Demo.Service.Contracts
         /// <summary>
         /// 获取导航菜单模块
         /// </summary>
-        /// <param name="userId">用户Id</param>
+        /// <param name="userId">当前登录用户Id</param>
         /// <returns></returns>
         List<ResourceDto> GetNavigationModule(Guid userId);
+
+        /// <summary>
+        /// 获取导航菜单某个模块的菜单树
+        /// </summary>
+        /// <param name="parentId">父Id</param>
+        /// <param name="userId">当前登录用户Id</param>
+        /// <returns></returns>
+        List<ResourceDto> GetNavigationMenuInModule(Guid parentId,Guid userId);
     }
 }

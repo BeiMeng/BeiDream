@@ -40,6 +40,37 @@ namespace BeiDream.Demo.Infrastructure
             };
             administrator.Roles.Add(role);
             context.Users.Add(administrator);
+
+            Guid moduleId = Guid.NewGuid();
+            var resourceModule = new Resource
+            {
+                Id = moduleId,
+                Name = "系统模块",
+                ApplicationId=null,
+                ParentId=null,
+                Path = moduleId + ",",
+                Level=1,
+                SortId=1,
+                Uri="xtgl",
+                Type=ResourceType.Module,
+                Enabled=true
+            };
+            Guid menuId = Guid.NewGuid();
+            var resourceMenu = new Resource
+            {
+                Id = menuId,
+                Name = "资源管理",
+                ApplicationId = null,
+                ParentId = moduleId,
+                Path = moduleId + "," + menuId+"",
+                Level = 2,
+                SortId = 1,
+                Uri = "/System/Resource",
+                Type = ResourceType.Menu,
+                Enabled = true
+            };
+            context.Resources.Add(resourceModule);
+            context.Resources.Add(resourceMenu);
             base.Seed(context);
         }
     }

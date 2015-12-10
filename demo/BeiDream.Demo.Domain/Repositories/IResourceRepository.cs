@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BeiDream.Core.Domain.Repositories;
 using BeiDream.Demo.Domain.Model;
 
@@ -15,12 +16,12 @@ namespace BeiDream.Demo.Domain.Repositories
         /// </summary>
         /// <param name="parentId"></param>
         /// <returns></returns>
-        List<Resource> GetChildrenNodes(Guid parentId);
+        IQueryable<Resource> GetChildrenNodes(Guid parentId);
         /// <summary>
         /// 根据父ID找到其下的所有节点(通过查找物理路径方式)
         /// </summary>
         /// <param name="parentId"></param>
         /// <returns></returns>
-        List<Resource> GetAllNodes(Guid parentId);
+        IQueryable<Resource> GetAllNodes(Guid parentId);
     }
 }

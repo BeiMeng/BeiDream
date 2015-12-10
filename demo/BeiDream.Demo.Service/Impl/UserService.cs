@@ -42,7 +42,6 @@ namespace BeiDream.Demo.Service.Impl
 
         public void AddorUpdate(UserDto dto)
         {
-            //throw new Exception("用户保存异常，Form表单提交全局异常测试");
             _userDomainService.AddorUpdate(dto.ToEntity());
         }
 
