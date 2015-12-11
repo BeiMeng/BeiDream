@@ -9,7 +9,7 @@ using BeiDream.Demo.Web.Security.Authorization;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
-     [RoleAuthorize]
+     [RoleAuthorize(true)]
     public class UserController : EasyUiControllerBase
     {
         private readonly IUserService _userService;
@@ -20,7 +20,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         }
 
         #region 增删改查
-
+        [RoleAuthorize]
         public ActionResult Index()
         {
             return View();
@@ -33,13 +33,13 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             var result = _userService.Query(query).Convert(p => p.ToGridVm());
             return ToDataGridResult(result, result.TotalCount);
         }
-
+        [RoleAuthorize]
         public PartialViewResult Add()
         {
             Guid addId = Guid.NewGuid();
             return PartialView("Parts/Form", new VmUserAddorEdit(addId));
         }
-
+        [RoleAuthorize]
         public PartialViewResult Edit(Guid id)
         {
             var dto = _userService.Find(id);
@@ -51,7 +51,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             _userService.AddorUpdate(vm.ToDto());
             return AjaxOkResponse("保存成功！");
         }
-
+        [RoleAuthorize]
         [HttpPost]
         public ActionResult Delete(string ids)
         {
@@ -68,6 +68,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [RoleAuthorize]
         public PartialViewResult EditRoles(Guid id)
         {
             return PartialView("Parts/UserRoles", id);

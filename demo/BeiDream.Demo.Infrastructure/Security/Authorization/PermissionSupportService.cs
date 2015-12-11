@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using BeiDream.Core.Dependency;
@@ -44,7 +45,8 @@ namespace BeiDream.Demo.Infrastructure.Security.Authorization
             //todo 先从缓存里获取，缓存没有就从数据库获取，在存入缓存中
             var resourceRepository = IocManager.Instance.Resolve<IResourceRepository>();
             var resource = resourceRepository.GetAll().Include(p => p.Permissions).SingleOrDefault(p=>p.Uri==resourceUri);
-            resource.CheckNotNull("resource");
+            if(resource==null)
+                throw new Exception("请求的资源未添加到数据库，请联系管理员！");
             var listPermissions = resource.Permissions.Where(p => p.Enabled);
             return listPermissions.Select(item => new Permission(item.RoleId.ToString(), item.IsDeny)).ToList();
 
