@@ -357,7 +357,38 @@
             }
         };
     })();
+    $.easyui.tree = (function() {
+        return{
+            //提交选中的Id
+            submitTreeCheckedIds: function(gridId, url, param, callback, fnRefresh) {
+                var tree = $.easyui.getTree(gridId);
+                var rows = tree.tree("getChecked", ['checked', 'indeterminate']);
+                if (rows.length === 0) {
+                    $.easyui.message.warn($.easyui.notCheckedMessage);
+                    return;
+                }
+                ajax();
 
+                //发送请求
+                function ajax() {
+                    var ids = $.easyui.grid.getIds(rows);
+                    param = $.extend({ ids: ids, __RequestVerificationToken: $.getAntiForgeryToken() }, param || {});
+                    $.easyui.ajax(url, param, ajaxCallback);
+
+                    //回调
+                    function ajaxCallback(result) {
+                        $.easyui.showMessage(result);
+                        if (result.Code !== $.easyui.state.ok)
+                            return;
+                        if (fnRefresh)
+                            fnRefresh(result);
+                        if (callback)
+                            callback(result);
+                    }
+                }
+            }
+        };
+    })();
     //发送请求
     $.easyui.ajax = function (url, data, callback, dataType, type, async) {
         dataType = dataType || "json";

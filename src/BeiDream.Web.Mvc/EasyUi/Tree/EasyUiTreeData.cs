@@ -66,6 +66,7 @@ namespace BeiDream.Web.Mvc.EasyUi.Tree
                 SetState(node);
                 return;
             }
+            SetNoChecked(node);
             node.children = GetChilds(node);
             foreach (var child in node.children)
                 AddNode(result, child);
@@ -87,7 +88,13 @@ namespace BeiDream.Web.Mvc.EasyUi.Tree
             if (_isAsyncLoad)
                 leaf.state = TreeNodeState.closed.ToString();
         }
-
+        /// <summary>
+        /// 设置非叶节点不选中，会自动关联选中
+        /// </summary>
+        private void SetNoChecked(IEeasyUiTreeNode leaf)
+        {
+                leaf.@checked = false;
+        }
         /// <summary>
         /// 获取节点直接下级
         /// </summary>

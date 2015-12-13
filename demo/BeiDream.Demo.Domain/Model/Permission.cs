@@ -8,9 +8,9 @@ namespace BeiDream.Demo.Domain.Model
     public class Permission : Entity, IAudited
     {
 
-        public Guid ResourceId { get; set; }
+        public Guid? ResourceId { get; set; }
 
-        public Guid RoleId { get; set; }
+        public Guid? RoleId { get; set; }
         /// <summary>
         /// 是否拒绝
         /// </summary>

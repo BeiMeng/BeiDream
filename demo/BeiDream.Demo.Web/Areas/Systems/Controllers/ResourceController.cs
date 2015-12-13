@@ -73,17 +73,28 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             list.Add(new EasyUiCombobox() { value = "Operation", text = "操作(按钮)", group = "" });
             return ToJsonResult(list);
         }
+        ///// <summary>
+        /////获取分页的资源列表，以及查询的角色id的所拥有资源(权限)选中状态
+        ///// </summary>
+        ///// <param name="query"></param>
+        ///// <param name="roleId"></param>
+        ///// <returns></returns>
+        //public ActionResult QueryByRole(ResourceQuery query, Guid roleId)
+        //{
+        //    SetPage(query);
+        //    var result = _resourceService.Query(query, roleId).Convert(p => p.ToTreeGridVm());
+        //    return ToDataTreeGridResult(result, false, result.TotalCount);
+        //}
         /// <summary>
         ///获取分页的资源列表，以及查询的角色id的所拥有资源(权限)选中状态
         /// </summary>
-        /// <param name="query"></param>
         /// <param name="roleId"></param>
         /// <returns></returns>
-        public ActionResult QueryByRole(ResourceQuery query, Guid roleId)
+        public ActionResult QueryByRole(Guid roleId)
         {
-            SetPage(query);
-            var result = _resourceService.Query(query, roleId).Convert(p => p.ToTreeGridVm());
-            return ToDataTreeGridResult(result, false, result.TotalCount);
+            var list = _resourceService.QueryAll(roleId);
+            List<VmResourceTreeGrid> dtos = list.Select(item => item.MapTo<VmResourceTreeGrid>()).ToList();
+            return ToJsonResult(new EasyUiTreeData(dtos).GetNodes());
         }
     }
 }

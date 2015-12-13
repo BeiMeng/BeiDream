@@ -1,46 +1,16 @@
 ﻿@model Guid
 @*脚本*@
 <script type="text/javascript">
-    function SetCheckedResources(data) {
-        //角色列表成功加载回调，根据Checked属性选中行的复选框
-        if (data) {
-            $.each(data.rows, function(index, item) {
-                if (item.Checked) {
-                    $("#treeGrid").treegrid('checkRow', index);
-                }
-            });
-        }
-    }
-
     $(function() {
-        $('#treeGrid').treegrid({
-            idField: "Id",
-            treeField: 'Name',
-            fit: true,
-            fitColumns: true,
-            rownumbers: true,
-            pagination: true,
-            checkOnSelect: false,
-            selectOnCheck:false,
-            pageSize: 10,
-            sortName: "CreationTime",
-            sortOrder: "desc",
-            url: '@Url.Action("QueryByRole", "Resource")',
-            queryParams:{roleId:"@Model"},
-            onLoadSuccess: SetCheckedResources,
-            columns: [[
-                { field: 'Id', checkbox: true },
-                { field: 'Name', title: '资源名称', sortable: true, width: 100, halign: "center" },
-                { field: 'Type', title: '资源类型', sortable: true, width: 100, halign: "center" },
-                { field: 'Uri', title: '资源标识', sortable: true, width: 100, halign: "center" },
-                { field: 'Enabled', title: '是否启用', align: 'right', sortable: true, width: 100, halign: "center", formatter: $.easyui.format.Bool },
-                { field: 'CreationTime', title: '创建时间', align: 'right', sortable: true, width: 100, halign: "center" }
-            ]]
+        $('#ResourceTree').tree({
+            checkbox:true,
+            queryParams: { roleId: "@Model" },
+            url: '@Url.Action("QueryByRole", "Resource")'
         });
     });
 </script>
 <div id="dialogButtons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.grid.submitCheckedIds('treeGrid', '@Url.Action("SetPermissions", "Role")', {roleId:'@Model'})">保 存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',width:90" onclick="$.easyui.closeDialog()">关 闭</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.tree.submitTreeCheckedIds('ResourceTree', '@Url.Action("SetPermissions", "Role")', { roleId: '@Model' }) ">保 存</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',width:90" onclick=" $.easyui.closeDialog() ">关 闭</a>
 </div>
-<table id="treeGrid"></table>
+<ul id="ResourceTree"></ul> 

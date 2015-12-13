@@ -33,6 +33,14 @@ namespace BeiDream.Demo.Service.Impl
             List<ResourceDto> dtos= list.Select(item => item.MapTo<ResourceDto>()).ToList();
             return dtos;
         }
+
+        public List<ResourceDto> QueryAll(Guid roleId)
+        {
+            var list = _resourceDomainService.QueryAll();
+            List<ResourceDto> dtos = list.Select(item => item.ToDto(roleId)).ToList();
+            return dtos;
+        }
+
         [NoUnitOfWork]
         public ResourceDto Find(Guid id)
         {

@@ -11,6 +11,11 @@ namespace BeiDream.Demo.Service.Contracts
     {
         PagerList<ResourceDto> Query(ResourceQuery query);
         List<ResourceDto> QueryAll();
+        /// <summary>
+        ///查询角色数据
+        /// </summary>
+        /// <param name="roleId">角色ID,与此角色ID关联的资源checked属性设置为true</param>
+        List<ResourceDto> QueryAll(Guid roleId);
         ResourceDto Find(Guid id);
         void AddorUpdate(ResourceDto dto);
         /// <summary>
