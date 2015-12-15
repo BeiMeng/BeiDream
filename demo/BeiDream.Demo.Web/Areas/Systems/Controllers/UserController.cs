@@ -5,6 +5,7 @@ using BeiDream.Utils;
 using BeiDream.Web.Mvc.EasyUi;
 using System;
 using System.Web.Mvc;
+using BeiDream.Demo.Web.Areas.Systems.Models;
 using BeiDream.Demo.Web.Security.Authorization;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
@@ -23,9 +24,12 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         [RoleAuthorize]
         public ActionResult Index()
         {
-            return View();
+            return View(new VmPermission());
         }
-
+        public ActionResult QueryForm()
+        {
+            return PartialView("Parts/QueryForm", new UserQuery());
+        }
         [HttpPost]
         public ActionResult Query(UserQuery query)
         {

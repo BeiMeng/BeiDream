@@ -169,6 +169,7 @@
     <Compile Include="Areas\Systems\Models\Role\VmRoleGrid.cs" />
     <Compile Include="Areas\Systems\Models\User\VmUserAddorEdit.cs" />
     <Compile Include="Areas\Systems\Models\User\VmUserGrid.cs" />
+    <Compile Include="Areas\Systems\Models\VmPermission.cs" />
     <Compile Include="Areas\Systems\SystemsAreaRegistration.cs" />
     <Compile Include="Controllers\DesktopController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
