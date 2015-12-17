@@ -6,6 +6,7 @@ using System;
 using System.Web.Mvc;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Service.Dtos;
+using BeiDream.Demo.Web.Areas.Systems.Models;
 using BeiDream.Demo.Web.Security.Authorization;
 using BeiDream.Utils;
 
@@ -25,7 +26,11 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
         [RoleAuthorize]
         public ActionResult Index()
         {
-            return View();
+            return View(new VmPermission());
+        }
+        public ActionResult QueryForm()
+        {
+            return PartialView("Parts/QueryForm", new RoleQuery());
         }
 
         public ActionResult Query(RoleQuery query)

@@ -46,7 +46,8 @@ namespace BeiDream.Demo.Infrastructure.Security.Authorization
             var resourceRepository = IocManager.Instance.Resolve<IResourceRepository>();
             var resource = resourceRepository.GetAll().Include(p => p.Permissions).SingleOrDefault(p=>p.Uri==resourceUri);
             if(resource==null)
-                throw new Exception("请求的资源未添加到数据库，请联系管理员！");
+                //throw new Exception("请求的资源未添加到数据库，请联系管理员！");
+                return new List<Permission>();
             var listPermissions = resource.Permissions.Where(p => p.Enabled);
             return listPermissions.Select(item => new Permission(item.RoleId.ToString(), item.IsDeny)).ToList();
 

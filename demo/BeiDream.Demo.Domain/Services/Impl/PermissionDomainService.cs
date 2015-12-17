@@ -12,11 +12,5 @@ namespace BeiDream.Demo.Domain.Services.Impl
         {
             _permissionRepository = permissionRepository;
         }
-
-        public void Delete(Guid id)
-        {
-            var permission = _permissionRepository.Find(id);
-            _permissionRepository.Delete(permission);
-        }
     }
 }

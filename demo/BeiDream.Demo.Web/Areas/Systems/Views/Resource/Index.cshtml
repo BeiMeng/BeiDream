@@ -16,17 +16,25 @@
 @section top {
     @*工具栏*@
     <div class="toolbar">
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:80,iconCls:'icon-add'" onclick="$.easyui.Showdialog({ title: '添加资源', buttons: 'dialogButtons', url: '@Url.Action("Add", "Resource")', onInit: $.easyui.initAddDialog })">添加资源</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" id="btnEdit" data-options="width:80,iconCls:'icon-edit'" onclick="$.easyui.Showdialog({ title: '编辑资源', buttons: 'dialogButtons', url: '@Url.Action("Edit", "Resource")', onInit: $.easyui.initEditDialog })">编辑资源</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:80,iconCls:'icon-remove'" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Resource")','', 'treeGrid')">删 除</a>
-        @*<input type="button" value="新   增" onclick="$.easyui.Showdialog({ title: '添加资源', buttons: 'dialogButtons', url: '@Url.Action("Add", "Resource")', onInit: $.easyui.initAddDialog })" />
-        <input type="button" value="修   改" onclick="$.easyui.Showdialog({ title: '编辑资源', buttons: 'dialogButtons', url: '@Url.Action("Edit", "Resource")', onInit: $.easyui.initEditDialog })" />
-        <input type="button" value="删   除" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Resource")','', 'treeGrid')" />*@
+        @if (Model.HasPermission(Url.Action("Add", "Resource")))
+        {
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:80,iconCls:'icon-add'" onclick="$.easyui.Showdialog({ title: '添加资源', buttons: 'dialogButtons', url: '@Url.Action("Add", "Resource")', onInit: $.easyui.initAddDialog }) ">添加资源</a>
+        }
+        @if (Model.HasPermission(Url.Action("Edit", "Resource")))
+        {
+            <a href="javascript:void(0)" class="easyui-linkbutton" id="btnEdit" data-options="width:80,iconCls:'icon-edit'" onclick="$.easyui.Showdialog({ title: '编辑资源', buttons: 'dialogButtons', url: '@Url.Action("Edit", "Resource")', onInit: $.easyui.initEditDialog }) ">编辑资源</a>
+        }
+        @if (Model.HasPermission(Url.Action("Delete", "Resource")))
+        {
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:80,iconCls:'icon-remove'" onclick="$.easyui.grid.DeleteByUrl('@Url.Action("Delete", "Resource")', '', 'treeGrid') ">删 除</a>
+        }        
+
     </div>
 }
 @section content {
     @*查询表单*@
-    @Html.Partial("Parts/QueryForm")
+    @*@Html.Partial("Parts/QueryForm")*@
+    @Html.Action("QueryForm", "Resource")
     <table id="treeGrid"></table>
 }
 @section Scripts {

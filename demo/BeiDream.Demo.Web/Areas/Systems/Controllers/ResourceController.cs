@@ -7,6 +7,7 @@ using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Queries;
 using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Service.Dtos;
+using BeiDream.Demo.Web.Areas.Systems.Models;
 using BeiDream.Demo.Web.Areas.Systems.Models.Resource;
 using BeiDream.Demo.Web.Security.Authorization;
 using BeiDream.Utils.Reflection;
@@ -16,7 +17,7 @@ using Castle.Components.DictionaryAdapter;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Controllers
 {
-    [RoleAuthorize]
+    [RoleAuthorize(true)]
     public class ResourceController : EasyUiControllerBase
     {
         private readonly IResourceService _resourceService;
@@ -26,10 +27,14 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             _resourceService = resourceService;
         }
 
-        // GET: Systems/Resource
+        [RoleAuthorize]
         public ActionResult Index()
         {
-            return View();
+            return View(new VmPermission());
+        }
+        public ActionResult QueryForm()
+        {
+            return PartialView("Parts/QueryForm", new ResourceQuery());
         }
         public ActionResult Query(ResourceQuery query)
         {
@@ -37,10 +42,12 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             var result = _resourceService.Query(query).Convert(p => p.ToTreeGridVm());
             return ToDataTreeGridResult(result, false, result.TotalCount);
         }
+        [RoleAuthorize]
         public PartialViewResult Add(string id)
         {
             return PartialView("Parts/Form", new VmResourceAddorEdit(id));
         }
+        [RoleAuthorize]
         public PartialViewResult Edit(Guid id)
         {
             var dto = _resourceService.Find(id);
@@ -52,6 +59,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             _resourceService.AddorUpdate(vm.MapTo<ResourceDto>());
             return AjaxOkResponse("保存成功！");
         }
+        [RoleAuthorize]
         [HttpPost]
         public ActionResult Delete(string ids)
         {

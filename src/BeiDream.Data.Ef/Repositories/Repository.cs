@@ -1,8 +1,10 @@
 ﻿using BeiDream.Core.Domain.Entities;
 using BeiDream.Core.Domain.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace BeiDream.Data.Ef.Repositories
 {
@@ -43,6 +45,24 @@ namespace BeiDream.Data.Ef.Repositories
         public void Delete(TAggregateRoot entity)
         {
             Set.Remove(entity);
+        }
+        /// <summary>
+        /// 移除实体集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        public void Delete(IEnumerable<TAggregateRoot> entities)
+        {
+            if (entities == null)
+                return;
+            var list = entities.ToList();
+            if (!list.Any())
+                return;
+            Set.RemoveRange(list);
+        }
+        public void Delete(Expression<Func<TAggregateRoot, bool>> predicate)
+        {
+            var entities = Set.Where(predicate);
+            Delete(entities);
         }
 
         public TAggregateRoot Find(TKey id)

@@ -6,6 +6,7 @@ using BeiDream.Demo.Domain.Services.Contracts;
 using BeiDream.Utils.PagerHelper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace BeiDream.Demo.Domain.Services.Impl
@@ -105,10 +106,9 @@ namespace BeiDream.Demo.Domain.Services.Impl
             if (role == null)
                 throw new Exception("设置角色不存在");
             //先把角色的资源权限信息全删除,只能清除关系，数据无法清除
-            foreach (var permission in role.Permissions)
-            {
-                
-            }
+            //role.Permissions.Clear();
+            _permissionRepository.Delete(p => p.RoleId == roleId);
+
             foreach (var resourceId in resourceIds)
             {
                 Permission permission = new Permission

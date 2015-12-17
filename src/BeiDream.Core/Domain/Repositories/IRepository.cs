@@ -1,7 +1,9 @@
 ﻿using BeiDream.Core.Dependency;
 using BeiDream.Core.Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace BeiDream.Core.Domain.Repositories
 {
@@ -12,7 +14,12 @@ namespace BeiDream.Core.Domain.Repositories
         void Update(TAggregateRoot entity);
 
         void Delete(TAggregateRoot entity);
-
+        /// <summary>
+        /// 移除实体集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        void Delete(IEnumerable<TAggregateRoot> entities);
+        void Delete(Expression<Func<TAggregateRoot, bool>> predicate);
         /// <summary>
         /// 查找实体
         /// </summary>
