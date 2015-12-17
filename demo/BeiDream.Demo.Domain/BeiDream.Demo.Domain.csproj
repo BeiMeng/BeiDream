@@ -57,12 +57,15 @@
     <Compile Include="Queries\ResourceQuery.cs" />
     <Compile Include="Queries\RoleQuery.cs" />
     <Compile Include="Queries\UserQuery.cs" />
+    <Compile Include="Repositories\IPermissionRepository.cs" />
     <Compile Include="Repositories\IResourceRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Services\Contracts\IPermissionDomainService.cs" />
     <Compile Include="Services\Contracts\IResourceDomainService.cs" />
     <Compile Include="Services\Contracts\IRoleDomainService.cs" />
     <Compile Include="Services\Contracts\IUserDomainService.cs" />
+    <Compile Include="Services\Impl\PermissionDomainService.cs" />
     <Compile Include="Services\Impl\ResourceDomainService.cs" />
     <Compile Include="Services\Impl\RoleDomainService.cs" />
     <Compile Include="Services\Impl\UserDomainService.cs" />

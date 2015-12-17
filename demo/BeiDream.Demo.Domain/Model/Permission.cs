@@ -5,7 +5,7 @@ using BeiDream.Core.Domain.Entities.Auditing;
 
 namespace BeiDream.Demo.Domain.Model
 {
-    public class Permission : Entity, IAudited
+    public class Permission : AggregateRoot, IAudited
     {
 
         public Guid? ResourceId { get; set; }

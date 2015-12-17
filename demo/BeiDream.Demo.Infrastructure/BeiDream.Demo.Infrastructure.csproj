@@ -59,6 +59,7 @@
     <Compile Include="Mappings\MemoEntityConfiguration.cs" />
     <Compile Include="Mappings\RoleEntityConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\PermissionRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
