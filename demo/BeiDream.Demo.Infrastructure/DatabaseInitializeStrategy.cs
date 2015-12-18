@@ -55,6 +55,7 @@ namespace BeiDream.Demo.Infrastructure
                 Type=ResourceType.Module,
                 Enabled=true
             };
+            #region 资源管理菜单初始化
             Guid menuId = Guid.NewGuid();
             var resourceMenu = new Resource
             {
@@ -62,15 +63,215 @@ namespace BeiDream.Demo.Infrastructure
                 Name = "资源管理",
                 ApplicationId = null,
                 ParentId = moduleId,
-                Path = moduleId + "," + menuId+"",
+                Path = moduleId + "," + menuId + ",",
                 Level = 2,
                 SortId = 1,
                 Uri = "/Systems/Resource",
                 Type = ResourceType.Menu,
                 Enabled = true
             };
+            Guid resourceAddId = Guid.NewGuid();
+            var resourceAdd = new Resource
+            {
+                Id = resourceAddId,
+                Name = "新增资源",
+                ApplicationId = null,
+                ParentId = menuId,
+                Path = moduleId + "," + menuId + "," + resourceAddId + ",",
+                Level = 3,
+                SortId = 1,
+                Uri = "/Systems/Resource/Add",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid resourceEditId = Guid.NewGuid();
+            var resourceEdit = new Resource
+            {
+                Id = resourceEditId,
+                Name = "修改资源",
+                ApplicationId = null,
+                ParentId = menuId,
+                Path = moduleId + "," + menuId + "," + resourceEditId + ",",
+                Level = 3,
+                SortId = 2,
+                Uri = "/Systems/Resource/Edit",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid resourceDelId = Guid.NewGuid();
+            var resourceDel = new Resource
+            {
+                Id = resourceDelId,
+                Name = "删除资源",
+                ApplicationId = null,
+                ParentId = menuId,
+                Path = moduleId + "," + menuId + "," + resourceDelId + ",",
+                Level = 3,
+                SortId = 3,
+                Uri = "/Systems/Resource/Delete",
+                Type = ResourceType.Operation,
+                Enabled = true
+            }; 
+            #endregion
+            #region 角色管理菜单初始化
+            Guid rolemenuId = Guid.NewGuid();
+            var roleMenu = new Resource
+            {
+                Id = rolemenuId,
+                Name = "角色管理",
+                ApplicationId = null,
+                ParentId = moduleId,
+                Path = moduleId + "," + rolemenuId + ",",
+                Level = 2,
+                SortId = 2,
+                Uri = "/Systems/Role",
+                Type = ResourceType.Menu,
+                Enabled = true
+            };
+            Guid roleAddId = Guid.NewGuid();
+            var roleAdd = new Resource
+            {
+                Id = roleAddId,
+                Name = "新增角色",
+                ApplicationId = null,
+                ParentId = rolemenuId,
+                Path = moduleId + "," + rolemenuId + "," + roleAddId + ",",
+                Level = 3,
+                SortId = 1,
+                Uri = "/Systems/Role/Add",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid roleEditId = Guid.NewGuid();
+            var roleEdit = new Resource
+            {
+                Id = roleEditId,
+                Name = "修改角色",
+                ApplicationId = null,
+                ParentId = rolemenuId,
+                Path = moduleId + "," + rolemenuId + "," + roleEditId + ",",
+                Level = 3,
+                SortId = 2,
+                Uri = "/Systems/Role/Edit",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid roleDelId = Guid.NewGuid();
+            var roleDel = new Resource
+            {
+                Id = roleDelId,
+                Name = "删除角色",
+                ApplicationId = null,
+                ParentId = rolemenuId,
+                Path = moduleId + "," + rolemenuId + "," + roleDelId + ",",
+                Level = 3,
+                SortId = 3,
+                Uri = "/Systems/Role/Delete",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid roleSetResourceId = Guid.NewGuid();
+            var roleSetResource = new Resource
+            {
+                Id = roleSetResourceId,
+                Name = "设置权限",
+                ApplicationId = null,
+                ParentId = rolemenuId,
+                Path = moduleId + "," + rolemenuId + "," + roleSetResourceId + ",",
+                Level = 3,
+                SortId = 4,
+                Uri = "/Systems/Role/EditResources",
+                Type = ResourceType.Operation,
+                Enabled = true
+            }; 
+            #endregion
+            #region 用户管理菜单初始化
+            Guid usermenuId = Guid.NewGuid();
+            var userMenu = new Resource
+            {
+                Id = usermenuId,
+                Name = "用户管理",
+                ApplicationId = null,
+                ParentId = moduleId,
+                Path = moduleId + "," + usermenuId + ",",
+                Level = 2,
+                SortId = 3,
+                Uri = "/Systems/User",
+                Type = ResourceType.Menu,
+                Enabled = true
+            };
+            Guid userAddId = Guid.NewGuid();
+            var userAdd = new Resource
+            {
+                Id = userAddId,
+                Name = "新增用户",
+                ApplicationId = null,
+                ParentId = usermenuId,
+                Path = moduleId + "," + usermenuId + "," + userAddId + ",",
+                Level = 3,
+                SortId = 1,
+                Uri = "/Systems/User/Add",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid userEditId = Guid.NewGuid();
+            var userEdit = new Resource
+            {
+                Id = userEditId,
+                Name = "修改用户",
+                ApplicationId = null,
+                ParentId = usermenuId,
+                Path = moduleId + "," + usermenuId + "," + roleEditId + ",",
+                Level = 3,
+                SortId = 2,
+                Uri = "/Systems/User/Edit",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid userDelId = Guid.NewGuid();
+            var userDel = new Resource
+            {
+                Id = userDelId,
+                Name = "删除用户",
+                ApplicationId = null,
+                ParentId = usermenuId,
+                Path = moduleId + "," + usermenuId + "," + userDelId + ",",
+                Level = 3,
+                SortId = 3,
+                Uri = "/Systems/User/Delete",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            Guid userSetRoleId = Guid.NewGuid();
+            var userSetRole = new Resource
+            {
+                Id = userSetRoleId,
+                Name = "设置角色",
+                ApplicationId = null,
+                ParentId = usermenuId,
+                Path = moduleId + "," + usermenuId + "," + userSetRoleId + ",",
+                Level = 3,
+                SortId = 4,
+                Uri = "/Systems/User/EditRoles",
+                Type = ResourceType.Operation,
+                Enabled = true
+            };
+            #endregion
             context.Resources.Add(resourceModule);
             context.Resources.Add(resourceMenu);
+            context.Resources.Add(resourceAdd);
+            context.Resources.Add(resourceEdit);
+            context.Resources.Add(resourceDel);
+            context.Resources.Add(roleMenu);
+            context.Resources.Add(roleAdd);
+            context.Resources.Add(roleEdit);
+            context.Resources.Add(roleDel);
+            context.Resources.Add(roleSetResource);
+            context.Resources.Add(userMenu);
+            context.Resources.Add(userAdd);
+            context.Resources.Add(userEdit);
+            context.Resources.Add(userDel);
+            context.Resources.Add(userSetRole);
             base.Seed(context);
         }
     }

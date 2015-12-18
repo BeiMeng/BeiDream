@@ -9,7 +9,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.User
         public string Name { get; set; }
         public string Email { get; set; }
         public string DisplayName { get; set; }
-        public string DateCreated { get; set; }
+        public string CreationTime { get; set; }
         public bool? Enabled { get; set; }
     }
 
@@ -24,7 +24,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.User
                 Email = dto.Email,
                 DisplayName = dto.DisplayName,
                 Enabled = dto.Enabled,
-                DateCreated = dto.DateCreated
+                CreationTime = dto.CreationTime
             };
         }
     }

@@ -31,7 +31,7 @@ namespace BeiDream.Demo.Service.Dtos
         /// </summary>
         public bool Enabled { get; set; }
 
-        public virtual DateTime DateCreated { get; set; }
+        public virtual DateTime CreationTime { get; set; }
         public byte[] Version { get; set; }
 
         /// <summary>

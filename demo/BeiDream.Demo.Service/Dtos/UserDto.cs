@@ -40,7 +40,7 @@ namespace BeiDream.Demo.Service.Dtos
             set;
         }
 
-        public string DateCreated
+        public string CreationTime
         {
             get;
             set;
@@ -64,7 +64,7 @@ namespace BeiDream.Demo.Service.Dtos
                 Email = entity.Email,
                 DisplayName = entity.DisplayName,
                 Enabled = entity.Enabled,
-                DateCreated = entity.CreationTime.ToChineseDateTimeString(true),
+                CreationTime = entity.CreationTime.ToChineseDateTimeString(true),
                 Version = entity.Version
             };
         }

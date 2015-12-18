@@ -26,7 +26,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
         /// </summary>
         public bool Enabled { get; set; }
 
-        public virtual string DateCreated
+        public virtual string CreationTime
         {
             get;
             set;
@@ -52,7 +52,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
             //    Checked = dto.Checked
             //};
             VmRoleGrid vmRoleGrid = dto.MapTo<VmRoleGrid>();
-            vmRoleGrid.DateCreated = dto.DateCreated.ToChineseDateTimeString();
+            vmRoleGrid.CreationTime = dto.CreationTime.ToChineseDateTimeString();
             return vmRoleGrid;
         }
     }
