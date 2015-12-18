@@ -62,14 +62,11 @@
             </dd>
         </dl>
         <span class="button">
-            @*<a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-search'" onclick="$.easyui.grid.Query('formQuery', 'dg')">查 询</a>*@
-            <input type="button" value="查询" onclick="$.easyui.grid.Query('formQuery', 'dg')" />
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="width:70,iconCls:'icon-search'" onclick="$.easyui.grid.Query('formQuery', 'dg')">查 询</a>
         </span>
     </form>
 </div>
 <table id="dg"></table>
-@*防止伪造提交操作*@
-@Html.AntiForgeryToken()
 <div id="dialogButtons">
     <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-ok',width:90" onclick="$.easyui.grid.submitCheckedIds('dg', '@Url.Action("SetRoles", "User")', {userId:'@Model'})">保 存</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',width:90" onclick="$.easyui.closeDialog()">关 闭</a>

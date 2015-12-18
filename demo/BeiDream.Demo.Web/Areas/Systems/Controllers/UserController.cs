@@ -49,7 +49,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             var dto = _userService.Find(id);
             return PartialView("Parts/Form", dto.ToFormVm());
         }
-
+        [ValidateAntiForgeryToken]
         public ActionResult Save(VmUserAddorEdit vm)
         {
             _userService.AddorUpdate(vm.ToDto());

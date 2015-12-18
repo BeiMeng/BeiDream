@@ -51,7 +51,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             var dto = _roleService.Find(id);
             return PartialView("Parts/Form", dto.MapTo<VmRoleAddorEdit>());
         }
-
+        [ValidateAntiForgeryToken]
         public ActionResult Save(VmRoleAddorEdit vm)
         {
             _roleService.AddorUpdate(vm.MapTo<RoleDto>());

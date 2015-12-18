@@ -53,7 +53,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             var dto = _resourceService.Find(id);
             return PartialView("Parts/Form", dto.MapTo<VmResourceAddorEdit>());
         }
-
+        [ValidateAntiForgeryToken]
         public ActionResult Save(VmResourceAddorEdit vm)
         {
             _resourceService.AddorUpdate(vm.MapTo<ResourceDto>());
