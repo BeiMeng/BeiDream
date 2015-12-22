@@ -12,7 +12,15 @@ namespace BeiDream.Core.Domain.Entities
         public byte[] Version { get; set; }
     }
 
-    public class AggregateRoot : AggregateRoot<Guid>
+    public class AggregateRoot : IAggregateRoot
     {
+        [Required]
+        [Key]
+        public virtual Guid Id { get; set; }
+        /// <summary>
+        /// 版本号(乐观锁)
+        /// </summary>
+        [Timestamp]
+        public byte[] Version { get; set; }
     }
 }

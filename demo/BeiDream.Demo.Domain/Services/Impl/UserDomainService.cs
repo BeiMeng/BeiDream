@@ -39,15 +39,15 @@ namespace BeiDream.Demo.Domain.Services.Impl
             //先把用户的角色信息全删除
             user.Roles.Clear();
             //再添加新设置的角色信息
-            roleIds.ForEach(r => UserRepository.Find(userId).Roles.Add(RoleRepository.Find(r)));
+            roleIds.ForEach(r => user.Roles.Add(RoleRepository.Find(r)));
         }
 
         public PagerList<User> Query(UserQuery query)
         {
             if (string.IsNullOrWhiteSpace(query.Order))   //分页必须先进行排序
                 query.Order = "Id desc";
-            query.TotalCount = UserRepository.GetAll().Count();
-            IQueryable<User> users = GetQueryConditions(UserRepository.GetAll(), query)   //where查询条件必须放在排序和分页前，不然生成SQL有BUG
+            query.TotalCount = UserRepository.GetAllFilterDataPermissions().Count();
+            IQueryable<User> users = GetQueryConditions(UserRepository.GetAllFilterDataPermissions(), query)   //where查询条件必须放在排序和分页前，不然生成SQL有BUG
                 .OrderByIfOrderNullOrEmpty(query.Order)
                     .Skip(query.GetSkipCount())
                     .Take(query.PageSize);

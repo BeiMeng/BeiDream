@@ -79,6 +79,7 @@ namespace BeiDream.Demo.Web.Areas.Systems.Controllers
             list.Add(new EasyUiCombobox() { value = "Module", text = "模块", group = "" });
             list.Add(new EasyUiCombobox() { value = "Menu", text = "菜单", group = "" });
             list.Add(new EasyUiCombobox() { value = "Operation", text = "操作(按钮)", group = "" });
+            list.Add(new EasyUiCombobox() { value = "Record", text = "记录(行)", group = "" });
             return ToJsonResult(list);
         }
         ///// <summary>

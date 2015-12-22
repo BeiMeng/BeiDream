@@ -42,6 +42,11 @@ namespace BeiDream.Data.Ef.Repositories
             DbContext.Entry(entity).State = EntityState.Modified;
         }
 
+        #region 删除操作
+        /// <summary>
+        /// 删除单个实体集合
+        /// </summary>
+        /// <param name="entity"></param>
         public void Delete(TAggregateRoot entity)
         {
             Set.Remove(entity);
@@ -63,16 +68,36 @@ namespace BeiDream.Data.Ef.Repositories
         {
             var entities = Set.Where(predicate);
             Delete(entities);
-        }
+        } 
+        #endregion
 
         public TAggregateRoot Find(TKey id)
         {
             return Set.Find(id);
         }
-
+        /// <summary>
+        /// 获取所有数据
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<TAggregateRoot> GetAll()
         {
             return Set;
+        }
+        /// <summary>
+        /// 获取过滤数据权限的所有数据
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<TAggregateRoot> GetAllFilterDataPermissions()
+        {
+            return Set.Where(GetDataPermissions());
+        }
+
+        /// <summary>
+        /// 获取数据权限查询条件
+        /// </summary>
+        protected virtual Expression<Func<TAggregateRoot, bool>> GetDataPermissions()
+        {
+            return p => true;   
         }
 
         protected virtual void AttachIfNot(TAggregateRoot entity)

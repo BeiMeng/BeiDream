@@ -90,6 +90,7 @@
     <Compile Include="Domain\Entities\Auditing\IModificationAudited.cs" />
     <Compile Include="Domain\Entities\Entity.cs" />
     <Compile Include="Domain\Entities\IAggregateRoot.cs" />
+    <Compile Include="Domain\Repositories\ICriteria.cs" />
     <Compile Include="Domain\Services\IDomainService.cs" />
     <Compile Include="Domain\Entities\IEntity.cs" />
     <Compile Include="Domain\Entities\ISoftDelete.cs" />
@@ -99,6 +100,8 @@
     <Compile Include="Domain\Uow\Interception\UnitOfWorkRegistrar.cs" />
     <Compile Include="Domain\Uow\IUnitOfWork.cs" />
     <Compile Include="Json\JsonExtensions.cs" />
+    <Compile Include="ExpressionHelper\Extensions\ExpressionExtensins.cs" />
+    <Compile Include="ExpressionHelper\ParameterRebinder.cs" />
     <Compile Include="Linq\Extensions\QueryableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\WebAssemblyFinder.cs" />
@@ -111,6 +114,8 @@
     <Compile Include="Security\Authorization\PermissionManagerBase.cs" />
     <Compile Include="Security\Authorization\ResourcePermissions.cs" />
     <Compile Include="Security\Authorization\WebPermissionManager.cs" />
+    <Compile Include="Security\Criterias\PermissionCriteriaBase.cs" />
+    <Compile Include="Security\Criterias\PermissionCriteriaManagerBase.cs" />
     <Compile Include="Security\IApplicationSession.cs" />
     <Compile Include="Security\OwnIdentity.cs" />
     <Compile Include="Security\OwnPrincipal.cs" />

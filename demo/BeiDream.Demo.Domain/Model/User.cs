@@ -8,10 +8,6 @@ namespace BeiDream.Demo.Domain.Model
 {
     public class User : AggregateRoot, IAudited
     {
-        public User()
-        {
-            Roles=new List<Role>();
-        }
 
         [Required(ErrorMessage = "用户名不能为空")]
         [StringLength(16, ErrorMessage = "用户名输入过长，不能超过16位")]
@@ -54,7 +50,7 @@ namespace BeiDream.Demo.Domain.Model
             get;
             set;
         }
-        public ICollection<Role> Roles
+        public virtual ICollection<Role> Roles
         {
             get;
             set;
