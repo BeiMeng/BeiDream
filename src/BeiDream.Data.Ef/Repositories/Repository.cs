@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using BeiDream.Core.Security;
 
 namespace BeiDream.Data.Ef.Repositories
 {
@@ -20,9 +21,13 @@ namespace BeiDream.Data.Ef.Repositories
     public abstract class Repository<TAggregateRoot, TKey> : IRepository<TAggregateRoot, TKey> where TAggregateRoot : class, IAggregateRoot<TKey>
     {
         protected IDbContext DbContext { get; private set; }
-
+        /// <summary>
+        /// 应用程序上下文
+        /// </summary>
+        protected IApplicationSession ApplicationSession;
         protected Repository(IDbContext dbContext)
         {
+            ApplicationSession = GetApplicationContext();
             DbContext = dbContext;
         }
 
@@ -89,9 +94,17 @@ namespace BeiDream.Data.Ef.Repositories
         /// <returns></returns>
         public IQueryable<TAggregateRoot> GetAllFilterDataPermissions()
         {
+            if (ApplicationSession.IsAdmin)
+                return Set;
             return Set.Where(GetDataPermissions());
         }
-
+        /// <summary>
+        /// 获取应用程序上下文
+        /// </summary>
+        protected IApplicationSession GetApplicationContext()
+        {
+            return ApplicationSession ?? (ApplicationSession = Core.Security.ApplicationSession.Current);
+        }
         /// <summary>
         /// 获取数据权限查询条件
         /// </summary>

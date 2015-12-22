@@ -6,8 +6,12 @@
     public static class PermissionCode
     {
         /// <summary>
-        /// 逻辑删除
+        /// 只能查看自己创建的用户数据标识
         /// </summary>
-        public const string LookSelfCreateUser = "LookSelfCreateUser";
+        public const string LookSelfCreateUsers = "LookSelfCreateUsers";
+        /// <summary>
+        /// 只能查看自己修改的用户数据标识
+        /// </summary>
+        public const string LookSelfModifyUsers = "LookSelfModifyUsers";
     }
 }

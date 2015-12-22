@@ -42,6 +42,10 @@ namespace BeiDream.Core.Security.Criterias {
         public Expression<Func<T, bool>> GetPredicate() {
             Limit();
             AddCriterias( _criterias );
+            Expression<Func<T, bool>> criteriaPredicate = GeneratePredicate();
+            //如果数据权限集合为空的,默认有全部数据权限
+            if (criteriaPredicate == null)
+                return Predicate.Or(t => true);
             return Predicate.Or( GeneratePredicate() );
         }
 

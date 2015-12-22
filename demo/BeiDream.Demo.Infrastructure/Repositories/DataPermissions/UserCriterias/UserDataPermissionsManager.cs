@@ -18,7 +18,8 @@ namespace BeiDream.Demo.Infrastructure.Repositories.DataPermissions.UserCriteria
 
         protected override void AddCriterias(ICollection<ICriteria<User>> criterias)
         {
-            criterias.Add(new LookSelfCreateUser(PermissionManager));
+            criterias.Add(new LookSelfCreateUsers(PermissionManager));
+            criterias.Add(new LookSelfModifyUsers(PermissionManager));
         }
     }
 }

@@ -256,6 +256,34 @@ namespace BeiDream.Demo.Infrastructure
                 Type = ResourceType.Operation,
                 Enabled = true
             };
+            Guid lookSelfCreateUsers = Guid.NewGuid();
+            var lookSelfCreateUsersResource = new Resource
+            {
+                Id = lookSelfCreateUsers,
+                Name = "只能查看当前登录用户自己创建的用户数据",
+                ApplicationId = null,
+                ParentId = usermenuId,
+                Path = moduleId + "," + usermenuId + "," + lookSelfCreateUsers + ",",
+                Level = 3,
+                SortId = 5,
+                Uri = "LookSelfCreateUsers",
+                Type = ResourceType.Record,
+                Enabled = true
+            };
+            Guid lookSelfModifyUsers = Guid.NewGuid();
+            var lookSelfModifyUsersResource = new Resource
+            {
+                Id = lookSelfModifyUsers,
+                Name = "只能查看当前登录用户自己修改的用户数据",
+                ApplicationId = null,
+                ParentId = usermenuId,
+                Path = moduleId + "," + usermenuId + "," + lookSelfModifyUsers + ",",
+                Level = 3,
+                SortId = 6,
+                Uri = "LookSelfModifyUsers",
+                Type = ResourceType.Record,
+                Enabled = true
+            };
             #endregion
             context.Resources.Add(resourceModule);
             context.Resources.Add(resourceMenu);
@@ -272,6 +300,8 @@ namespace BeiDream.Demo.Infrastructure
             context.Resources.Add(userEdit);
             context.Resources.Add(userDel);
             context.Resources.Add(userSetRole);
+            context.Resources.Add(lookSelfCreateUsersResource);
+            context.Resources.Add(lookSelfModifyUsersResource);
             base.Seed(context);
         }
     }

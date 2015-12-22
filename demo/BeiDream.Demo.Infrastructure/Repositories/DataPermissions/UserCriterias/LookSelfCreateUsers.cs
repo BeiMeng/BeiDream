@@ -9,15 +9,15 @@ namespace BeiDream.Demo.Infrastructure.Repositories.DataPermissions.UserCriteria
     /// <summary>
     /// 只能查看自己创建的数据的数据权限
     /// </summary>
-    public class LookSelfCreateUser : PermissionCriteriaBase<User>
+    public class LookSelfCreateUsers : PermissionCriteriaBase<User>
     {
-        public LookSelfCreateUser(IPermissionManager permissionManager) : base(permissionManager)
+        public LookSelfCreateUsers(IPermissionManager permissionManager) : base(permissionManager)
         {
         }
 
         protected override string GetPermissionCode()
         {
-            return PermissionCode.LookSelfCreateUser;
+            return PermissionCode.LookSelfCreateUsers;
         }
 
         protected override Expression<Func<User, bool>> CreatePredicate()
