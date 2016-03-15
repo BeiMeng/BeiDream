@@ -99,6 +99,14 @@
     <Compile Include="Domain\Uow\Interception\UnitOfWorkInterceptor.cs" />
     <Compile Include="Domain\Uow\Interception\UnitOfWorkRegistrar.cs" />
     <Compile Include="Domain\Uow\IUnitOfWork.cs" />
+    <Compile Include="Events\Bus\EventBus\IEventBus.cs" />
+    <Compile Include="Events\Bus\EventData\Entities\EntityEventData.cs" />
+    <Compile Include="Events\Bus\EventData\EventData.cs" />
+    <Compile Include="Events\Bus\EventData\IEventData.cs" />
+    <Compile Include="Events\Bus\EventData\IEventDataWithInheritableGenericArgument.cs" />
+    <Compile Include="Events\Bus\Handlers\ActionEventHandler.cs" />
+    <Compile Include="Events\Bus\Handlers\IEventHandler.cs" />
+    <Compile Include="Events\Bus\Handlers\IEventHandlerOfTEventData.cs" />
     <Compile Include="Json\JsonExtensions.cs" />
     <Compile Include="ExpressionHelper\Extensions\ExpressionExtensins.cs" />
     <Compile Include="ExpressionHelper\ParameterRebinder.cs" />

@@ -69,6 +69,12 @@
     </Compile>
     <Compile Include="Reflection\TypeFinder.cs" />
     <Compile Include="Reflection\TypeHelper.cs" />
+    <Compile Include="Timing\Clock.cs" />
+    <Compile Include="Timing\DateTimeRange.cs" />
+    <Compile Include="Timing\IClockProvider.cs" />
+    <Compile Include="Timing\IDateTimeRange.cs" />
+    <Compile Include="Timing\LocalClockProvider.cs" />
+    <Compile Include="Timing\UtcClockProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
