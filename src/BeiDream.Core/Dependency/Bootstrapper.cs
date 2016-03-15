@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Web.Compilation;
+using BeiDream.Core.Dependency.Installers;
+using BeiDream.Core.Events.Bus.EventBus;
 
 namespace BeiDream.Core.Dependency
 {
@@ -37,6 +39,9 @@ namespace BeiDream.Core.Dependency
 
         public virtual void Initialize()
         {
+            IocManager.IocContainer.Install(new OwnCoreInstaller());
+            //领域事件的注册必须在其他的注册之前，这样才能够扫描所有的注册的类,并找到实现的IEventHandler的事件进行注册
+            IocManager.IocContainer.Install(new EventBusInstaller(IocManager));
             UnitOfWorkRegistrar.Initialize(IocManager);
             ValidationInterceptorRegistrar.Initialize(IocManager);
             if (ConventionalRegistrarConfig.RegistrarForInterface)
@@ -49,9 +54,11 @@ namespace BeiDream.Core.Dependency
                 {
                     IocManager.RegisterAssemblyByConvention(assemblie);
                 }
-                return;
             }
-            IocManager.RegisterAssemblyByConvention(ConventionalRegistrarConfig.Assembly);
+            else
+            {
+                IocManager.RegisterAssemblyByConvention(ConventionalRegistrarConfig.Assembly);
+            }
         }
     }
 }

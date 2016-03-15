@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Collections\CollectionExtensions.cs" />
     <Compile Include="ConvertHelper.cs" />
+    <Compile Include="Etc\NullDisposable.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\NullableExtensions.cs" />

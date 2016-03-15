@@ -123,5 +123,15 @@ namespace BeiDream.Core.Dependency
         {
             return IocContainer.Resolve<T>();
         }
+
+        public object Resolve(Type type)
+        {
+            return IocContainer.Resolve(type);
+        }
+
+        public void Release(object obj)
+        {
+            IocContainer.Release(obj);
+        }
     }
 }

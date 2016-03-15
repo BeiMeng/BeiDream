@@ -60,6 +60,7 @@
     <Compile Include="Dtos\RoleDto.cs" />
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Impl\ResourceService.cs" />
+    <Compile Include="Impl\SetPermissionsCompletedHandler.cs" />
     <Compile Include="Impl\UserService.cs" />
     <Compile Include="Impl\RoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,6 +7,8 @@ using BeiDream.Utils.PagerHelper;
 using System;
 using System.Collections.Generic;
 using BeiDream.AutoMapper;
+using BeiDream.Core.Events.Bus.EventBus;
+using BeiDream.Core.Events.Bus.EventData;
 using BeiDream.Demo.Domain.Model;
 
 namespace BeiDream.Demo.Service.Impl
@@ -17,6 +19,7 @@ namespace BeiDream.Demo.Service.Impl
         ///角色领域服务
         /// </summary>
         private readonly IRoleDomainService _roleDomainService;
+        public IEventBus EventBus { get; set; }
 
         public RoleService(IRoleDomainService roleDomainService)
         {
@@ -54,7 +57,13 @@ namespace BeiDream.Demo.Service.Impl
 
         public void SetPermissions(Guid roleId, List<Guid> resourceIds)
         {
+            EventBus.Trigger(new SetPermissionsCompletedEventData { RoleId = roleId });
             _roleDomainService.SetPermissions(roleId,resourceIds);
         }
+    }
+
+    public class SetPermissionsCompletedEventData : EventData
+    {
+        public Guid RoleId { get; set; }
     }
 }
