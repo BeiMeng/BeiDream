@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using BeiDream.Core.Application.Services;
 using BeiDream.Demo.Domain.Queries;
-using BeiDream.Demo.Service.Dtos;
+using BeiDream.Demo.Service.Resources.Dtos;
 using BeiDream.Utils.PagerHelper;
 
-namespace BeiDream.Demo.Service.Contracts
+namespace BeiDream.Demo.Service.Resources
 {
     public interface IResourceService : IApplicationService
     {

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BeiDream.Core.Security.Authentication;
-using BeiDream.Demo.Service.Contracts;
+using BeiDream.Demo.Service.Users;
+using BeiDream.Demo.Service.Users.Dtos;
 using BeiDream.Demo.Web.Model;
 using BeiDream.Web.Mvc;
 
@@ -31,7 +32,7 @@ namespace BeiDream.Demo.Web.Controllers
         {
             if(model.ValidateCode!="8888")
                 throw new Exception("验证码错误！");
-            var user = _userService.Login(model.UserNameOrEmail, model.Password);
+            var user = _userService.Login(new LoginInfoInput{UserNameOrEmail=model.UserNameOrEmail, Password=model.Password});
             if(user==null)
                 throw new Exception("用户名或密码错误！");
             _signInManager.SignIn(user.Id.ToString(), model.RememberMe);

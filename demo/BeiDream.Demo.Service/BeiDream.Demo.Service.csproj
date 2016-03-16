@@ -53,16 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IResourceService.cs" />
-    <Compile Include="Contracts\IUserService.cs" />
-    <Compile Include="Contracts\IRoleService.cs" />
-    <Compile Include="Dtos\ResourceDto.cs" />
-    <Compile Include="Dtos\RoleDto.cs" />
-    <Compile Include="Dtos\UserDto.cs" />
-    <Compile Include="Impl\ResourceService.cs" />
-    <Compile Include="Impl\SetPermissionsCompletedHandler.cs" />
-    <Compile Include="Impl\UserService.cs" />
-    <Compile Include="Impl\RoleService.cs" />
+    <Compile Include="Users\IUserService.cs" />
+    <Compile Include="Resources\IResourceService.cs" />
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="Users\Dtos\LoginInfoInput.cs" />
+    <Compile Include="Roles\IRoleService.cs" />
+    <Compile Include="Resources\Dtos\ResourceDto.cs" />
+    <Compile Include="Roles\Dtos\RoleDto.cs" />
+    <Compile Include="Users\Dtos\UserDto.cs" />
+    <Compile Include="Resources\ResourceService.cs" />
+    <Compile Include="Roles\SetPermissionsCompletedHandler.cs" />
+    <Compile Include="Users\UserService.cs" />
+    <Compile Include="Roles\RoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,11 @@
-﻿using BeiDream.Core.Application.Services;
-using BeiDream.Demo.Domain.Queries;
-using BeiDream.Demo.Service.Dtos;
-using BeiDream.Utils.PagerHelper;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BeiDream.Core.Application.Services;
+using BeiDream.Demo.Domain.Queries;
+using BeiDream.Demo.Service.Users.Dtos;
+using BeiDream.Utils.PagerHelper;
 
-namespace BeiDream.Demo.Service.Contracts
+namespace BeiDream.Demo.Service.Users
 {
     /// <summary>
     /// 用户应用服务接口
@@ -29,9 +29,8 @@ namespace BeiDream.Demo.Service.Contracts
         /// <summary>
         /// 登录验证
         /// </summary>
-        /// <param name="userNameOrEmail">用户名或邮箱</param>
-        /// <param name="password">密码</param>
+        /// <param name="loginInfoInput"></param>
         /// <returns></returns>
-        UserDto Login(string userNameOrEmail, string password);
+        UserDto Login(LoginInfoInput loginInfoInput);
     }
 }

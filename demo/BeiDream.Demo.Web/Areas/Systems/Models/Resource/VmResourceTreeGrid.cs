@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Enums;
-using BeiDream.Demo.Service.Dtos;
+using BeiDream.Demo.Service.Resources.Dtos;
 using BeiDream.Utils.Extensions;
 using BeiDream.Web.Mvc.EasyUi;
 using BeiDream.Web.Mvc.EasyUi.Tree;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BeiDream.AutoMapper;
-using BeiDream.Demo.Service.Contracts;
+using BeiDream.Demo.Service.Resources;
 using BeiDream.Demo.Web.Areas.Systems.Models.Resource;
 using BeiDream.Demo.Web.Security.Authorization;
 using BeiDream.Web.Mvc;

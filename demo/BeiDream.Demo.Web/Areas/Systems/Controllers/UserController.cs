@@ -1,10 +1,10 @@
 ﻿using BeiDream.Demo.Domain.Queries;
-using BeiDream.Demo.Service.Contracts;
 using BeiDream.Demo.Web.Areas.Systems.Models.User;
 using BeiDream.Utils;
 using BeiDream.Web.Mvc.EasyUi;
 using System;
 using System.Web.Mvc;
+using BeiDream.Demo.Service.Users;
 using BeiDream.Demo.Web.Areas.Systems.Models;
 using BeiDream.Demo.Web.Security.Authorization;
 

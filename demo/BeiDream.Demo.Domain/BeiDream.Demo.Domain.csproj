@@ -61,14 +61,12 @@
     <Compile Include="Repositories\IResourceRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Services\Contracts\IPermissionDomainService.cs" />
-    <Compile Include="Services\Contracts\IResourceDomainService.cs" />
-    <Compile Include="Services\Contracts\IRoleDomainService.cs" />
-    <Compile Include="Services\Contracts\IUserDomainService.cs" />
-    <Compile Include="Services\Impl\PermissionDomainService.cs" />
-    <Compile Include="Services\Impl\ResourceDomainService.cs" />
-    <Compile Include="Services\Impl\RoleDomainService.cs" />
-    <Compile Include="Services\Impl\UserDomainService.cs" />
+    <Compile Include="DomainServices\Contracts\IResourceDomainService.cs" />
+    <Compile Include="DomainServices\Contracts\IRoleDomainService.cs" />
+    <Compile Include="DomainServices\Contracts\IUserDomainService.cs" />
+    <Compile Include="DomainServices\Impl\ResourceDomainService.cs" />
+    <Compile Include="DomainServices\Impl\RoleDomainService.cs" />
+    <Compile Include="DomainServices\Impl\UserDomainService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BeiDream.Core\BeiDream.Core.csproj">

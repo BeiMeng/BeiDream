@@ -5,7 +5,7 @@ using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Enums;
 using BeiDream.Demo.Domain.Model;
 
-namespace BeiDream.Demo.Service.Dtos
+namespace BeiDream.Demo.Service.Resources.Dtos
 {
     [AutoMapFrom(typeof(Resource))]
     [AutoMapTo(typeof(Resource))]

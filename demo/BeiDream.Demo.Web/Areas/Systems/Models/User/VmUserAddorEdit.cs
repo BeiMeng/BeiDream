@@ -1,6 +1,6 @@
-﻿using BeiDream.Demo.Service.Dtos;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+using BeiDream.Demo.Service.Users.Dtos;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.User
 {

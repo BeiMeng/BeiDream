@@ -1,11 +1,10 @@
-﻿using BeiDream.Demo.Domain.Model;
-using BeiDream.Utils.Extensions;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using BeiDream.AutoMapper;
+using BeiDream.Demo.Domain.Model;
 
-namespace BeiDream.Demo.Service.Dtos
+namespace BeiDream.Demo.Service.Roles.Dtos
 {
     [AutoMapFrom(typeof(Role))]
     [AutoMapTo(typeof(Role))]

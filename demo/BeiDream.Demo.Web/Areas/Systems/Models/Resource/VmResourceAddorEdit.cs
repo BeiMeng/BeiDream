@@ -1,7 +1,7 @@
 ﻿using System;
 using BeiDream.AutoMapper;
 using BeiDream.Demo.Domain.Enums;
-using BeiDream.Demo.Service.Dtos;
+using BeiDream.Demo.Service.Resources.Dtos;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.Resource
 {

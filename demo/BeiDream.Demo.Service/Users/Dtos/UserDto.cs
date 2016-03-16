@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using BeiDream.Demo.Domain.Model;
 using BeiDream.Utils.Extensions;
 
-namespace BeiDream.Demo.Service.Dtos
+namespace BeiDream.Demo.Service.Users.Dtos
 {
     public class UserDto
     {

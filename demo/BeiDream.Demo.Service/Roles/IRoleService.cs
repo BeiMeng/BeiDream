@@ -1,11 +1,11 @@
-﻿using BeiDream.Core.Application.Services;
-using BeiDream.Demo.Domain.Queries;
-using BeiDream.Demo.Service.Dtos;
-using BeiDream.Utils.PagerHelper;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BeiDream.Core.Application.Services;
+using BeiDream.Demo.Domain.Queries;
+using BeiDream.Demo.Service.Roles.Dtos;
+using BeiDream.Utils.PagerHelper;
 
-namespace BeiDream.Demo.Service.Contracts
+namespace BeiDream.Demo.Service.Roles
 {
     public interface IRoleService : IApplicationService
     {

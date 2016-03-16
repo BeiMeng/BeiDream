@@ -1,7 +1,7 @@
-﻿using BeiDream.Demo.Service.Dtos;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using BeiDream.AutoMapper;
+using BeiDream.Demo.Service.Roles.Dtos;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.Role
 {

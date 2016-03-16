@@ -1,5 +1,5 @@
-﻿using BeiDream.Demo.Service.Dtos;
-using System;
+﻿using System;
+using BeiDream.Demo.Service.Users.Dtos;
 
 namespace BeiDream.Demo.Web.Areas.Systems.Models.User
 {
