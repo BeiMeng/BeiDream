@@ -38,8 +38,19 @@ namespace BeiDream.Demo.Infrastructure
                 Enabled = true,
                 Password = "admin",
             };
+            var defaultUser = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = "defaultUser",
+                DisplayName = "普通用户",
+                Email = "331341164@qq.com",
+                Enabled = true,
+                Password = "admin",
+                IsDeleted=true
+            };
             administrator.Roles.Add(role);
             context.Users.Add(administrator);
+            context.Users.Add(defaultUser);
 
             Guid moduleId = Guid.NewGuid();
             var resourceModule = new Resource

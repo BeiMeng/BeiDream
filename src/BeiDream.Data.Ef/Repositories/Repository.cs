@@ -54,7 +54,15 @@ namespace BeiDream.Data.Ef.Repositories
         /// <param name="entity"></param>
         public void Delete(TAggregateRoot entity)
         {
-            Set.Remove(entity);
+            if (entity is ISoftDelete)
+            {
+                (entity as ISoftDelete).IsDeleted = true;
+            }
+            else
+            {
+                Set.Remove(entity);
+            }
+
         }
         /// <summary>
         /// 移除实体集合
@@ -67,7 +75,10 @@ namespace BeiDream.Data.Ef.Repositories
             var list = entities.ToList();
             if (!list.Any())
                 return;
-            Set.RemoveRange(list);
+            foreach (var entity in list)
+            {
+                Delete(entity);
+            }
         }
         public void Delete(Expression<Func<TAggregateRoot, bool>> predicate)
         {

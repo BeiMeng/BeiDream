@@ -6,7 +6,7 @@ using BeiDream.Core.Domain.Entities.Auditing;
 
 namespace BeiDream.Demo.Domain.Model
 {
-    public class User : AggregateRoot, IAudited
+    public class User : AggregateRoot, IAudited,ISoftDelete
     {
         public User()
         {
@@ -105,5 +105,7 @@ namespace BeiDream.Demo.Domain.Model
         }
 
         #endregion
+
+        public bool IsDeleted { get; set; }
     }
 }

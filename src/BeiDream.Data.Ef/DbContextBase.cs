@@ -24,7 +24,7 @@ namespace BeiDream.Data.Ef
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Filter<ISoftDelete, bool>(EfFilterNames.SoftDelete, entity => entity.IsDeleted, false);
+            modelBuilder.Filter<ISoftDelete, bool>(EfFilterNames.SoftDelete, entity => entity.IsDeleted, false);
         }
 
         /// <summary>

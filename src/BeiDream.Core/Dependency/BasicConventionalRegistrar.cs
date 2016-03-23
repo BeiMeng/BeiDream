@@ -16,7 +16,8 @@ namespace BeiDream.Core.Dependency
                     .IncludeNonPublicTypes()
                     .BasedOn<ITransientDependency>()
                     .WithService.Self()
-                    .WithService.DefaultInterfaces()
+                    //.WithService.DefaultInterfaces()  //实现类命名必须规范
+                    .WithService.AllInterfaces()    //实现类命名不必须规范
                     .LifestyleTransient()
                 );
             //PerWebRequest
@@ -25,7 +26,8 @@ namespace BeiDream.Core.Dependency
                     .IncludeNonPublicTypes()
                     .BasedOn<IPerWebRequestDependency>()
                     .WithService.Self()
-                    .WithService.DefaultInterfaces()
+                    //.WithService.DefaultInterfaces()
+                     .WithService.AllInterfaces()
                     .LifestylePerWebRequest()
                 );
             //Singleton
@@ -34,7 +36,8 @@ namespace BeiDream.Core.Dependency
                     .IncludeNonPublicTypes()
                     .BasedOn<ISingletonDependency>()
                     .WithService.Self()
-                    .WithService.DefaultInterfaces()
+                    //.WithService.DefaultInterfaces()
+                     .WithService.AllInterfaces()
                     .LifestyleSingleton()
                 );
 
