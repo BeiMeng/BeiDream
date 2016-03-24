@@ -1,4 +1,6 @@
-﻿using Castle.DynamicProxy;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Castle.DynamicProxy;
 using System.Reflection;
 
 namespace BeiDream.Core.Domain.Uow.Interception
@@ -14,6 +16,12 @@ namespace BeiDream.Core.Domain.Uow.Interception
 
         public void Intercept(IInvocation invocation)
         {
+            var disableFiltersAttr = GetDisableFiltersAttributeOrNull(invocation.MethodInvocationTarget);
+            if (disableFiltersAttr != null)
+            {
+                List<string> filterNames= disableFiltersAttr.FilterNames.Select(filterName => filterName.ToString()).ToList();
+                _unitOfWork.DisableFilters(filterNames.ToArray());
+            }
             //MethodInfo method = invocation.Method;
             invocation.Proceed();
             //if (Attribute.IsDefined(method, typeof (NoUnitOfWorkAttribute)))
@@ -24,7 +32,7 @@ namespace BeiDream.Core.Domain.Uow.Interception
             //{
             //    return;
             //}
-            var unitOfWorkAttr = GetUnitOfWorkAttributeOrNull(invocation.MethodInvocationTarget);
+            var unitOfWorkAttr = GetNoUnitOfWorkAttributeOrNull(invocation.MethodInvocationTarget);
             if (unitOfWorkAttr != null)
             {
                 return;
@@ -32,12 +40,21 @@ namespace BeiDream.Core.Domain.Uow.Interception
             _unitOfWork.Commit();
         }
 
-        internal static NoUnitOfWorkAttribute GetUnitOfWorkAttributeOrNull(MemberInfo methodInfo)
+        internal static NoUnitOfWorkAttribute GetNoUnitOfWorkAttributeOrNull(MemberInfo methodInfo)
         {
             var attrs = methodInfo.GetCustomAttributes(typeof(NoUnitOfWorkAttribute), false);
             if (attrs.Length > 0)
             {
                 return (NoUnitOfWorkAttribute)attrs[0];
+            }
+            return null;
+        }
+        internal static DisableFiltersAttribute GetDisableFiltersAttributeOrNull(MemberInfo methodInfo)
+        {
+            var attrs = methodInfo.GetCustomAttributes(typeof(DisableFiltersAttribute), false);
+            if (attrs.Length > 0)
+            {
+                return (DisableFiltersAttribute)attrs[0];
             }
             return null;
         }

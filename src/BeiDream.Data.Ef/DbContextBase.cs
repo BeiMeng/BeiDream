@@ -1,12 +1,13 @@
 ﻿using BeiDream.Core.Domain.Entities;
-using BeiDream.Data.Ef.Datas;
 using BeiDream.Data.Ef.EntityFramework.DynamicFilters;
 using BeiDream.Utils.Logging;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using BeiDream.Core.Domain.Datas;
 using BeiDream.Core.Domain.Entities.Auditing;
 using BeiDream.Core.Security;
+using BeiDream.Utils;
 
 namespace BeiDream.Data.Ef
 {
@@ -22,11 +23,28 @@ namespace BeiDream.Data.Ef
 
         public Guid TraceId { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Filter<ISoftDelete, bool>(EfFilterNames.SoftDelete, entity => entity.IsDeleted, false);
+            modelBuilder.Filter<ISoftDelete, bool>(FiltersEnum.SoftDelete.ToString(), entity => entity.IsDeleted, false);
+        }
+        public IDisposable DisableFilters(params string[] filterNames)
+        {
+            foreach (var filterName in filterNames)
+            {
+                this.DisableFilter(filterName);
+            }
+            return new DisposeAction(() => EnableFilters(filterNames));
         }
 
+        private IDisposable EnableFilters(params string[] filterNames)
+        {
+            foreach (var filterName in filterNames)
+            {
+                this.EnableFilter(filterName);
+            }
+            return new DisposeAction(() => DisableFilters(filterNames));
+        }
         /// <summary>
         /// 写日志
         /// </summary>

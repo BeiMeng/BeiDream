@@ -1,4 +1,5 @@
-﻿using BeiDream.Core.Domain.Uow;
+﻿using System;
+using BeiDream.Core.Domain.Uow;
 
 namespace BeiDream.Data.Ef.Uow
 {
@@ -14,6 +15,11 @@ namespace BeiDream.Data.Ef.Uow
         public void Commit()
         {
             _dbContext.SaveChanges();
+        }
+
+        public IDisposable DisableFilters(params string[] filterNames)
+        {
+           return _dbContext.DisableFilters(filterNames);
         }
     }
 }

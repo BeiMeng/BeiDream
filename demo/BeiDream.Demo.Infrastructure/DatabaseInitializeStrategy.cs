@@ -27,8 +27,17 @@ namespace BeiDream.Demo.Infrastructure
                 IsAdmin = true,
                 Enabled = true
             };
+            var defaultRole = new Role
+            {
+                Id = Guid.NewGuid(),
+                Name = "普通管理员",
+                Description = "普通管理员角色，初始化不具有任何权限",
+                IsAdmin = false,
+                Enabled = true,
+                IsDeleted=true
+            };
             context.Roles.Add(role);
-
+            context.Roles.Add(defaultRole);
             var administrator = new User
             {
                 Id = Guid.NewGuid(),

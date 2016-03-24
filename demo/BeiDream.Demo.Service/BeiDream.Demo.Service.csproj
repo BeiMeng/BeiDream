@@ -76,6 +76,10 @@
       <Project>{3720f3de-fbbd-454c-adc0-ce6e256b6d9b}</Project>
       <Name>BeiDream.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\BeiDream.Data.Ef\BeiDream.Data.Ef.csproj">
+      <Project>{9fb150c6-e1de-4422-8727-775c29df590b}</Project>
+      <Name>BeiDream.Data.Ef</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BeiDream.Utils\BeiDream.Utils.csproj">
       <Project>{e2af3398-5cd1-4b41-995f-be11c7622e6e}</Project>
       <Name>BeiDream.Utils</Name>

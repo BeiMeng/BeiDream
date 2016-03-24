@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BeiDream.Core.Dependency;
+using BeiDream.Core.Domain.Datas;
+using BeiDream.Core.Domain.Uow;
 using BeiDream.Core.Domain.Uow.Interception;
 using BeiDream.Core.Linq.Extensions;
 using BeiDream.Demo.Domain.DomainServices.Contracts;
@@ -35,6 +38,7 @@ namespace BeiDream.Demo.Service.Users
             _userDomainService.SetRoles(userId, roleIds);
         }
         [NoUnitOfWork]
+        [DisableFiltersAttribute(FiltersEnum.SoftDelete)]   //关闭数据过滤器(参数为过滤器名称列表)
         public PagerList<UserDto> Query(UserQuery query)
         {
             //todo：easyui组件的ajax请求异常，暂时无法拦截

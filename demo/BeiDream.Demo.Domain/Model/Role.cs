@@ -6,7 +6,7 @@ using BeiDream.Core.Domain.Entities.Auditing;
 
 namespace BeiDream.Demo.Domain.Model
 {
-    public class Role : AggregateRoot, IAudited
+    public class Role : AggregateRoot, IAudited, ISoftDelete
     {
         [Required(ErrorMessage = "角色名不能为空")]
         [StringLength(16, ErrorMessage = "角色名输入过长，不能超过16位")]
@@ -46,5 +46,6 @@ namespace BeiDream.Demo.Domain.Model
         [StringLength(50)]
         public string LastModifierUserId { get; set; }
         public DateTime? LastModificationTime { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
