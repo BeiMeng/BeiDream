@@ -6,7 +6,7 @@ using BeiDream.Core.Domain.Entities.Auditing;
 
 namespace BeiDream.Demo.Domain.Model
 {
-    public class User : AggregateRoot, IAudited, ISoftDelete, IMayHaveTenant
+    public class User : AggregateRoot, IAudited, ISoftDelete,IMayHaveTenant
     {
         public User()
         {

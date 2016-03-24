@@ -104,7 +104,7 @@ namespace BeiDream.Demo.Service.Users
                 throw new Exception("删除的用户不存在");
             _userRepository.Delete(user);
         }
-
+        [DisableFiltersAttribute(FiltersEnum.MayHaveTenant)]  
         public UserDto Login(LoginInfoInput loginInfoInput)
         {
             var user = _userRepository.GetAll().FirstOrDefault(p => p.Name == loginInfoInput.UserNameOrEmail || p.Email == loginInfoInput.UserNameOrEmail);

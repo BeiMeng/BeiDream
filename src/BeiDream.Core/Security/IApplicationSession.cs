@@ -21,5 +21,9 @@
         /// 是否超级管理员
         /// </summary>
         bool IsAdmin { get; set; }
+        /// <summary>
+        /// 当前租户Id或无租户为null
+        /// </summary>
+        int? TenantId { get; }
     }
 }

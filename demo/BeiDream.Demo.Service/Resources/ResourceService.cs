@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BeiDream.AutoMapper;
+using BeiDream.Core.Domain.Datas;
 using BeiDream.Core.Domain.Uow.Interception;
 using BeiDream.Core.Linq.Extensions;
 using BeiDream.Demo.Domain.DomainServices.Contracts;
@@ -124,11 +125,13 @@ namespace BeiDream.Demo.Service.Resources
             return PagerList(query).Convert(p => p.ToDto(roleId));
         }
         [NoUnitOfWork]
+        [DisableFiltersAttribute(FiltersEnum.MayHaveTenant)]  
         public List<ResourceDto> GetNavigationModule(Guid userId)
         {
             return _resourceDomainService.GetNavigationModule(userId).Select(item => item.MapTo<ResourceDto>()).ToList();
         }
         [NoUnitOfWork]
+        [DisableFiltersAttribute(FiltersEnum.MayHaveTenant)]  
         public List<ResourceDto> GetNavigationMenuInModule(Guid parentId, Guid userId)
         {
             return _resourceDomainService.GetNavigationMenuInModule(parentId, userId).Select(item => item.MapTo<ResourceDto>()).ToList();

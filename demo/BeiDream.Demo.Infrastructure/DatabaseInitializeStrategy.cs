@@ -45,6 +45,7 @@ namespace BeiDream.Demo.Infrastructure
                 DisplayName = "超级管理员",
                 Email = "331341164@qq.com",
                 Enabled = true,
+                TenantId=null,
                 Password = "admin",
             };
             var defaultUser = new User
@@ -55,11 +56,24 @@ namespace BeiDream.Demo.Infrastructure
                 Email = "331341164@qq.com",
                 Enabled = true,
                 Password = "admin",
-                IsDeleted=true
+                TenantId=1,
+                IsDeleted=false
+            };
+            var defaultTenantUser = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = "defaultTenantUser",
+                DisplayName = "租户1的普通用户",
+                Email = "331341164@qq.com",
+                Enabled = true,
+                Password = "admin",
+                IsDeleted = false
             };
             administrator.Roles.Add(role);
             context.Users.Add(administrator);
+            defaultUser.Roles.Add(defaultRole);
             context.Users.Add(defaultUser);
+            //context.Users.Add(defaultTenantUser);
 
             Guid moduleId = Guid.NewGuid();
             var resourceModule = new Resource

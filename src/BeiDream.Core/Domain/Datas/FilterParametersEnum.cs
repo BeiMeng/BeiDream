@@ -2,6 +2,6 @@
 {
     public enum FilterParametersEnum
     {
-        TenantId=0
+        tenantId=0
     }
 }

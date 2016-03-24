@@ -1,5 +1,6 @@
 ﻿$(function () {
     $('#cloud').jQlouds();
+    var $tenantName = $("#txtTenantName");
     var $userName = $("#txtUserName");
     var $password = $("#txtPasword");
     var $validateCode = $("#txtValidateCode");
@@ -26,6 +27,7 @@
     });
     //重置
     $("#btnReset").click(function () {
+        $tenantName.val("");
         $userName.val("");
         $password.val("");
         clearValidateCode();
@@ -37,7 +39,7 @@
             dataType: "json",
             type: "POST",
             url: "/Security/LogIn",
-            data: "UserNameOrEmail=" + $userName.val() + "&password=" + $password.val() + "&validateCode=" + $validateCode.val() + "&rememberMe=" + $rememberMe.is(':checked'),
+            data: "TenantName=1&UserNameOrEmail=" + $userName.val() + "&password=" + $password.val() + "&validateCode=" + $validateCode.val() + "&rememberMe=" + $rememberMe.is(':checked'),
             beforeSend: function () {
                 if ($.trim($userName.val()) === "") {
                     alert("用户名或邮箱不能为空");

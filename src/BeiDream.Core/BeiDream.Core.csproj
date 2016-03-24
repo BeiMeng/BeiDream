@@ -123,6 +123,7 @@
     <Compile Include="Events\Bus\Handlers\HandlersFactories\IocHandlerFactory.cs" />
     <Compile Include="Events\Bus\Handlers\IEventHandler.cs" />
     <Compile Include="Events\Bus\Handlers\IEventHandlerOfTEventData.cs" />
+    <Compile Include="IShouldInitialize.cs" />
     <Compile Include="Json\JsonExtensions.cs" />
     <Compile Include="ExpressionHelper\Extensions\ExpressionExtensins.cs" />
     <Compile Include="ExpressionHelper\ParameterRebinder.cs" />
