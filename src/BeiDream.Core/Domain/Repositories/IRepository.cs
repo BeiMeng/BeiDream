@@ -12,14 +12,25 @@ namespace BeiDream.Core.Domain.Repositories
         void Add(TAggregateRoot entity);
 
         void Update(TAggregateRoot entity);
+        /// <summary>
+        /// 移除实体集合
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <param name="ignoreSoftDelete">忽略软删除功能(默认不忽略,如果设置为true,即使继承了ISoftDelete接口一样物理删除)</param>
+        void Delete(TAggregateRoot entity, bool ignoreSoftDelete=false);
 
-        void Delete(TAggregateRoot entity);
         /// <summary>
         /// 移除实体集合
         /// </summary>
         /// <param name="entities">实体集合</param>
-        void Delete(IEnumerable<TAggregateRoot> entities);
-        void Delete(Expression<Func<TAggregateRoot, bool>> predicate);
+        /// <param name="ignoreSoftDelete">忽略软删除功能(默认不忽略,如果设置为true,即使继承了ISoftDelete接口一样物理删除)</param>
+        void Delete(IEnumerable<TAggregateRoot> entities, bool ignoreSoftDelete = false);
+        /// <summary>
+        /// 移除实体集合
+        /// </summary>
+        /// <param name="predicate">删掉条件</param>
+        /// <param name="ignoreSoftDelete">忽略软删除功能(默认不忽略,如果设置为true,即使继承了ISoftDelete接口一样物理删除)</param>
+        void Delete(Expression<Func<TAggregateRoot, bool>> predicate, bool ignoreSoftDelete = false);
         /// <summary>
         /// 查找实体
         /// </summary>

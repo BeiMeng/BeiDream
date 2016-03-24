@@ -48,13 +48,15 @@ namespace BeiDream.Data.Ef.Repositories
         }
 
         #region 删除操作
+
         /// <summary>
-        /// 删除单个实体集合
+        /// 移除实体集合
         /// </summary>
-        /// <param name="entity"></param>
-        public void Delete(TAggregateRoot entity)
+        /// <param name="entity">实体</param>
+        /// <param name="ignoreSoftDelete">忽略软删除功能(默认不忽略,如果设置为true,即使继承了ISoftDelete接口一样物理删除)</param>
+        public void Delete(TAggregateRoot entity, bool ignoreSoftDelete = false)
         {
-            if (entity is ISoftDelete)
+            if (entity is ISoftDelete && !ignoreSoftDelete)
             {
                 (entity as ISoftDelete).IsDeleted = true;
             }
@@ -64,11 +66,13 @@ namespace BeiDream.Data.Ef.Repositories
             }
 
         }
+
         /// <summary>
         /// 移除实体集合
         /// </summary>
         /// <param name="entities">实体集合</param>
-        public void Delete(IEnumerable<TAggregateRoot> entities)
+        /// <param name="ignoreSoftDelete">忽略软删除功能(默认不忽略,如果设置为true,即使继承了ISoftDelete接口一样物理删除)</param>
+        public void Delete(IEnumerable<TAggregateRoot> entities, bool ignoreSoftDelete = false)
         {
             if (entities == null)
                 return;
@@ -77,13 +81,18 @@ namespace BeiDream.Data.Ef.Repositories
                 return;
             foreach (var entity in list)
             {
-                Delete(entity);
+                Delete(entity,ignoreSoftDelete);
             }
         }
-        public void Delete(Expression<Func<TAggregateRoot, bool>> predicate)
+        /// <summary>
+        /// 移除实体集合
+        /// </summary>
+        /// <param name="predicate">删掉条件</param>
+        /// <param name="ignoreSoftDelete">忽略软删除功能(默认不忽略,如果设置为true,即使继承了ISoftDelete接口一样物理删除)</param>
+        public void Delete(Expression<Func<TAggregateRoot, bool>> predicate, bool ignoreSoftDelete = false)
         {
             var entities = Set.Where(predicate);
-            Delete(entities);
+            Delete(entities, ignoreSoftDelete);
         } 
         #endregion
 
