@@ -31,9 +31,6 @@ namespace BeiDream.Core.Security
         /// </summary>
         public bool IsAdmin { get; set; }
 
-        public int? TenantId { get; set; }
-
-
         /// <summary>
         /// 当前用户安全主体
         /// </summary>

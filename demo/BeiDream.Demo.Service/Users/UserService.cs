@@ -32,18 +32,16 @@ namespace BeiDream.Demo.Service.Users
             _userDomainService = userDomainService;
             _userRepository = userRepository;
         }
-
         public void SetRoles(Guid userId, List<Guid> roleIds)
         {
             _userDomainService.SetRoles(userId, roleIds);
         }
         [NoUnitOfWork]
-        //[DisableFiltersAttribute(FiltersEnum.SoftDelete)]   //关闭数据过滤器(参数为过滤器名称列表)
+        //[DisableFiltersAttribute(FiltersEnum.SoftDelete)]   //示范：关闭数据过滤器(参数为过滤器名称列表)
         public PagerList<UserDto> Query(UserQuery query)
         {
             //todo：easyui组件的ajax请求异常，暂时无法拦截
             //throw new Exception("用户查询异常，easyui ajax操作全局异常测试");
-            var list = _userRepository.GetAll().ToList();
             if (string.IsNullOrWhiteSpace(query.Order))   //分页必须先进行排序
                 query.Order = "Id desc";
             query.TotalCount = _userRepository.GetAllFilterDataPermissions().Count();

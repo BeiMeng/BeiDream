@@ -12,7 +12,7 @@ using BeiDream.Utils;
 
 namespace BeiDream.Data.Ef
 {
-    public class DbContextBase : DbContext, IShouldInitialize
+    public class DbContextBase : DbContext
     {
         private static readonly ILogger Logger = LogManager.GetLogger(typeof(DbContextBase));
 
@@ -28,8 +28,6 @@ namespace BeiDream.Data.Ef
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Filter<ISoftDelete, bool>(FiltersEnum.SoftDelete.ToString(), entity => entity.IsDeleted, false);
-            //modelBuilder.Filter(FiltersEnum.MustHaveTenant.ToString(), (IMustHaveTenant t, int tenantId) => t.TenantId == tenantId, 0);
-            modelBuilder.Filter(FiltersEnum.MayHaveTenant.ToString(), (IMayHaveTenant t, int? tenantId) => t.TenantId == tenantId, 0);
         }
         public IDisposable DisableFilters(params string[] filterNames)
         {
@@ -158,11 +156,5 @@ namespace BeiDream.Data.Ef
         }
 
         #endregion
-
-        public void Initialize()
-        {
-            //this.SetFilterScopedParameterValue(FiltersEnum.MustHaveTenant.ToString(), FilterParametersEnum.tenantId.ToString(), GetApplicationSession().TenantId ?? 0);
-            this.SetFilterScopedParameterValue(FiltersEnum.MayHaveTenant.ToString(), FilterParametersEnum.tenantId.ToString(), null);
-        }
     }
 }

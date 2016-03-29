@@ -16,17 +16,16 @@ namespace BeiDream.Demo.Infrastructure.Security.Authentication
         protected override ApplicationSession CreateApplicationSession(string name)
         {
             bool isAdmin;
-            int? currentTenantId;
+
             ApplicationSession applicationSession = new ApplicationSession(true, name)
             {
-                RoleIds = GetRolesIdByUserId(name, out isAdmin,out currentTenantId).ToArray(),
+                RoleIds = GetRolesIdByUserId(name, out isAdmin).ToArray(),
                 IsAdmin=isAdmin,
-                TenantId=currentTenantId
             };
             return applicationSession;
         }
 
-        private List<string> GetRolesIdByUserId(string userId, out bool isAdmin, out int? currentTenantId)
+        private List<string> GetRolesIdByUserId(string userId, out bool isAdmin)
         {
             isAdmin = false;
             var userRepository = IocManager.Instance.Resolve<IUserRepository>();
@@ -38,7 +37,6 @@ namespace BeiDream.Demo.Infrastructure.Security.Authentication
                     isAdmin = true;
                 }
             }
-            currentTenantId = user != null ? user.TenantId : null;
             return user != null ? user.Roles.Select(role => role.Id.ToString()).ToList() : new List<string>();
 
             //if (userId == "admin")

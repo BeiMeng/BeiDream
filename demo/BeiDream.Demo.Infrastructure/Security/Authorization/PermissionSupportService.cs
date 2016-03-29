@@ -19,14 +19,14 @@ namespace BeiDream.Demo.Infrastructure.Security.Authorization
         {
             return true;
         }
-        /// <summary>
-        /// 检测该用户是否属于当前租户
-        /// </summary>
-        /// <param name="userId">用户编号</param>
-        public bool IsInTenant(string userId)
-        {
-            return true;
-        }
+        ///// <summary>
+        ///// 检测该用户是否属于当前租户
+        ///// </summary>
+        ///// <param name="userId">用户编号</param>
+        //public bool IsInTenant(string userId)
+        //{
+        //    return true;
+        //}
         /// <summary>
         /// 获取资源的权限列表
         /// </summary>

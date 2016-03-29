@@ -43,8 +43,8 @@ namespace BeiDream.Core.Security.Authorization
                 return false;
             if (!ValidateApplication())
                 return false;
-            if (!ValidateTenant())
-                return false;
+            //if (!ValidateTenant())
+            //    return false;
             if (_ignore)
                 return true;
             if (ValidateIsAdmin())
@@ -81,14 +81,14 @@ namespace BeiDream.Core.Security.Authorization
             return _applicationSession.Name;
         }
 
-        /// <summary>
-        /// 验证用户是否属于当前租户
-        /// </summary>
-        private bool ValidateTenant()
-        {
-            var result = _permissionSupportService.IsInTenant(GetName());
-            return result;
-        }
+        ///// <summary>
+        ///// 验证用户是否属于当前租户
+        ///// </summary>
+        //private bool ValidateTenant()
+        //{
+        //    var result = _permissionSupportService.IsInTenant(GetName());
+        //    return result;
+        //}
         /// <summary>
         /// 验证是否超级管理员
         /// </summary>
