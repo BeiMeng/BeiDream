@@ -104,7 +104,7 @@ namespace BeiDream.Demo.Service.Roles
         }
 
         [NoUnitOfWork]
-        [DisableFiltersAttribute(FiltersEnum.SoftDelete)]   //示范：关闭数据过滤器(参数为过滤器名称列表)
+        //[DisableFiltersAttribute(FiltersEnum.SoftDelete)]   //示范：关闭数据过滤器(参数为过滤器名称列表)
         public PagerList<RoleDto> Query(RoleQuery query, Guid userId)
         {
             return PagerList(query).Convert(item => item.ToDto(userId));
