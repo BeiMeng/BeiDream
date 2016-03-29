@@ -125,13 +125,11 @@ namespace BeiDream.Demo.Service.Resources
             return PagerList(query).Convert(p => p.ToDto(roleId));
         }
         [NoUnitOfWork]
-        [DisableFiltersAttribute(FiltersEnum.MayHaveTenant)]  
         public List<ResourceDto> GetNavigationModule(Guid userId)
         {
             return _resourceDomainService.GetNavigationModule(userId).Select(item => item.MapTo<ResourceDto>()).ToList();
         }
         [NoUnitOfWork]
-        [DisableFiltersAttribute(FiltersEnum.MayHaveTenant)]  
         public List<ResourceDto> GetNavigationMenuInModule(Guid parentId, Guid userId)
         {
             return _resourceDomainService.GetNavigationMenuInModule(parentId, userId).Select(item => item.MapTo<ResourceDto>()).ToList();

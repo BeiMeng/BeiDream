@@ -162,7 +162,7 @@ namespace BeiDream.Data.Ef
         public void Initialize()
         {
             //this.SetFilterScopedParameterValue(FiltersEnum.MustHaveTenant.ToString(), FilterParametersEnum.tenantId.ToString(), GetApplicationSession().TenantId ?? 0);
-            this.SetFilterScopedParameterValue(FiltersEnum.MayHaveTenant.ToString(), FilterParametersEnum.tenantId.ToString(), GetApplicationSession().TenantId);
+            this.SetFilterScopedParameterValue(FiltersEnum.MayHaveTenant.ToString(), FilterParametersEnum.tenantId.ToString(), null);
         }
     }
 }

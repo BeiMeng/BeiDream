@@ -29,8 +29,6 @@ namespace BeiDream.Demo.Infrastructure.Security.Authentication
         private List<string> GetRolesIdByUserId(string userId, out bool isAdmin, out int? currentTenantId)
         {
             isAdmin = false;
-            IUnitOfWork unitOfWork = IocManager.Instance.Resolve<IUnitOfWork>();
-            unitOfWork.DisableFilters(FiltersEnum.MayHaveTenant.ToString());
             var userRepository = IocManager.Instance.Resolve<IUserRepository>();
             var user = userRepository.GetAll().Include(p => p.Roles).FirstOrDefault(p => p.Id == new Guid(userId));
             if (user != null)
