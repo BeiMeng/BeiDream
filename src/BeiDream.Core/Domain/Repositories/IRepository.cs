@@ -42,6 +42,8 @@ namespace BeiDream.Core.Domain.Repositories
         /// <returns></returns>
         IQueryable<TAggregateRoot> GetAll();
 
+        IQueryable<TAggregateRoot> GetAllAsNoTracking();
+
         /// <summary>
         /// 获取过滤数据权限的所有数据
         /// </summary>

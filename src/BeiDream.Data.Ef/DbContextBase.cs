@@ -64,7 +64,15 @@ namespace BeiDream.Data.Ef
         public override sealed int SaveChanges()
         {
             SaveChangesBefore();
-            var result = base.SaveChanges();
+            var result=0;
+            try
+            {
+                base.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new DbUpdateConcurrencyException("当前数据已被修改,请刷新后重试");
+            }
             return SaveChangesAfter(result);
         }
 

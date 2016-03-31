@@ -72,7 +72,9 @@ namespace BeiDream.Demo.Service.Roles
         public void AddorUpdate(RoleDto dto)
         {
             var entity = dto.MapTo<Role>();
-            var model = _roleRepository.Find(entity.Id);
+            var query = _roleRepository.GetAllAsNoTracking();
+            var model = query.SingleOrDefault(p => p.Id == entity.Id);
+            //var model = _roleRepository.Find(entity.Id);
             if (model == null)
             {
                 //AddBefore(entity);
@@ -86,7 +88,8 @@ namespace BeiDream.Demo.Service.Roles
                 model.Description = entity.Description;
                 model.IsAdmin = entity.IsAdmin;
                 model.Enabled = entity.Enabled;
-                //model.Version = entity.Version;
+                model.Version = entity.Version;
+                _roleRepository.Update(model);
             }
         }
 

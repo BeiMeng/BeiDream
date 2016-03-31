@@ -109,6 +109,13 @@ namespace BeiDream.Data.Ef.Repositories
             return Set;
         }
         /// <summary>
+        /// 获取未跟踪的实体集
+        /// </summary>
+        public IQueryable<TAggregateRoot> GetAllAsNoTracking()
+        {
+            return Set.AsNoTracking();
+        }
+        /// <summary>
         /// 获取过滤数据权限的所有数据
         /// </summary>
         /// <returns></returns>

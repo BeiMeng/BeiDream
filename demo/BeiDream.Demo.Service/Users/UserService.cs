@@ -70,7 +70,9 @@ namespace BeiDream.Demo.Service.Users
         public void AddorUpdate(UserDto dto)
         {
             var entity = dto.ToEntity();
-            var model = _userRepository.Find(entity.Id);
+            var query = _userRepository.GetAllAsNoTracking();
+            var model = query.SingleOrDefault(p => p.Id == entity.Id);
+            //var model = _userRepository.Find(entity.Id);
             if (model == null)
             {
                 //AddBefore(entity);
@@ -85,7 +87,8 @@ namespace BeiDream.Demo.Service.Users
                 model.DisplayName = entity.DisplayName;
                 model.Email = entity.Email;
                 model.Enabled = entity.Enabled;
-                //model.Version = entity.Version;
+                model.Version = entity.Version;
+                _userRepository.Update(model);   //通过非实体跟踪查询出实体，修改实体字段，然后执行update，会触发乐观并发验证
             }
         }
 
@@ -105,7 +108,6 @@ namespace BeiDream.Demo.Service.Users
         }
         public UserDto Login(LoginInfoInput loginInfoInput)
         {
-            var list = _userRepository.GetAll().ToList();
             var user = _userRepository.GetAll().FirstOrDefault(p => p.Name == loginInfoInput.UserNameOrEmail || p.Email == loginInfoInput.UserNameOrEmail);
             if (user == null)
                 throw new Exception("用户名或邮箱错误");
