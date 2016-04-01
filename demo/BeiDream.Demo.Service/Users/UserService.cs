@@ -70,9 +70,9 @@ namespace BeiDream.Demo.Service.Users
         public void AddorUpdate(UserDto dto)
         {
             var entity = dto.ToEntity();
-            var query = _userRepository.GetAllAsNoTracking();
-            var model = query.SingleOrDefault(p => p.Id == entity.Id);
-            //var model = _userRepository.Find(entity.Id);
+            //var query = _userRepository.GetAllAsNoTracking();
+            //var model = query.SingleOrDefault(p => p.Id == entity.Id);
+            var model = _userRepository.Find(entity.Id);
             if (model == null)
             {
                 //AddBefore(entity);
@@ -88,7 +88,7 @@ namespace BeiDream.Demo.Service.Users
                 model.Email = entity.Email;
                 model.Enabled = entity.Enabled;
                 model.Version = entity.Version;
-                _userRepository.Update(model);   //通过非实体跟踪查询出实体，修改实体字段，然后执行update，会触发乐观并发验证
+                _userRepository.Update(model);   //执行update，会触发乐观并发验证,  不执行只会更新，不会触发乐观并发验证
             }
         }
 

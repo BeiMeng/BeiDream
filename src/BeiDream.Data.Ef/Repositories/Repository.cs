@@ -3,6 +3,7 @@ using BeiDream.Core.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 using BeiDream.Core.Security;
@@ -15,6 +16,17 @@ namespace BeiDream.Data.Ef.Repositories
         protected Repository(IDbContext dbContext)
             : base(dbContext)
         {
+        }
+        public override void Update(TAggregateRoot entity)
+        {
+            if (!AttachIfNot(entity))
+            {
+                TAggregateRoot oldEntity = GetAllAsNoTracking().SingleOrDefault(p => p.Id == entity.Id);
+                if(entity==null)
+                    throw new ArgumentNullException("更新的数据不存在");
+                ValidateVersion(entity, oldEntity);
+            }
+            DbContext.Entry(entity).State = EntityState.Modified;
         }
     }
 
@@ -41,12 +53,22 @@ namespace BeiDream.Data.Ef.Repositories
             Set.Add(entity);
         }
 
-        public void Update(TAggregateRoot entity)
+        public virtual void Update(TAggregateRoot entity)
         {
             AttachIfNot(entity);
             DbContext.Entry(entity).State = EntityState.Modified;
         }
-
+        //验证版本号
+        protected void ValidateVersion(TAggregateRoot newEntity, TAggregateRoot oldEntity)
+        {
+            if (newEntity.Version == null)
+                throw new DbUpdateConcurrencyException("当前数据已被修改,请刷新后重试");
+            for (int i = 0; i < oldEntity.Version.Length; i++)
+            {
+                if (newEntity.Version[i] != oldEntity.Version[i])
+                    throw new DbUpdateConcurrencyException("当前数据已被修改,请刷新后重试");
+            }
+        }
         #region 删除操作
 
         /// <summary>
@@ -140,12 +162,14 @@ namespace BeiDream.Data.Ef.Repositories
             return p => true;   
         }
 
-        protected virtual void AttachIfNot(TAggregateRoot entity)
+        protected virtual bool AttachIfNot(TAggregateRoot entity)
         {
             if (!Set.Local.Contains(entity))
             {
                 Set.Attach(entity);
+                return true;
             }
+            return false;
         }
     }
 }

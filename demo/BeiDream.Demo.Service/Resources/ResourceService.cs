@@ -84,9 +84,9 @@ namespace BeiDream.Demo.Service.Resources
         public void AddorUpdate(ResourceDto dto)
         {
             var entity = dto.MapTo<Resource>();
-            var query = _resourceRepository.GetAllAsNoTracking();
-            var model = query.SingleOrDefault(p => p.Id == entity.Id);
-            //var model = _resourceRepository.Find(entity.Id);
+            //var query = _resourceRepository.GetAllAsNoTracking();
+            //var model = query.SingleOrDefault(p => p.Id == entity.Id);
+            var model = _resourceRepository.Find(entity.Id);
             Resource resourceParent = entity.ParentId == null ? null : _resourceRepository.Find((Guid)entity.ParentId);
             if (model == null)
             {
