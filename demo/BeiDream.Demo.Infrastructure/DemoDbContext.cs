@@ -19,6 +19,7 @@ namespace BeiDream.Demo.Infrastructure
         public DbSet<User> Users { get; set; }
         public DbSet<Resource> Resources { get; set; }
         public DbSet<Permission> Permissions { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

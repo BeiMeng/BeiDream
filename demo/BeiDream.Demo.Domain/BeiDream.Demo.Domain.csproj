@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Enums\ResourceType.cs" />
     <Compile Include="Model\Permission.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Queries\RoleQuery.cs" />
     <Compile Include="Queries\UserQuery.cs" />
     <Compile Include="Repositories\IPermissionRepository.cs" />
+    <Compile Include="Repositories\IProductRepository.cs" />
     <Compile Include="Repositories\IResourceRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />

@@ -26,11 +26,13 @@ namespace BeiDream.Demo.Service.Users
         private readonly IUserDomainService _userDomainService;
 
         private readonly IUserRepository _userRepository;
+        private readonly IProductRepository _productRepository;
 
-        public UserService(IUserDomainService userDomainService, IUserRepository userRepository)
+        public UserService(IUserDomainService userDomainService, IUserRepository userRepository, IProductRepository productRepository)
         {
             _userDomainService = userDomainService;
             _userRepository = userRepository;
+            _productRepository = productRepository;
         }
         public void SetRoles(Guid userId, List<Guid> roleIds)
         {
@@ -69,6 +71,9 @@ namespace BeiDream.Demo.Service.Users
         }
         public void AddorUpdate(UserDto dto)
         {
+            Product product = new Product();
+            product.Name = "AAAA";
+            var addModel = _productRepository.AddEntity(product);
             var entity = dto.ToEntity();
             //var query = _userRepository.GetAllAsNoTracking();
             //var model = query.SingleOrDefault(p => p.Id == entity.Id);

@@ -72,6 +72,7 @@
     <Compile Include="Repositories\DataPermissions\UserCriterias\LookSelfModifyUsers.cs" />
     <Compile Include="Repositories\DataPermissions\UserCriterias\UserDataPermissionsManager.cs" />
     <Compile Include="Repositories\PermissionRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />

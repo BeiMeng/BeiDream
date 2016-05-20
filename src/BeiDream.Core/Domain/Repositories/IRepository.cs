@@ -9,7 +9,17 @@ namespace BeiDream.Core.Domain.Repositories
 {
     public interface IRepository<TAggregateRoot, in TKey> : ITransientDependency where TAggregateRoot : class,IAggregateRoot<TKey>
     {
+        /// <summary>
+        /// 新增实体
+        /// </summary>
+        /// <param name="entity">待新增的实体</param>
         void Add(TAggregateRoot entity);
+        /// <summary>
+        /// 新增实体,返回新增后的实体(使用此方法必须savechange,这样的话,必须方法内部添加transactionscope)
+        /// </summary>
+        /// <param name="entity">待新增的实体</param>
+        /// <returns>新增后的实体</returns>
+        TAggregateRoot AddEntity(TAggregateRoot entity);
 
         void Update(TAggregateRoot entity);
         /// <summary>

@@ -53,6 +53,13 @@ namespace BeiDream.Data.Ef.Repositories
             Set.Add(entity);
         }
 
+        public TAggregateRoot AddEntity(TAggregateRoot entity)
+        {
+            var addEntity= Set.Add(entity);
+            DbContext.SaveChanges();
+            return addEntity;
+        }
+
         public virtual void Update(TAggregateRoot entity)
         {
             AttachIfNot(entity);
