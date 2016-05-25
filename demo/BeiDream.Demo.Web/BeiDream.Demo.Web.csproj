@@ -70,12 +70,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -160,6 +172,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\LogConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Systems\Controllers\ResourceController.cs" />
     <Compile Include="Areas\Systems\Controllers\RoleController.cs" />
     <Compile Include="Areas\Systems\Controllers\UserController.cs" />
@@ -174,6 +187,7 @@
     <Compile Include="Controllers\DesktopController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\TestApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,6 +195,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Authentication\AuthenticationModuleRegister.cs" />
     <Compile Include="Security\Authentication\OwinConfig.cs" />
+    <Compile Include="Security\Authorization\OwnApiAuthorizeAttribute.cs" />
     <Compile Include="Security\Authorization\RoleAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -978,6 +993,10 @@
     <ProjectReference Include="..\..\src\BeiDream.Utils\BeiDream.Utils.csproj">
       <Project>{e2af3398-5cd1-4b41-995f-be11c7622e6e}</Project>
       <Name>BeiDream.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\BeiDream.Web.Api\BeiDream.Web.Api.csproj">
+      <Project>{c7d4f7a7-9eb1-4f13-8815-184f3509291d}</Project>
+      <Name>BeiDream.Web.Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\BeiDream.Web.Mvc\BeiDream.Web.Mvc.csproj">
       <Project>{4d4f4eb5-aa9c-42f8-a6c5-cf58f69c6d28}</Project>

@@ -35,9 +35,6 @@ namespace BeiDream.Core.Security.Authorization
         public bool HasPermission(string resourceUri)
         {
             Init();
-            resourceUri = GetResourceUri(resourceUri);
-            if (string.IsNullOrWhiteSpace(resourceUri))
-                return false;
             //验证是否已登录
             if (!_applicationSession.IsAuthenticated)
                 return false;
@@ -49,6 +46,10 @@ namespace BeiDream.Core.Security.Authorization
                 return true;
             if (ValidateIsAdmin())
                 return true;
+            //放到此步判断是因为webapi的验证如果url为null或""情况下，默认为忽略授权验证
+            resourceUri = GetResourceUri(resourceUri);
+            if (string.IsNullOrWhiteSpace(resourceUri))
+                return false;
             if (!ValidateRoles(resourceUri))
                 return false;
             return true;

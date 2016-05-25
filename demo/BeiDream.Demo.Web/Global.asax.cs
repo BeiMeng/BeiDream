@@ -1,4 +1,5 @@
-﻿using BeiDream.Utils.Logging;
+﻿using System.Web.Http;
+using BeiDream.Utils.Logging;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -17,6 +18,7 @@ namespace BeiDream.Demo.Web
             logger.Debug("依赖注入初始化完成");
             DatabaseConfig.Initialize();
             logger.Debug("数据库初始化完成");
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
