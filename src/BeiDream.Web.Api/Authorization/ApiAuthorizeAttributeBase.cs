@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using System.Web.Http.Controllers;
 using BeiDream.Core.Dependency;
 using BeiDream.Core.Security.Authorization;
@@ -20,12 +21,19 @@ namespace BeiDream.Web.Api.Authorization
         {
             if (!base.IsAuthorized(actionContext))
             {
-                return false;
+                throw new Exception("您没有访问权限！");
             }
             try
             {
                 IPermissionManager permissionManager = CreatePermissionManager();
-                return permissionManager.HasPermission(Permission);
+                if (permissionManager.HasPermission(Permission))
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception("您没有访问权限！");
+                }
             }
             catch (System.Exception ex)
             {

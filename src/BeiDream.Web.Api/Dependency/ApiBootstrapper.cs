@@ -1,4 +1,6 @@
-﻿using BeiDream.Core.Dependency;
+﻿using System.Web.Http;
+using System.Web.Http.Dispatcher;
+using BeiDream.Core.Dependency;
 
 namespace BeiDream.Web.Api.Dependency
 {
@@ -12,6 +14,7 @@ namespace BeiDream.Web.Api.Dependency
         public virtual void Initialize()
         {
             IocManager.AddConventionalRegistrar(new ApiControllerConventionalRegistrar());
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new ApiControllerActivator(IocManager));
         }
     }
 }

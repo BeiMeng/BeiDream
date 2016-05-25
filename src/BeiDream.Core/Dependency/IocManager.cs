@@ -129,9 +129,19 @@ namespace BeiDream.Core.Dependency
             return IocContainer.Resolve(type);
         }
 
+        public T Resolve<T>(object argumentsAsAnonymousType)
+        {
+            return IocContainer.Resolve<T>(argumentsAsAnonymousType);
+        }
+
         public void Release(object obj)
         {
             IocContainer.Release(obj);
+        }
+
+        public object Resolve(Type type, object argumentsAsAnonymousType)
+        {
+            return IocContainer.Resolve(type, argumentsAsAnonymousType);
         }
     }
 }

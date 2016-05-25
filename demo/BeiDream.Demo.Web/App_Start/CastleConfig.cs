@@ -18,6 +18,7 @@ namespace BeiDream.Demo.Web
             apiBootstrapper.Initialize();
             //依赖注入初始化
             mvcBootstrapper.Initialize();
+            apiBootstrapper.Initialize();
             mvcBootstrapper.IocManager.Register<ISignInManager, IdentitySignInManager>(DependencyLifeStyle.Transient);
         }
     }

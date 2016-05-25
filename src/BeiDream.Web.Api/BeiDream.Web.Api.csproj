@@ -70,6 +70,7 @@
     <Compile Include="Authorization\ApiAuthorizeAttributeBase.cs" />
     <Compile Include="Authorization\WebApiPermissionManager.cs" />
     <Compile Include="Dependency\ApiBootstrapper.cs" />
+    <Compile Include="Dependency\ApiControllerActivator.cs" />
     <Compile Include="Dependency\ApiControllerConventionalRegistrar.cs" />
     <Compile Include="OwnApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
