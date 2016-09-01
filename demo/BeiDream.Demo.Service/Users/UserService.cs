@@ -101,6 +101,8 @@ namespace BeiDream.Demo.Service.Users
         public UserDto Find(Guid id)
         {
             var user = _userRepository.Find(id);
+            if(user==null)
+                return new UserDto();
             return user.ToDto();
         }
 
