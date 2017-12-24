@@ -17,9 +17,30 @@
     <script src="~/Scripts/Easyui.Util/jquery.util.easyui.grid.js"></script>
     <script src="~/Scripts/Easyui.Util/jquery.util.easyui.treegrid.js"></script>
     <script src="~/Scripts/jquery.json-2.4.min.js"></script>
+
+    @*解决asyui页面一打开的时候出现短暂混乱的问题*@
+    <script>
+        function closes() {
+            $("#Loading").fadeOut("normal", function () {
+                $(this).remove();
+            });
+        }
+        var pc;
+        $.parser.onComplete = function () {
+            if (pc) clearTimeout(pc);
+            pc = setTimeout(closes, 1000);
+        }
+    </script>
     @RenderSection("head", false)
 </head>
 <body>
+    @*遮罩层html*@
+    <div id='Loading' style="position:absolute;z-index:1000;top:0px;left:0px;width:100%;height:100%;background:#F2F2F2 url('style/images/bodybg.jpg');text-align:center;padding-top: 20%;">
+        <h2>
+            <image src='~/Content/images/loading.gif' />
+            <font color="#15428B">加载中···</font>
+        </h2>
+    </div>
     @RenderBody()
 
     @RenderSection("Scripts", false)

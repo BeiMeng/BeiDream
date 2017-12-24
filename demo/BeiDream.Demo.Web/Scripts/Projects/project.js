@@ -12,6 +12,7 @@
                     return;
                 if (!node.attributes.url)
                     return;
+                //window.location.href = node.attributes.url;
                 $.project.addToMainTabs(node.text, node.attributes.url, node.iconCls, true);
             },
             //添加主界面选项卡
